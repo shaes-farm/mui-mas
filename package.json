@@ -1,0 +1,45 @@
+{
+  "name": "mui-mas",
+  "version": "0.0.1",
+  "description": "The SHAES Farm Material UI-based component library",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "npm start",
+    "build": "tsc",
+    "dev": "env DEBUG='shaes:*' nodemon ./demo/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaes-farm/mui-mas.git"
+  },
+  "keywords": [
+    "React",
+    "Material UI",
+    "Component Library"
+  ],
+  "author": "SHAES Farm <npm@shaes.farm> (https://github.com/shaes-farm)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/shaes-farm/mui-mas/issues"
+  },
+  "homepage": "https://github.com/shaes-farm/mui-mas#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.26.0",
+    "eslint-plugin-material-ui": "^1.0.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
