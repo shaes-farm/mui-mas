@@ -13,20 +13,22 @@ import { ProfileButton } from '../Profile';
 import NewItemsMenuButton from './NewItemsMenuButton';
 import SearchInput from '../SearchInput';
 
+interface AppConfig {
+  title: string;
+  description: string;
+  icon: string;
+  logo: {
+    main: string;
+    contrast: string;
+  }
+}
+
 export interface AppShellProps {
   toolbar: NavRoutes
   routes: NavRoutes
   defaultRoute: NavRoute
   config: {
-    app: {
-      title: string;
-      description: string;
-      icon: string;
-      logo: {
-        main: string;
-        contrast: string;
-      }
-    }
+    app: AppConfig
   }
 }
 
