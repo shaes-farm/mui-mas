@@ -17,10 +17,13 @@ export interface SearchInputProps {
 export function SearchInput(props: SearchInputProps) {
   const { router, route } = props;
 
+  console.debug('SearchInput component rendering!');
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    console.debug('Submit event handler called!');
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({data});
+    console.debug({data});
     // TODO: Get search string and pass to router? Retrieve results?
     if (route) router(route);
   };
@@ -32,18 +35,18 @@ export function SearchInput(props: SearchInputProps) {
       onSubmit={handleSubmit}
     >
       <Tooltip title="Global Search">
-        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search button">
           <SearchIcon />
         </IconButton>
       </Tooltip>
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search"
-        inputProps={{ 'aria-label': 'global search' }}
+        inputProps={{ 'aria-label': 'search keywords' }}
         name="search"
       />
       <Tooltip title="Refined Search">
-        <IconButton sx={{ p: '10px' }} aria-label="menu">
+        <IconButton sx={{ p: '10px' }} aria-label="search menu">
           <TuneIcon />
         </IconButton>
       </Tooltip>
