@@ -9,11 +9,11 @@ interface CopyrightProps {
 };
 
 export function Copyright(props: CopyrightProps) {
-  const {name, year, url} = props;
+  const {name, year, url, ...typoProps} = props;
   const currentYear = new Date().getFullYear();
 
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography variant="body2" color="text.secondary" align="center" {...typoProps}>
       {'Copyright © '}
       {year == currentYear ? year : `${year}-${currentYear}`}
       {' by '}
