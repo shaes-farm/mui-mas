@@ -5,7 +5,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from './Alert';
 
 interface SnackBarAlertProps {
-  message: string|JSX.Element
+  message: string
   severity?: AlertColor
   clear: () => void
   autoHide?: number
@@ -20,7 +20,7 @@ export function SnackBarAlert(props: SnackBarAlertProps) {
 
   return (
     <Snackbar
-      open={message ? true : false}
+      open={message.length ? true : false}
       autoHideDuration={autoHide}
       onClose={handleClose}
     >
