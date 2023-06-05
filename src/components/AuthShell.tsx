@@ -69,23 +69,20 @@ export function AuthShell(props: AuthShellProps ) {
   const supabase = useSupabaseClient();
   const index = React.useMemo<number>(() => Math.floor(Math.random() * IMAGES.length), []);
   const [image] = React.useState<string>(IMAGES[index]);
-  console.log({image});
 
   const handleSignIn = (credentials: Credentials) => {
     setErrorMsg('');
     supabase.auth.signInWithPassword({
       email: credentials.email,
       password: credentials.password,
-    }).then((value) => {
-      // console.dir({value});
+    }).then((value: { data: any; error: any; }) => {
       const { data, error } = value;
       if (error) {
         setErrorMsg(error.message);
       } else if (data) {
-        console.log(`User authenticated:\n${JSON.stringify(data,null,2)}`);
         router.push(config.app.pages.main);
       }
-    }).catch((err) => {
+    }).catch((err: any) => {
       setErrorMsg(err.message);
     });
   };
@@ -103,12 +100,10 @@ export function AuthShell(props: AuthShellProps ) {
         }
       }
     }).then((value) => {
-      // console.dir({value});
       const { data, error } = value;
       if (error) {
         setErrorMsg(error.message);
       } else if (data) {
-        //console.log(`User signed up:\n${JSON.stringify(data,null,2)}`);
         router.push(config.app.pages.main);
       }
     }).catch((err) => {
@@ -123,13 +118,11 @@ export function AuthShell(props: AuthShellProps ) {
       info.email,
       { redirectTo: config.app.pages.main }
     ).then((value) => {
-      // console.dir({value});
       const { data, error } = value;
       if (error) {
         setErrorMsg(error.message);
       } else if (data) {
         setStatusMsg(`Password reset sent to ${info.email}`);
-        console.log(`User recovered their password:\n${JSON.stringify(data,null,2)}`);
       }
     }).catch((err) => {
       setErrorMsg(err.data?.message ?? err.message);
