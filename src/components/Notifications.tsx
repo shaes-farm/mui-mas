@@ -4,14 +4,23 @@ import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
-export function Notifications() {
+interface NotificationsProps {
+  count: number
+  onNotify: () => void
+}
+
+export function Notifications(props: NotificationsProps) {
+  const { count, onNotify } = props;
+
   return (
     <Box sx={{ flexGrow: 0, ml: 2 }}>
       <Tooltip title="Notifications">
-        <Badge badgeContent={4} color="error">
-          <NotificationsNoneOutlinedIcon />
+        <Badge badgeContent={count} color="error">
+          <NotificationsNoneOutlinedIcon onClick={onNotify} />
         </Badge>
       </Tooltip>
     </Box>
   );
 }
+
+export default Notifications;

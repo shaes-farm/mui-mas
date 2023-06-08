@@ -9,7 +9,7 @@ export * from './AvatarUpload';
 export * from './Copyright';
 export * from './Drawer';
 export * from './Form';
-export * from './Link';
+export * from './Notifications';
 export * from './SearchInput';
 export * from './SnackBarAlert';
 export * from './Title';
