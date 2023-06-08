@@ -43,6 +43,14 @@ export default {
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
+  coverageThreshold: {
+    "global": {
+      "branches": 50,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
@@ -162,7 +170,6 @@ export default {
   testPathIgnorePatterns: [
     "/node_modules/",
     "/examples/",
-    ".next/",
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
