@@ -1,11 +1,11 @@
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
-import Chance from 'chance';
+import userEvent from '@testing-library/user-event';
 
 import type {NavRoute, NavRoutes} from '../_types';
 import Nav from '../Nav';
 
-const chance = new Chance();
+const user = userEvent.setup();
 
 describe('Nav component', () => {
   let onNavigate: (route: NavRoute) => void,
@@ -52,5 +52,48 @@ describe('Nav component', () => {
     const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
 
     expect(component).not.toBeNull();
+  });
+  
+  it('should navigate to a primary NavRoute', async () => {
+    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+
+    expect(component).not.toBeNull();
+
+    const link = component.getByText(routes.primary[0].label);
+
+    await user.click(link);
+
+    expect(onNavigate).toHaveBeenCalledTimes(1);
+    expect(onNavigate).toHaveBeenCalledWith(routes.primary[0]);
+  });
+  
+  it('should navigate to a secondary NavRoute', async () => {
+    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+
+    expect(component).not.toBeNull();
+
+    // @ts-ignore
+    const link = component.getByText(routes.secondary[0].label);
+
+    await user.click(link);
+
+    expect(onNavigate).toHaveBeenCalledTimes(1);
+    // @ts-ignore
+    expect(onNavigate).toHaveBeenCalledWith(routes.secondary[0]);
+  });
+  
+  it('should navigate to a tertiary NavRoute', async () => {
+    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+
+    expect(component).not.toBeNull();
+
+    // @ts-ignore
+    const link = component.getByText(routes.tertiary[0].label);
+
+    await user.click(link);
+
+    expect(onNavigate).toHaveBeenCalledTimes(1);
+    // @ts-ignore
+    expect(onNavigate).toHaveBeenCalledWith(routes.tertiary[0]);
   });
 });
