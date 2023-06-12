@@ -9,13 +9,14 @@ import TuneIcon from '@mui/icons-material/Tune';
 import type { NavRoute } from './Nav';
 import Form from './Form';
 
-export interface SearchInputProps {
+interface SearchInputProps {
   route?: NavRoute
   router: (route: NavRoute) => void
+  tooltip?: string
 }
 
 export function SearchInput(props: SearchInputProps) {
-  const { router, route } = props;
+  const { router, route, tooltip } = props;
 
   console.debug('SearchInput component rendering!');
 
@@ -34,7 +35,7 @@ export function SearchInput(props: SearchInputProps) {
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 350 }}
       onSubmit={handleSubmit}
     >
-      <Tooltip title="Global Search">
+      <Tooltip title={tooltip ?? 'Search'}>
         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search button">
           <SearchIcon />
         </IconButton>

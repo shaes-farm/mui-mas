@@ -12,7 +12,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import MenuItem from '@mui/material/MenuItem';
 import type { NavRoute } from '../Nav';
 
-export interface NewItemsMenuButtonProps {
+interface NewItemsMenuButtonProps {
   menu?: Array<NavRoute>
   router: (route: NavRoute) => void
 }
