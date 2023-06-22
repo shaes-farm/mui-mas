@@ -1,22 +1,20 @@
-import * as React from 'react';
+import React from 'react';
 import { useRouter } from 'next/router'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
-import { useConfig } from '../../providers/Config';
 
 interface SignOutProps {
-  // TODO: Add your component props here...
+  home: string
 }
 
 export function SignOut(props: SignOutProps) {
-  const { } = props;
-  const config = useConfig();
+  const { home } = props;
   const router = useRouter();
   const supabase = useSupabaseClient();
 
   React.useEffect(() => {
-    supabase.auth.signOut().then((error) => {
+    supabase.auth.signOut().then((error: any) => {
       if (error) console.error({error});
-      router.push(config.app.pages.home);
+      router.push(home);
     });
   })
 
