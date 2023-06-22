@@ -1,5 +1,4 @@
-import * as React from 'react';
-import Head from 'next/head';
+import React from 'react';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -43,11 +42,6 @@ export function AppShell(props: AppShellProps ) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Head>
-        <title>{route.label}{' :: '}{config.app.title}</title>
-        <meta name="description" content={config.app.description} />
-        <link rel="icon" href={config.app.icon} />
-      </Head>
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
