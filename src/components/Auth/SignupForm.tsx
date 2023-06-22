@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+
 import Form from '../Form';
 import Link from '../Link';
 import { SubTitle, Heading } from '../Title';
@@ -17,10 +18,10 @@ export interface SignUpInfo {
   password: string
 }
 
-export interface SignUpFormProps {
+interface SignUpFormProps {
   icon?: JSX.Element;
-  title?: JSX.Element;
-  subTitle?: JSX.Element;
+  title?: JSX.Element | string;
+  subTitle?: JSX.Element | string;
   signUp: (info: SignUpInfo) => Promise<void>
   signInUrl: string;
   formProps?: Array<any>
@@ -68,7 +69,6 @@ export function SignUpForm(props: SignUpFormProps) {
       </Typography>
       <Form
         sx={{ mt: 3 }}
-        // noValidate
         onSubmit={handleSubmit}
         {...formProps}
       >
@@ -89,8 +89,8 @@ export function SignUpForm(props: SignUpFormProps) {
               required
               fullWidth
               name="lastName"
-              label="Last Name"
               id="lastName"
+              label="Last Name"
               autoComplete="family-name"
             />
           </Grid>
@@ -99,9 +99,9 @@ export function SignUpForm(props: SignUpFormProps) {
               required
               fullWidth
               name="email"
+              id="email"
               label="Email Address"
               type="email"
-              id="email"
               autoComplete="email"
             />
           </Grid>
@@ -110,10 +110,9 @@ export function SignUpForm(props: SignUpFormProps) {
               required
               fullWidth
               name="password"
+              id="password"
               label="Password"
               type="password"
-              id="password"
-              autoComplete="new-password"
             />
           </Grid>
         </Grid>
