@@ -1,3 +1,4 @@
+import React from 'react';
 import PasswordForm from './PasswordForm';
 import SignUpForm from './SignupForm';
 import RecoverPasswordForm from './RecoverForm';
