@@ -11,3 +11,5 @@ export interface NavRoutes {
   secondary?: Array<NavRoute>
   tertiary?: Array<NavRoute>
 }
+
+export type NavRouter = (route: NavRoute) => void;
