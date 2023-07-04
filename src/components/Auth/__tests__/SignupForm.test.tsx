@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {createMockRouter} from '../../../test-utils';
+import {createMockNextRouter} from '../../../test-utils/index';
 import SignupForm from '../SignupForm';
 
 const user = userEvent.setup();
@@ -36,7 +36,7 @@ jest.mock('next/router', () => ({
 }));
 
 describe('SignupForm', () => {
-  const router = createMockRouter(),
+  const router = createMockNextRouter(),
         signUp = jest.fn(),
         signInUrl = '/sign-in';
 
