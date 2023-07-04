@@ -3,18 +3,18 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemIcon';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import MenuItem from '@mui/material/MenuItem';
-import type { NavRoute } from '../Nav';
+import type { NavRoute, NavRouter } from '../Nav';
 
 interface NewItemsMenuButtonProps {
   menu?: Array<NavRoute>
-  router: (route: NavRoute) => void
+  router: NavRouter
 }
 
 export function NewItemsMenuButton(props: NewItemsMenuButtonProps) {
