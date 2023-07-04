@@ -144,7 +144,7 @@ export default {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
-    './src/test-setup.ts',    
+    './src/test-utils/test-setup.ts',
   ],
 
   // The equivalent of the --showSeed flag to print the seed in the test report summary.
