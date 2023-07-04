@@ -1,1 +1,1 @@
-export * from './createMockRouter';
+export * from './createMockNextRouter';
