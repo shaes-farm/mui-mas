@@ -1,16 +1,28 @@
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 
+import {NavRoute, NavRouter} from '../Nav';
 import Notifications from '../Notifications';
 
 describe('Notifications component', () => {
-  const onNotify = jest.fn();
+  let router: NavRouter,
+        route: NavRoute;
+
+  beforeAll(() => {
+    route = {
+      slug: chance.string(),
+      icon: <React.Fragment />,
+      label: chance.string(),
+      page: <React.Fragment />,
+    };
+
+    router = jest.fn();
+  });
 
   afterEach(cleanup);
-  
-  it('should render a Notifications', () => {
-    const component = render(<Notifications count={4} onNotify={onNotify} />);
 
-    expect(component).not.toBeNull();
+  it('should render Notifications', () => {
+    const notifications = render(<Notifications count={4} router={router} route={route} />);
+    expect(notifications).not.toBeNull();
   });
 });
