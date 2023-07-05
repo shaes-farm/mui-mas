@@ -7,10 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AppBar from '../AppBar';
 import Drawer from '../Drawer';
-import { Nav, NavRoute, NavRoutes } from '../Nav';
-import { ProfileButton } from '../Profile';
+import {Nav, NavRoute, NavRoutes} from '../Nav';
+import {ProfileButton} from './ProfileButton';
 import NewItemsMenuButton from './NewItemsMenuButton';
 import SearchInput from '../SearchInput';
+import {useProfile} from '../../providers/Profile';
 
 interface AppConfig {
   title: string;
@@ -22,7 +23,7 @@ interface AppConfig {
   }
 }
 
-export interface AppShellProps {
+interface AppShellProps {
   toolbar: NavRoutes
   routes: NavRoutes
   defaultRoute: NavRoute
@@ -32,9 +33,10 @@ export interface AppShellProps {
 }
 
 export function AppShell(props: AppShellProps ) {
-  const { toolbar, routes, defaultRoute, config } = props;
+  const {toolbar, routes, defaultRoute, config} = props;
   const [open, setOpen] = React.useState(true);
   const [route, setRoute] = React.useState(defaultRoute);
+  const {profile} = useProfile();
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -60,10 +62,10 @@ export function AppShell(props: AppShellProps ) {
               ...(open && { display: 'none' }),
             }}
           >
-            <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" height={46} />
+            <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" width={46} height={46} />
           </IconButton>
           {/* Search Input Form */}
-          <SearchInput route={toolbar.tertiary && toolbar.tertiary[0]} router={setRoute} />
+          {toolbar.tertiary && <SearchInput route={toolbar.tertiary[0]} router={setRoute} />}
           <Box sx={{ flexGrow: 1 }} />
           {/* Toolbar Icons / Routes */}
           {toolbar.primary.map((route: NavRoute) =>
@@ -72,7 +74,7 @@ export function AppShell(props: AppShellProps ) {
             </IconButton>
           )}
           <NewItemsMenuButton menu={toolbar.tertiary} router={setRoute} />
-          <ProfileButton menu={toolbar.secondary} router={setRoute} />
+          <ProfileButton menu={toolbar.secondary} router={setRoute} profile={profile} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -93,9 +95,9 @@ export function AppShell(props: AppShellProps ) {
               ...(!open && { display: 'none' }),
             }}
           >
-            <Image src={config.app.logo.main} alt="Brand Logo" height={46} />
+            <Image src={config.app.logo.main} alt="Brand Logo" width={46} height={46} />
           </IconButton>
-          <IconButton onClick={toggleDrawer}>
+          <IconButton aria-label="close drawer" onClick={toggleDrawer}>
             <ChevronLeftIcon />
           </IconButton>
         </Toolbar>
