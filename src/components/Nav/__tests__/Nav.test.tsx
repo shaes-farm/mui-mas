@@ -2,13 +2,13 @@ import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type {NavRoute, NavRoutes} from '../_types';
-import Nav from '../Nav';
+import type {NavRoutes, NavRouter} from '../index';
+import {Nav} from '../index';
 
 const user = userEvent.setup();
 
 describe('Nav component', () => {
-  let onNavigate: (route: NavRoute) => void,
+  let onNavigate: NavRouter,
       routes: NavRoutes;
 
   beforeEach(() => {
