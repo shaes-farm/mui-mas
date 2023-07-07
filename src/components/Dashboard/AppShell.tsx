@@ -12,16 +12,7 @@ import {ProfileButton} from './ProfileButton';
 import NewItemsMenuButton from './NewItemsMenuButton';
 import SearchInput from '../SearchInput';
 import {useProfile} from '../../providers/Profile';
-
-interface AppConfig {
-  title: string;
-  description: string;
-  icon: string;
-  logo: {
-    main: string;
-    contrast: string;
-  }
-}
+import type {AppConfig} from './_types';
 
 interface AppShellProps {
   toolbar: NavRoutes
@@ -34,8 +25,8 @@ interface AppShellProps {
 
 export function AppShell(props: AppShellProps ) {
   const {toolbar, routes, defaultRoute, config} = props;
-  const [open, setOpen] = React.useState(true);
-  const [route, setRoute] = React.useState(defaultRoute);
+  const [open, setOpen] = React.useState<boolean>(true);
+  const [route, setRoute] = React.useState<NavRoute>(defaultRoute);
   const {profile} = useProfile();
 
   const toggleDrawer = () => {
@@ -65,7 +56,7 @@ export function AppShell(props: AppShellProps ) {
             <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" width={46} height={46} />
           </IconButton>
           {/* Search Input Form */}
-          {toolbar.tertiary && <SearchInput route={toolbar.tertiary[0]} router={setRoute} />}
+          {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={setRoute} />}
           <Box sx={{ flexGrow: 1 }} />
           {/* Toolbar Icons / Routes */}
           {toolbar.primary.map((route: NavRoute) =>

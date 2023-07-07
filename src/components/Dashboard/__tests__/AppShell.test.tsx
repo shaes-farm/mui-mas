@@ -1,25 +1,38 @@
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {ThemeProvider, createTheme} from '@mui/material/styles';
+import {Theme, ThemeProvider, createTheme} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import type {Profile} from '../../../providers/Profile';
 import {ProfileProvider} from '../../../providers/Profile';
 import type {NavRoute, NavRoutes} from '../../Nav';
+
+import {AppConfig} from '../_types';
 import AppShell from '../AppShell';
 
 const user = userEvent.setup();
 
+type Config = {
+  app: AppConfig;
+}
+
 describe('AppShell component', () => {
-  let profile: Profile,
+  let theme: Theme,
+      profile: Profile,
       setProfile: (profile: Profile) => void,
       toolbar: NavRoutes,
       routes: NavRoutes,
       defaultRoute: NavRoute,
-      config: any;
+      config: Config;
 
   beforeAll(() => {
+    theme = createTheme({
+      palette: {
+        mode: 'dark',
+      },
+    });
+
     profile = {
       id: chance.guid(),
       firstName: chance.first(),
@@ -67,13 +80,13 @@ describe('AppShell component', () => {
       }]
     };
 
-    defaultRoute = routes.primary[2];
+    defaultRoute = routes.primary[0];
 
     config = {
       app: {
         title: chance.string(),
         description: chance.string(),
-        icon: <React.Fragment />,
+        icon: 'https://placehold.co/64',
         logo: {
           main: 'https://placehold.co/46',
           contrast: 'https://placehold.co/46',
@@ -137,7 +150,7 @@ describe('AppShell component', () => {
     );
 
     expect(appShell).not.toBeNull();
-   
+
     const link = appShell.getByText(routes.primary[0].label);
     expect(link).toBeTruthy();
 
@@ -153,14 +166,14 @@ describe('AppShell component', () => {
 
     delete config.app.logo.contrast;
 
-    routes.tertiary = [{
-      slug: chance.string(),
+    toolbar.tertiary = [{
+      slug: 'search-input',
       icon: <React.Fragment />,
       label: chance.string(),
       page: <React.Fragment />,
     }];
-    
-    const appShell = render(
+
+    const app = render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <ProfileProvider profile={profile} setProfile={setProfile}>
@@ -174,6 +187,6 @@ describe('AppShell component', () => {
       </ThemeProvider>
     );
 
-    expect(appShell).not.toBeNull();
+    expect(app).not.toBeNull();
   });
 });
