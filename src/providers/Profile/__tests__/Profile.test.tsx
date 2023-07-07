@@ -32,7 +32,7 @@ describe('Profile component', () => {
   });
 
   afterEach(cleanup);
-  
+
   it('should render components that use hook inside of ProfileProvider ', () => {
     const profileProvider = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
@@ -42,8 +42,13 @@ describe('Profile component', () => {
 
     expect(profileProvider).not.toBeNull();
   });
-  
+
   it('should throw an exception if hook used outside of ProfileProvider ', () => {
+    console.error = jest.fn();
+    console.log = jest.fn();
+    console.debug = jest.fn();
+
     expect(() => render(<TestComponent />)).toThrow(Error);
+    expect(console.error).toHaveBeenCalled();
   });
 });
