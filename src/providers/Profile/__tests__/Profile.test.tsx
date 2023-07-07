@@ -13,7 +13,7 @@ const TestComponent = () => {
   );
 };
 
-describe('Profile component', () => {
+describe('Profile context provider', () => {
   let profile: Profile,
       setProfile: (profile: Profile) => void;
 
