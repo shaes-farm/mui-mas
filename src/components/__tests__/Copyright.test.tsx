@@ -12,7 +12,7 @@ describe('Copyright component', () => {
   it('should render a Copyright', () => {
     const component = render(
       <Copyright
-        name="site owner"
+        holder="site owner"
         year={year}
         url="http://localhost"
       />
@@ -24,7 +24,7 @@ describe('Copyright component', () => {
   it('should render a Copyright with a year range', () => {
     const component = render(
       <Copyright
-        name="Protected Works Holder"
+        holder="Protected Works Holder"
         year={year - 1}
         url="http://localhost"
       />

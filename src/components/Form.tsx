@@ -1,14 +1,32 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import {styled} from '@mui/material/styles';
 
-export function Form(props: any) {
+interface FormProps {
+  accept?: string
+  acceptCharset?: string
+  autocapitalize?: "none" | "sentences" | "words" | "characters"
+  autocomplete?: "off" | "on"
+  name?: string
+  rel?: string
+  action?: string
+  enctype?: string
+  method?: "get" | "post" | "dialog"
+  novalidate?: boolean
+  target?: "_self" | "_blank" | "_parent" | "_top"
+  children?: React.ReactNode
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void
+}
+
+export const FormBase = (props: FormProps) => {
   const { children, ...formProps } = props;
 
   return (
-    <Box component="form" {...formProps}>
+    <form {...formProps}>
       {children}
-    </Box>
+    </form>
   );
 }
+
+export const Form = styled(FormBase)({});
 
 export default Form;

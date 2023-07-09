@@ -1,15 +1,17 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import type {SxProps, Theme} from '@mui/material';
 
 interface CopyrightProps {
-  name: string;
-  year: number;
-  url: string;
-};
+  holder: string
+  year: number
+  url: string
+  sx?: SxProps<Theme>
+}
 
 export function Copyright(props: CopyrightProps) {
-  const {name, year, url, ...typoProps} = props;
+  const {holder, year, url, ...typoProps} = props;
   const currentYear = new Date().getFullYear();
 
   return (
@@ -18,7 +20,7 @@ export function Copyright(props: CopyrightProps) {
       {year == currentYear ? year : `${year}-${currentYear}`}
       {' by '}
       <Link target='_blank' color="inherit" href={url}>
-        {name}
+        {holder}
       </Link>
     </Typography>
   );

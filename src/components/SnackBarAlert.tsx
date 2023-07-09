@@ -14,7 +14,7 @@ interface SnackBarAlertProps {
 export function SnackBarAlert(props: SnackBarAlertProps) {
   const { message, severity = 'error', clear, autoHide = 6000 } = props;
 
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (/* event?: React.SyntheticEvent | Event, reason?: string */) => {
     clear();
   }
 

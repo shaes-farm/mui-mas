@@ -1,5 +1,5 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
+// import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
@@ -10,7 +10,7 @@ import type { NavRoute } from './Nav';
 import Form from './Form';
 
 interface SearchInputProps {
-  route?: NavRoute
+  route: NavRoute
   router: (route: NavRoute) => void
   tooltip?: string
 }
@@ -25,13 +25,12 @@ export function SearchInput(props: SearchInputProps) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.debug({data});
-    // TODO: Get search string and pass to router? Retrieve results?
+    // TODO: Get search string and pass to router? Retrieve results? Wha?
     if (route) router(route);
   };
 
   return (
-    <Form
-      component={Paper}
+    <Form // component={Paper}
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 350 }}
       onSubmit={handleSubmit}
     >

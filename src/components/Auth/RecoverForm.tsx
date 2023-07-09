@@ -5,16 +5,17 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
+
 import Form from '../Form';
 import Link from '../Link';
 import { SubTitle, Heading } from '../Title';
-import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
 
 export interface RecoverPasswordInfo {
   email: string
 }
 
-export interface RecoverPasswordFormProps {
+interface RecoverPasswordFormProps {
   title?: JSX.Element;
   subTitle?: JSX.Element;
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
@@ -30,7 +31,7 @@ export function RecoverPasswordForm(props: RecoverPasswordFormProps) {
     signInUrl,
     ...formProps
   } = props;
-  
+
   const handleSubmit = async function (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

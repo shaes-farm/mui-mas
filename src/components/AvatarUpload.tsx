@@ -5,26 +5,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
-async function downloadAvatar(supabase: any, path: string) {
-  let url: string|null = null;
-
-  try {
-    const { data, error } = await supabase.storage
-      .from('avatars')
-      .download(path);
-    if (error) {
-      throw error;
-    }
-    if (data) {
-      url = URL.createObjectURL(data);
-    }
-  } catch (storageError: any) {
-    console.error({storageError});
-  }
-
-  return url;
-}
-
 interface AvatarUploadProps {
   id: string
   url: string
@@ -42,13 +22,33 @@ export function AvatarUpload(props: AvatarUploadProps) {
   useEffect(() => {
     async function download() {
       if (url) {
-        const blobUrl = await downloadAvatar(supabase, url)
+        const blobUrl = await downloadAvatar(url)
         setAvatarUrl(blobUrl);
       }
     }
     download();
   }, [url, supabase]);
 
+  const downloadAvatar = async (path: string) => {
+    let avatarObjectUrl: string|null = null;
+  
+    try {
+      const { data, error } = await supabase.storage
+        .from('avatars')
+        .download(path);
+      if (error) {
+        throw error;
+      }
+      if (data) {
+        avatarObjectUrl = URL.createObjectURL(data);
+      }
+    } catch (storageError) {
+      console.error({storageError});
+    }
+  
+    return avatarObjectUrl;
+  };
+  
   const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     setUploading(true)
     try {
@@ -64,7 +64,7 @@ export function AvatarUpload(props: AvatarUploadProps) {
 
       console.log(`Uploading ${file.name} as ${filePath}`);
 
-      let { error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('avatars')
         .upload(filePath, file, { upsert: true });
 
@@ -73,9 +73,9 @@ export function AvatarUpload(props: AvatarUploadProps) {
       }
 
       onUpload(filePath);
-    } catch (uploadError: any) {
+    } catch (uploadError) {
       console.log({uploadError})
-      onError(uploadError.message);
+      onError(String(uploadError));
     } finally {
       setUploading(false)
     }
