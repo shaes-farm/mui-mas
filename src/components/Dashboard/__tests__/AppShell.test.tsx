@@ -8,7 +8,7 @@ import type {Profile} from '../../../providers/Profile';
 import {ProfileProvider} from '../../../providers/Profile';
 import type {NavRoute, NavRoutes} from '../../Nav';
 
-import {AppConfig} from '../_types';
+import {AppConfig} from '../../App';
 import AppShell from '../AppShell';
 
 const user = userEvent.setup();
@@ -90,6 +90,17 @@ describe('AppShell component', () => {
         logo: {
           main: 'https://placehold.co/46',
           contrast: 'https://placehold.co/46',
+        },
+        copyright: {
+          holder: chance.name(),
+          year: Number(chance.year()),
+          url: chance.url(),
+        },
+        pages: {
+          home: chance.url(),
+          signin: chance.url(),
+          signup: chance.url(),
+          recovery: chance.url(),
         },
       },
     };
