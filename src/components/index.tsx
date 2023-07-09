@@ -3,7 +3,6 @@ export * from './Dashboard';
 export * from './Nav';
 export * from './Alert';
 export * from './AppBar';
-export * from './AuthShell';
 export * from './AvatarUpload';
 export * from './Copyright';
 export * from './Drawer';
