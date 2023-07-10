@@ -18,8 +18,6 @@ interface SearchInputProps {
 export function SearchInput(props: SearchInputProps) {
   const { router, route, tooltip } = props;
 
-  console.debug('SearchInput component rendering!');
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.debug('Submit event handler called!');
     event.preventDefault();

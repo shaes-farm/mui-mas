@@ -1,15 +1,15 @@
 import React from 'react';
-import {cleanup, fireEvent, render} from '@testing-library/react';
+import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { NavRoute } from '../Nav';
+import type {NavRoute, NavRouter} from '../Nav';
 import SearchInput from '../SearchInput';
 
 const user = userEvent.setup();
 
 describe('SearchInput component', () => {
   let route: NavRoute,
-      router: (route: NavRoute) => void;
+      router: NavRouter;
 
   beforeEach(() => {
     route = {
@@ -24,27 +24,25 @@ describe('SearchInput component', () => {
 
   afterEach(cleanup);
   
-  it('should render a SearchInput', async () => {
+  it('should render a SearchInput', () => {
     const component = render(<SearchInput route={route} router={router} />);
-
-    expect(component).not.toBeNull();
+    expect(component).toBeDefined();
   });
 
-  /*
-    console.debug('Clicking search button');
+  it('should click on the search button to submit the search', async () => {
+    const component = render(<SearchInput route={route} router={router} tooltip="Not Fubar" />);
+    expect(component).toBeDefined();
 
-    const input = component.getByLabelText(/^search\s+keywords$/i);
-    const button = component.getByLabelText(/^search\s+button$/i);
-
-    console.debug({input});
-    console.debug({button});
+    const input = component.getByLabelText(/search keywords/u);
 
     await user.click(input);
-    await user.keyboard('find it');
+    await user.keyboard('find this');
+
+    const button = component.getByLabelText(/search button/u);
+
     await user.click(button);
 
     expect(router).toHaveBeenCalledTimes(1);
     expect(router).toHaveBeenCalledWith(route);
   });
-  */
 });
