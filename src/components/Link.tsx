@@ -24,7 +24,7 @@ export const NextLinkComposed = React.forwardRef<HTMLAnchorElement, NextLinkComp
       scroll,
       shallow,
       prefetch,
-      legacyBehavior = true,
+      legacyBehavior,
       locale,
       ...other
     } = props;
@@ -64,7 +64,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(props,
     as,
     className: classNameProps,
     href,
-    legacyBehavior,
+    legacyBehavior = true,
     linkAs: linkAsProp,
     locale,
     noLinkStyle,
