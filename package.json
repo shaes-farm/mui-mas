@@ -2,14 +2,17 @@
   "name": "@shaes/mui-mas",
   "version": "0.0.1",
   "description": "The SHAES Farm UI component library based on MUI",
-  "main": "mas.tsx",
+  "author": "SHAES Farm <npm@shaes.farm> (https://github.com/shaes-farm)",
+  "license": "GPL-3.0-or-later",
+  "main": "./build/dist/index.js",
+  "types": "./build/dist/index.d.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start": "npm start",
+    "start": "env NODE_ENV=production node ./build/dist/index.js",
     "build": "tsc",
-    "dev": "env DEBUG='shaes:*' nodemon ./demo/index.js",
+    "dev": "env DEBUG='shaes:*' nodemon ./build/dist/index.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint src/**/*.ts[x]",
@@ -26,8 +29,6 @@
     "Material UI",
     "Component Library"
   ],
-  "author": "SHAES Farm <npm@shaes.farm> (https://github.com/shaes-farm)",
-  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/shaes-farm/mui-mas/issues"
   },
@@ -67,6 +68,7 @@
     "@mui/material": "^5.10.12",
     "@supabase/auth-helpers-react": "^0.4.0",
     "@supabase/supabase-js": "^2.26.0",
+    "clsx": "^1.2.1",
     "next": "^13.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
