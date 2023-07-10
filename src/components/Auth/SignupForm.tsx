@@ -60,7 +60,7 @@ export function SignUpForm(props: SignUpFormProps) {
       }}
     >
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-        <PersonOutlineOutlinedIcon />
+        {icon ?? <PersonOutlineOutlinedIcon />}
       </Avatar>
       {title && <SubTitle variant="h4">{title}</SubTitle>}
       {subTitle && <Heading variant="h5">{subTitle}</Heading>}
@@ -68,6 +68,7 @@ export function SignUpForm(props: SignUpFormProps) {
         Sign up to create an account!
       </Typography>
       <Form
+        autocomplete="on"
         sx={{ mt: 3 }}
         onSubmit={handleSubmit}
         {...formProps}
