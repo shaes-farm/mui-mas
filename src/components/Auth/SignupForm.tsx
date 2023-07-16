@@ -68,7 +68,7 @@ export function SignUpForm(props: SignUpFormProps) {
         Sign up to create an account!
       </Typography>
       <Form
-        autocomplete="on"
+        autoComplete="on"
         sx={{ mt: 3 }}
         onSubmit={handleSubmit}
         {...formProps}

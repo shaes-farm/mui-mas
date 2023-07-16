@@ -5,7 +5,7 @@ interface FormProps {
   accept?: string
   acceptCharset?: string
   autocapitalize?: "none" | "sentences" | "words" | "characters"
-  autocomplete?: "off" | "on"
+  autoComplete?: "off" | "on"
   name?: string
   rel?: string
   action?: string
