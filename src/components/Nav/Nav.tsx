@@ -1,24 +1,33 @@
 import React from 'react';
+import type {ListProps} from '@mui/material/List';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
-import { NavRoutes, NavRoute } from './_types';
+import type {NavRoute, NavRoutes, NavRouter} from './_types';
 
-interface NavProps {
-  routes: NavRoutes
-  onNavigate: (route: NavRoute) => void
+export interface NavProps extends ListProps {
+  /**
+   * An array of routes rendered as a nav element.
+   */
+   routes: NavRoutes;
+  /**
+   * The router used to perform the navigation.
+   */
+  router: NavRouter;
 }
 
-export function Nav(props: NavProps) {
-  const { routes, onNavigate } = props;
-
+/**
+ * Renders a vertical nav element as primary, secondary, and tertiary lists separated by dividers.
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
+ */
+export const Nav: React.FC<NavProps> = ({routes, router, ...listProps}) => {
   return (
-    <List component="nav">
+    <List component="nav" {...listProps}>
       {routes.primary.map((route: NavRoute) => (
-        <ListItemButton key={route.slug} onClick={() => onNavigate(route)}>
+        <ListItemButton key={route.slug} onClick={() => router(route)}>
           <ListItemIcon>
             {route.icon}
           </ListItemIcon>
@@ -28,7 +37,7 @@ export function Nav(props: NavProps) {
       )}
       {routes.secondary && <Divider sx={{ my: 1 }} />}
       {routes.secondary && routes.secondary.map((route) => (
-          <ListItemButton key={route.slug} onClick={() => onNavigate(route)}>
+          <ListItemButton key={route.slug} onClick={() => router(route)}>
             <ListItemIcon>
               {route.icon}
             </ListItemIcon>
@@ -38,7 +47,7 @@ export function Nav(props: NavProps) {
       )}
       {routes.tertiary && <Divider sx={{ my: 1 }} />}
       {routes.tertiary && routes.tertiary.map((route) => (
-          <ListItemButton key={route.slug} onClick={() => onNavigate(route)}>
+          <ListItemButton key={route.slug} onClick={() => router(route)}>
             <ListItemIcon>
               {route.icon}
             </ListItemIcon>
@@ -48,6 +57,6 @@ export function Nav(props: NavProps) {
       )}
     </List>
   );
-}
+};
 
 export default Nav;
