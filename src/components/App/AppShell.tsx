@@ -6,15 +6,15 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-import type {AppConfig} from '../App';
+import type {AppConfig} from '.';
 import AppBar from '../AppBar';
 import Drawer from '../Drawer';
 import {Nav, NavRoute, NavRoutes} from '../Nav';
 import SearchInput from '../SearchInput';
 import {useProfile} from '../../providers/Profile';
 
-import {ProfileButton} from './ProfileButton';
-import NewItemsMenuButton from './NewItemsMenuButton';
+import {ProfileButton} from '../Dashboard/ProfileButton';
+import NewItemsMenuButton from '../Dashboard/NewItemsMenuButton';
 
 interface AppShellProps {
   toolbar: NavRoutes

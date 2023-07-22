@@ -9,14 +9,22 @@ import TuneIcon from '@mui/icons-material/Tune';
 import type { NavRoute } from './Nav';
 import Form from './Form';
 
-interface SearchInputProps {
+export interface SearchInputProps {
+  /**
+   * The route to navigate to when search icon is clicked or enter is pressed.
+   */
   route: NavRoute
-  router: (route: NavRoute) => void
-  tooltip?: string
+  /**
+   * The router used to perform the navigation.
+   */
+   router: (route: NavRoute) => void
 }
 
-export function SearchInput(props: SearchInputProps) {
-  const { router, route, tooltip } = props;
+/**
+ * An input component with search and properties icons.
+ */
+export const SearchInput: React.FC<SearchInputProps> = (props: SearchInputProps) => {
+  const { router, route } = props;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.debug('Submit event handler called!');
@@ -32,7 +40,7 @@ export function SearchInput(props: SearchInputProps) {
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 350 }}
       onSubmit={handleSubmit}
     >
-      <Tooltip title={tooltip ?? 'Search'}>
+      <Tooltip title={route.label ?? 'Search'}>
         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search button">
           <SearchIcon />
         </IconButton>
@@ -50,6 +58,6 @@ export function SearchInput(props: SearchInputProps) {
       </Tooltip>
     </Form>
   );
-}
+};
 
 export default SearchInput;

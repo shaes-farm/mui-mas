@@ -1,8 +1,8 @@
 export interface NavRoute {
   slug: string
-  icon: JSX.Element
+  icon: string | JSX.Element
   label: string
-  page: JSX.Element
+  page: string | JSX.Element
   hotkey?: string
 }
 

@@ -19,9 +19,9 @@ export interface SignUpInfo {
 }
 
 interface SignUpFormProps {
-  icon?: JSX.Element;
-  title?: JSX.Element | string;
-  subTitle?: JSX.Element | string;
+  icon?: React.ReactNode;
+  title?: React.ReactNode | string;
+  subTitle?: React.ReactNode | string;
   signUp: (info: SignUpInfo) => Promise<void>
   signInUrl: string;
   formProps?: Array<any>

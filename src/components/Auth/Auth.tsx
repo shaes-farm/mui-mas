@@ -1,20 +1,36 @@
 import React from 'react';
-import PasswordForm from './PasswordForm';
-import SignUpForm from './SignupForm';
-import RecoverPasswordForm from './RecoverForm';
+import type {FormProps} from '../Form';
+import PasswordForm, {Credentials} from './PasswordForm';
+import SignUpForm, {SignUpInfo} from './SignupForm';
+import RecoverPasswordForm, {RecoverPasswordInfo} from './RecoverForm';
 
 export interface AuthProps {
-  type: string
+  type: string;
+  icon: string;
+  title?: React.ReactNode;
+  subTitle?: React.ReactNode;
+  signInUrl: string;
+  signIn: (credentials: Credentials) => Promise<void>;
+  signUpUrl: string;
+  signUp: (info: SignUpInfo) => Promise<void>
+  recoverPasswordUrl: string;
+  recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
+  formProps?: Partial<FormProps>;
 }
 
-export function Auth(props: any) {
-  const { type, ...authProps } = props;
+export const Auth: React.FC<AuthProps> = ({type, ...props}) => {
   const {
-    icon, title, subTitle, 
-    signIn, signUp, recoverPassword,
-    signUpUrl,signInUrl, forgotPasswordUrl,
+    icon,
+    title,
+    subTitle, 
+    signInUrl,
+    signIn,
+    signUpUrl,
+    signUp,
+    recoverPasswordUrl,
+    recoverPassword,
     ...formProps
-  } = authProps;
+  } = props;
 
   switch (type) {
     case "password":
@@ -24,7 +40,7 @@ export function Auth(props: any) {
           subTitle={subTitle}
           signIn={signIn}
           signUpUrl={signUpUrl}
-          forgotPasswordUrl={forgotPasswordUrl}
+          forgotPasswordUrl={recoverPasswordUrl}
           {...formProps}
         />
       );
@@ -52,6 +68,6 @@ export function Auth(props: any) {
   }
 
   throw new Error(`Unexpected Auth UI requested: '${type}'`);
-}
+};
 
 export default Auth;

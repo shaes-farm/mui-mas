@@ -8,7 +8,7 @@ import type {Profile} from '../../../providers/Profile';
 import {ProfileProvider} from '../../../providers/Profile';
 import type {NavRoute, NavRoutes} from '../../Nav';
 
-import {AppConfig} from '../../App';
+import type {AppConfig} from '../_types';
 import AppShell from '../AppShell';
 
 const user = userEvent.setup();

@@ -16,8 +16,8 @@ export interface RecoverPasswordInfo {
 }
 
 interface RecoverPasswordFormProps {
-  title?: JSX.Element;
-  subTitle?: JSX.Element;
+  title?: React.ReactNode;
+  subTitle?: React.ReactNode;
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
   signInUrl: string;
   formProps?: Array<any>

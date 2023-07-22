@@ -2,16 +2,23 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import type {SxProps, Theme} from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-interface CopyrightProps {
+export interface CopyrightProps {
+  /**
+   * The copyright holder.
+   */
   holder: string
+  /**
+   * The URL of the copyright holder.
+   */
+   url: string
+   /**
+   * The year the copyright went into effect.
+   */
   year: number
-  url: string
-  sx?: SxProps<Theme>
 }
-
-export function Copyright(props: CopyrightProps) {
-  const {holder, year, url, ...typoProps} = props;
+const CopyrightBase: React.FC<CopyrightProps> = ({holder, year, url, ...typoProps}) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -24,6 +31,11 @@ export function Copyright(props: CopyrightProps) {
       </Link>
     </Typography>
   );
-}
+};
+
+/**
+ * Display a copyright message formatted according to the standards of the United States.
+ */
+export const Copyright = styled(CopyrightBase)({});
 
 export default Copyright;

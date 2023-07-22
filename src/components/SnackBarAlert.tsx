@@ -4,16 +4,14 @@ import Snackbar from '@mui/material/Snackbar';
 
 import Alert from './Alert';
 
-interface SnackBarAlertProps {
+export interface SnackBarAlertProps {
   message: string
   severity?: AlertColor
   clear: () => void
   autoHide?: number
 }
 
-export function SnackBarAlert(props: SnackBarAlertProps) {
-  const { message, severity = 'error', clear, autoHide = 6000 } = props;
-
+export const SnackBarAlert: React.FC<SnackBarAlertProps> = ({ message, severity = 'error', clear, autoHide = 6000 }) => {
   const handleClose = (/* event?: React.SyntheticEvent | Event, reason?: string */) => {
     clear();
   }
@@ -29,6 +27,6 @@ export function SnackBarAlert(props: SnackBarAlertProps) {
       </Alert>
     </Snackbar>
   );
-}
+};
 
 export default SnackBarAlert;

@@ -21,8 +21,8 @@ export interface Credentials {
 }
 
 export interface PasswordFormProps {
-  title?: JSX.Element;
-  subTitle?: JSX.Element;
+  title?: React.ReactNode;
+  subTitle?: React.ReactNode;
   signIn: (credentials: Credentials) => Promise<void>;
   signUpUrl: string;
   forgotPasswordUrl: string;
