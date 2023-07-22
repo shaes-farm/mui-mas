@@ -2,7 +2,7 @@ import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type {NavRoute, NavRouter} from '../../Nav';
+import type {NavRoute, NavRouter} from '../Nav';
 import ProfileButton from '../ProfileButton';
 
 const user = userEvent.setup();
@@ -42,7 +42,7 @@ describe('ProfileButton component', () => {
   });
 
   beforeEach(() => {
-    profileButton = render(<ProfileButton profile={profile} router={router} menu={menu} />);
+    profileButton = render(<ProfileButton profile={profile} router={router} routes={menu} />);
   });
 
   afterEach(cleanup);
@@ -87,7 +87,7 @@ describe('ProfileButton component', () => {
     profile.avatarUrl = undefined;
     router = jest.fn();
 
-    profileButton.rerender(<ProfileButton profile={profile} router={router} menu={menu} />);
+    profileButton.rerender(<ProfileButton profile={profile} router={router} routes={menu} />);
     expect(profileButton).not.toBeNull();
 
     const button = profileButton.getByLabelText(/user profile/u);

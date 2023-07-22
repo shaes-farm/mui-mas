@@ -11,25 +11,26 @@ const meta: Meta<typeof Nav> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Nav>;
 
 const routes: NavRoutes = {
   primary: [{
     slug: 'primary-item-1',
     icon: 'icon',
-    label: 'Item 1',
+    label: 'Primary Item 1',
     page: '/page-1',
   }],
   secondary: [{
     slug: 'secondary-item-1',
     icon: 'icon',
-    label: 'Item 1',
+    label: 'Secondary Item 1',
     page: '/page-2',
   }],
   tertiary: [{
     slug: 'tertiary-item-1',
     icon: 'icon',
-    label: 'Item 1',
+    label: 'Tertiary Item 1',
     page: '/page-3',
   }],
 };

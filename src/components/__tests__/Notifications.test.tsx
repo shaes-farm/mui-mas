@@ -1,8 +1,8 @@
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 
-import {NavRoute, NavRouter} from '../Nav';
 import Notifications from '../Notifications';
+import {NavRoute, NavRouter} from '../Nav';
 
 describe('Notifications component', () => {
   let router: NavRouter,

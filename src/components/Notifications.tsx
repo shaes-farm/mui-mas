@@ -8,9 +8,13 @@ import {NavRoute, NavRouter} from './Nav';
 
 export interface NotificationsProps {
   /**
+   * Badge color.
+   */
+   color?: "default" | "error" | "primary" | "secondary" | "info" | "success" | "warning" | undefined;
+  /**
    * Count of notifications received.
    */
-  count: number;
+  count?: number;
   /**
    * Route to navigate to when icons is clicked.
    */
@@ -22,12 +26,12 @@ export interface NotificationsProps {
 }
 
 /**
- * Notifications component that combines an icon with a tooltip and a badge showing a count of notifications.
+ * Notifications component that combines a Bell icon with a tooltip and a badge showing a count of notifications.
  */
-export const Notifications: React.FC<NotificationsProps> = ({count, route, router}) => (
+export const Notifications: React.FC<NotificationsProps> = ({color, count, route, router}) => (
   <Box sx={{ flexGrow: 0, ml: 2 }}>
-    <Tooltip title={route.label}>
-      <Badge badgeContent={count} color="error">
+    <Tooltip title={route.label ?? "Notifications"}>
+      <Badge badgeContent={count ?? 0} color={color ?? "error"}>
         <NotificationsNoneOutlinedIcon onClick={() => router(route)} />
       </Badge>
     </Tooltip>

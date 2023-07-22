@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import Menu from '@mui/material/Menu';
+import Menu, {MenuProps} from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
@@ -10,15 +10,25 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemIcon';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import type { NavRoute, NavRouter } from '../Nav';
 
-interface NewItemsMenuButtonProps {
-  menu?: Array<NavRoute>
-  router: NavRouter
+import type { NavRoute, NavRouter } from './Nav';
+
+export interface NewItemsMenuButtonProps extends MenuProps {
+  /**
+   * An array of routes rendered as a Menu component.
+   * @see https://mui.com/material-ui/react-menu/
+   */
+  routes: NavRoute[];
+  /**
+   * The router used to perform the navigation.
+   */
+  router: NavRouter;
 }
 
-export function NewItemsMenuButton(props: NewItemsMenuButtonProps) {
-  const { menu, router } = props;
+/**
+ * Renders an Add icon button that displays a Menu of routes when clicked.
+ */
+export const NewItemsMenuButton: React.FC<NewItemsMenuButtonProps> = ({routes, router, ...menuProps}) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const openNewMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -46,7 +56,7 @@ export function NewItemsMenuButton(props: NewItemsMenuButtonProps) {
       <Menu
         sx={{ mt: '45px' }}
         id="new-items-menu"
-        anchorEl={anchorEl}
+        {...menuProps}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -56,24 +66,25 @@ export function NewItemsMenuButton(props: NewItemsMenuButtonProps) {
           vertical: 'top',
           horizontal: 'right',
         }}
+        anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={closeNewMenu}
       >
-        {menu && menu.map((item) => (item.slug === 'div' ?
-          <Divider key={Symbol(item.slug).toString()} />
+        {routes && routes.map((route) => (route.slug === 'div' ?
+          <Divider key={Symbol(route.slug).toString()} />
         :
-          <MenuItem key={item.slug} onClick={() => {
+          <MenuItem key={route.slug} onClick={() => {
             closeNewMenu();
-            router(item);
+            router(route);
           }}>
             <ListItemIcon>
-              {item.icon}
+              {route.icon}
             </ListItemIcon>
             <ListItemText>
-              {item.label}
+              {route.label}
             </ListItemText>
-            {item.hotkey && <Typography variant="body2" color="text.secondary">
-              {item.hotkey}
+            {route.hotkey && <Typography variant="body2" color="text.secondary">
+              {route.hotkey}
             </Typography>}
           </MenuItem>
         ))}

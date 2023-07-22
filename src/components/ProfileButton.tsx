@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import Menu from '@mui/material/Menu';
+import Menu, {MenuProps} from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
@@ -10,22 +10,22 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemIcon';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import MenuItem from '@mui/material/MenuItem';
-import type { NavRoute, NavRouter } from '../Nav';
 
-interface Profile {
+import type { NavRoute, NavRouter } from './Nav';
+
+export interface Profile {
   firstName: string;
   lastName: string;
   avatarUrl?: string;
 }
 
-export interface ProfileButtonProps {
-  menu?: Array<NavRoute>;
+export interface ProfileButtonProps extends Partial<MenuProps> {
+  routes: NavRoute[];
   router: NavRouter;
   profile: Profile;
 }
 
-export function ProfileButton(props: ProfileButtonProps) {
-  const { menu, router, profile } = props;
+export const ProfileButton: React.FC<ProfileButtonProps> = ({routes, router, profile, ...menuProps}) => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const openUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -57,7 +57,8 @@ export function ProfileButton(props: ProfileButtonProps) {
       </Tooltip>
       <Menu
         sx={{ mt: '45px' }}
-        id="profile-menu"
+        id="profile-routes"
+        {...menuProps}
         anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: 'top',
@@ -71,27 +72,27 @@ export function ProfileButton(props: ProfileButtonProps) {
         open={Boolean(anchorElUser)}
         onClose={closeUserMenu}
       >
-        {menu && menu.map((item) => (item.slug === 'div' ?
-          <Divider key={Symbol(item.slug).toString()} />
+        {routes && routes.map((route) => (route.slug === 'div' ?
+          <Divider key={Symbol(route.slug).toString()} />
         :
-          <MenuItem key={item.slug} onClick={() => {
+          <MenuItem key={route.slug} onClick={() => {
             closeUserMenu();
-            router(item);
+            router(route);
           }}>
             <ListItemIcon>
-              {item.icon}
+              {route.icon}
             </ListItemIcon>
             <ListItemText>
-              {item.label}
+              {route.label}
             </ListItemText>
-            {item.hotkey && <Typography variant="body2" color="text.secondary">
-              {item.hotkey}
+            {route.hotkey && <Typography variant="body2" color="text.secondary">
+              {route.hotkey}
             </Typography>}
           </MenuItem>
         ))}
       </Menu>
     </Box>
   );
-}
+};
 
 export default ProfileButton;

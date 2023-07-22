@@ -13,8 +13,8 @@ import {Nav, NavRoute, NavRoutes} from '../Nav';
 import SearchInput from '../SearchInput';
 import {useProfile} from '../../providers/Profile';
 
-import {ProfileButton} from '../Dashboard/ProfileButton';
-import NewItemsMenuButton from '../Dashboard/NewItemsMenuButton';
+import {ProfileButton} from '../ProfileButton';
+import NewItemsMenuButton from '../NewItemsMenuButton';
 
 interface AppShellProps {
   toolbar: NavRoutes
