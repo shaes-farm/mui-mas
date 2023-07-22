@@ -23,15 +23,14 @@ export interface SearchInputProps {
 /**
  * An input component with search and properties icons.
  */
-export const SearchInput: React.FC<SearchInputProps> = (props: SearchInputProps) => {
-  const { router, route } = props;
+export const SearchInput: React.FC<SearchInputProps> = ({router, route}) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     // console.debug('Submit event handler called!');
     event.preventDefault();
     // const data = new FormData(event.currentTarget);
     // console.debug({data});
-    // TODO: Get search string and pass to router? Retrieve results? Wha?
+    // TODO: Get search string and pass to router? Retrieve results? Or what?
     if (route) router(route);
   };
 
