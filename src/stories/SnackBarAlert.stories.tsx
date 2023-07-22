@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { SnackBarAlert } from '../components/SnackBarAlert';
@@ -6,6 +7,7 @@ import { SnackBarAlert } from '../components/SnackBarAlert';
 const meta: Meta<typeof SnackBarAlert> = {
   title: 'Mui-Mas/SnackBarAlert',
   component: SnackBarAlert,
+  decorators: [(Story) => <div style={{ padding: '3em' }}><Story /></div>],
   tags: ['autodocs'],
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
