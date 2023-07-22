@@ -18,7 +18,7 @@
     "lint": "eslint src/**/*.ts[x]",
     "lint:ts": "tsc --noEmit --strict",
     "verify": "npm run lint && npm run lint:ts && npm test",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "repository": {
