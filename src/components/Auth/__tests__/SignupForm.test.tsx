@@ -121,7 +121,7 @@ describe('SignupForm', () => {
       signInUrl,
       {
         locale: undefined,
-        scroll: undefined,
+        scroll: true,
         shallow: undefined,
       }
     );
