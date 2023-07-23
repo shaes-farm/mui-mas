@@ -13,7 +13,7 @@ import type {RecoverPasswordInfo} from './RecoverForm';
 import type {SignUpInfo} from './SignupForm';
 
 interface AuthShellPage {
-  view: string;
+  view: 'signin' | 'password' | 'signup' | 'recover';
   title: string;
 }
 
@@ -31,7 +31,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
   const [errorMsg, setErrorMsg] = React.useState('');
   const [statusMsg, setStatusMsg] = React.useState('');
 
-  let page: AuthShellPage = { // Set password form as default
+  let page: AuthShellPage = { // Set sign-in form as default
     title: 'Sign In',
     view: 'password',
   };
