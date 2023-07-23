@@ -48,7 +48,7 @@ type Story = StoryObj<typeof AuthShell>;
 
 const config = {
   app: {
-    title: chance.string(),
+    title: `${chance.capitalize(chance.word())} ${chance.capitalize(chance.word())}`,
     description: chance.string(),
     icon: 'https://placehold.co/64',
     logo: {
@@ -57,7 +57,7 @@ const config = {
     },
     copyright: {
       holder: chance.name(),
-      year: Number(chance.year()),
+      year: Number(chance.year({min: 1995, max: new Date().getFullYear()})),
       url: chance.url(),
     },
     pages: {
