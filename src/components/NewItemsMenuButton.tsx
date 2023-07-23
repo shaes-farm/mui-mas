@@ -13,7 +13,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 import type { NavRoute, NavRouter } from './Nav';
 
-export interface NewItemsMenuButtonProps extends MenuProps {
+export interface NewItemsMenuButtonProps extends Partial<MenuProps> {
   /**
    * An array of routes rendered as a Menu component.
    * @see https://mui.com/material-ui/react-menu/

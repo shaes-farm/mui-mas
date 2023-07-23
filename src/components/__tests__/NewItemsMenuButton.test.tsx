@@ -2,7 +2,7 @@ import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type {NavRoute, NavRouter} from '../../Nav';
+import type {NavRoute, NavRouter} from '../Nav';
 import NewItemsMenuButton from '../NewItemsMenuButton';
 
 const user = userEvent.setup();
@@ -35,17 +35,17 @@ describe('NewItemsMenuButton component', () => {
   });
 
   beforeEach(() => {
-    newItemsMenuButton = render(<NewItemsMenuButton router={router} menu={menu} />);
+    newItemsMenuButton = render(<NewItemsMenuButton router={router} routes={menu} />);
   });
 
   afterEach(cleanup);
 
   it('should render a NewItemsMenuButton', () => {
-    expect(newItemsMenuButton).not.toBeNull();
+    expect(newItemsMenuButton).toBeDefined();
   });
 
   it('should open a menu when the "new items" button is clicked', async () => {
-    expect(newItemsMenuButton).not.toBeNull();
+    expect(newItemsMenuButton).toBeDefined();
 
     const initialMenu = newItemsMenuButton.queryByRole('menu');
     expect(initialMenu).toBeNull();
@@ -54,11 +54,11 @@ describe('NewItemsMenuButton component', () => {
     await user.click(button);
 
     const newItemsMenu = newItemsMenuButton.queryByRole('menu');
-    expect(newItemsMenu).not.toBeNull();
+    expect(newItemsMenu).toBeDefined();
   });
 
   it('should navigate to a route and close the menu when an item is selected', async () => {
-    expect(newItemsMenuButton).not.toBeNull();
+    expect(newItemsMenuButton).toBeDefined();
 
     const button = newItemsMenuButton.getByLabelText(/new items/u);
     await user.click(button);
@@ -66,7 +66,7 @@ describe('NewItemsMenuButton component', () => {
     const newItemsMenu = newItemsMenuButton.queryByRole('menu');
     expect(newItemsMenu).not.toBeNull();
 
-    const menuItem = await newItemsMenuButton.findByText(menu[0].label);
+    const menuItem = await newItemsMenuButton.getByText(menu[0].label);
     await user.click(menuItem);
 
     expect(router).toHaveBeenCalledTimes(1);
