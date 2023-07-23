@@ -124,4 +124,6 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) 
   );
 });
 
+Link.displayName = 'Link';
+
 export default Link;

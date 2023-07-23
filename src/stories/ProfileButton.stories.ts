@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ProfileButton, Profile } from '../components/ProfileButton';
+import { ProfileButton } from '../components/ProfileButton';
 import type {NavRoute, NavRouter} from '../components/Nav';
+import type {Profile} from '../providers/Profile';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof ProfileButton> = {
@@ -14,9 +15,11 @@ export default meta;
 
 type Story = StoryObj<typeof ProfileButton>;
 
-const profile:Profile = {
+const profile: Profile = {
+  id: '123',
   firstName: 'Bob',
   lastName: 'Smith',
+  loading: false,
 };
 
 const routes: NavRoute[] = [{
@@ -47,11 +50,11 @@ export const Default: Story = {
   },
 };
 
-export const ImageAvatar: Story = {
+export const ImageButton: Story = {
   args: {
     profile: {
       ...profile,
-      avatarUrl: 'https://i.pravatar.cc/45'
+      avatarUrl: 'https://i.pravatar.cc/32'
     },
     routes,
     router,

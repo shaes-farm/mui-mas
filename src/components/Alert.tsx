@@ -9,4 +9,6 @@ export const Alert: React.FC<AlertProps> = React.forwardRef<HTMLDivElement, Aler
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+Alert.displayName = 'Alert';
+
 export default Alert;

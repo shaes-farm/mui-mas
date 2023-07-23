@@ -30,7 +30,7 @@ describe('SearchInput component', () => {
   });
 
   it('should click on the search button to submit the search', async () => {
-    const component = render(<SearchInput route={route} router={router} tooltip="Not Fubar" />);
+    const component = render(<SearchInput route={route} router={router} />);
     expect(component).toBeDefined();
 
     const input = component.getByLabelText(/search keywords/u);

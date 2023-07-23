@@ -17,20 +17,19 @@ interface AuthShellPage {
   title: string;
 }
 
-interface AuthShellProps {
+export interface AuthShellProps {
   config: {
     app: AppConfig;
   }
-  signIn: (credentials: Credentials) => void;
-  signUp: (info: SignUpInfo) => void;
-  recoverPassword: (info: RecoverPasswordInfo) => void;
+  signIn: (credentials: Credentials) => Promise<void>;
+  signUp: (info: SignUpInfo) => Promise<void>;
+  recoverPassword: (info: RecoverPasswordInfo) => Promise<string>;
   view?: string
 }
 
-export function AuthShell(props: AuthShellProps ) {
-  const { config, signIn, signUp, recoverPassword, view } = props;
-  const [ errorMsg, setErrorMsg ] = React.useState('');
-  const [ statusMsg, setStatusMsg ] = React.useState('');
+export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, recoverPassword, view}) => {
+  const [errorMsg, setErrorMsg] = React.useState('');
+  const [statusMsg, setStatusMsg] = React.useState('');
 
   let page: AuthShellPage = { // Set password form as default
     title: 'Sign In',
@@ -84,7 +83,7 @@ export function AuthShell(props: AuthShellProps ) {
           subTitle={`Welcome to ${config.app.title}`}
           signInUrl={config.app.pages.signin}
           signUpUrl={config.app.pages.signup}
-          forgotPasswordUrl={config.app.pages.recovery}
+          recoverPasswordUrl={config.app.pages.recovery}
           signIn={signIn}
           signUp={signUp}
           recoverPassword={recoverPassword}
@@ -95,6 +94,6 @@ export function AuthShell(props: AuthShellProps ) {
       <SnackBarAlert message={errorMsg} severity="error" clear={() => setErrorMsg('')} />
     </Grid>
   );
-}
+};
 
 export default AuthShell;

@@ -19,7 +19,8 @@ const meta: Meta<typeof AppShell> = {
     layout: 'fullscreen',
   },
   decorators: [
-    (Story: any, _context: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    (Story, context) => {
       const initialState: Profile | undefined = useParameter('profile', {
           id: chance.guid(),
           firstName: chance.first(),

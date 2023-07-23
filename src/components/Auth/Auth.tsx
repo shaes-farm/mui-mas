@@ -4,9 +4,9 @@ import PasswordForm, {Credentials} from './PasswordForm';
 import SignUpForm, {SignUpInfo} from './SignupForm';
 import RecoverPasswordForm, {RecoverPasswordInfo} from './RecoverForm';
 
-export interface AuthProps {
+export interface AuthProps extends FormProps {
   type: string;
-  icon: string;
+  icon?: string;
   title?: React.ReactNode;
   subTitle?: React.ReactNode;
   signInUrl: string;
@@ -15,7 +15,6 @@ export interface AuthProps {
   signUp: (info: SignUpInfo) => Promise<void>
   recoverPasswordUrl: string;
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
-  formProps?: Partial<FormProps>;
 }
 
 export const Auth: React.FC<AuthProps> = ({type, ...props}) => {
