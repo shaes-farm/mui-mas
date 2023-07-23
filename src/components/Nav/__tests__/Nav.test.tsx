@@ -72,12 +72,14 @@ describe('Nav component', () => {
 
     expect(component).not.toBeNull();
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const link = component.getByText(routes.secondary[0].label);
 
     await user.click(link);
 
     expect(router).toHaveBeenCalledTimes(1);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     expect(router).toHaveBeenCalledWith(routes.secondary[0]);
   });
@@ -87,12 +89,14 @@ describe('Nav component', () => {
 
     expect(component).not.toBeNull();
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const link = component.getByText(routes.tertiary[0].label);
 
     await user.click(link);
 
     expect(router).toHaveBeenCalledTimes(1);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     expect(router).toHaveBeenCalledWith(routes.tertiary[0]);
   });
