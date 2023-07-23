@@ -57,7 +57,31 @@ describe('AppShell component', () => {
         icon: <React.Fragment />,
         label: chance.string(),
         page: <React.Fragment />,
-      }]
+      }],
+      secondary: [{
+        slug: chance.string(),
+        icon: <React.Fragment />,
+        label: chance.string(),
+        hotkey: chance.character(),
+        page: <React.Fragment />,
+      },{
+        slug: chance.string(),
+        icon: <React.Fragment />,
+        label: chance.string(),
+        page: <React.Fragment />,
+      }],
+      tertiary: [{
+        slug: chance.string(),
+        icon: <React.Fragment />,
+        label: chance.string(),
+        hotkey: chance.character(),
+        page: <React.Fragment />,
+      },{
+        slug: chance.string(),
+        icon: <React.Fragment />,
+        label: chance.string(),
+        page: <React.Fragment />,
+      }],
     };
 
     routes = {
@@ -162,7 +186,7 @@ describe('AppShell component', () => {
 
     expect(appShell).not.toBeNull();
 
-    const link = appShell.getByText(routes.primary[0].label);
+    const link = appShell.getByText(routes.primary[0].label as string);
     expect(link).toBeTruthy();
 
     await user.click(link);
@@ -199,6 +223,24 @@ describe('AppShell component', () => {
           />
         </ProfileProvider>
       </ThemeProvider>
+    );
+
+    expect(appShell).not.toBeNull();
+  });
+
+  it('should render AppShell without a set of secondary and tertiary toolbar routes', () => {
+    delete toolbar.secondary;
+    delete toolbar.tertiary;
+
+    const appShell = render(
+      <ProfileProvider profile={profile} setProfile={setProfile}>
+        <AppShell
+          toolbar={toolbar}
+          routes={routes}
+          router={router}
+          config={config}
+        />
+      </ProfileProvider>
     );
 
     expect(appShell).not.toBeNull();

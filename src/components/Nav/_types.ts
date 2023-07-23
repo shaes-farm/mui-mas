@@ -1,8 +1,10 @@
+import React from "react"
+
 export interface NavRoute {
   slug: string
-  icon: string | JSX.Element
-  label: string
-  page: string | JSX.Element
+  icon?: React.ReactNode
+  label?: string
+  page: React.ReactNode
   hotkey?: string
 }
 

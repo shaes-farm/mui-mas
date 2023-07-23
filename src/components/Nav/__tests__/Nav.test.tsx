@@ -59,7 +59,7 @@ describe('Nav component', () => {
 
     expect(component).not.toBeNull();
 
-    const link = component.getByText(routes.primary[0].label);
+    const link = component.getByText(routes.primary[0].label as string);
 
     await user.click(link);
 

@@ -32,7 +32,7 @@ export const Notifications: React.FC<NotificationsProps> = ({color, count, route
   <Box sx={{ flexGrow: 0, ml: 2 }}>
     <Tooltip title={route.label ?? "Notifications"}>
       <Badge badgeContent={count ?? 0} color={color ?? "error"}>
-        <NotificationsNoneOutlinedIcon onClick={() => router(route)} />
+        <NotificationsNoneOutlinedIcon data-testid="notifications-icon" onClick={() => router(route)} />
       </Badge>
     </Tooltip>
   </Box>

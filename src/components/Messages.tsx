@@ -32,7 +32,7 @@ export interface MessagesProps {
   <Box sx={{ flexGrow: 0, ml: 2 }}>
     <Tooltip title={route.label ?? "Messages"}>
       <Badge badgeContent={count ?? 0} color={color ?? "error"}>
-        <MailOutlinedIcon onClick={() => router(route)} />
+        <MailOutlinedIcon data-testid="messages-icon" onClick={() => router(route)} />
       </Badge>
     </Tooltip>
   </Box>

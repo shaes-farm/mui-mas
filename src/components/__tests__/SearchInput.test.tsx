@@ -45,4 +45,12 @@ describe('SearchInput component', () => {
     expect(router).toHaveBeenCalledTimes(1);
     expect(router).toHaveBeenCalledWith(route);
   });
+  
+  it('should render a SearchInput with a default tooltip if not provided in the route', () => {
+    delete route.label;
+
+    const component = render(<SearchInput router={router} route={route} />);
+
+    expect(component).toBeDefined();
+  });
 });
