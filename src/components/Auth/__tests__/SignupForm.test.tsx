@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
+import {RouterContext} from 'next/dist/shared/lib/router-context';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {createMockNextRouter} from '../../../test-utils/index';
+import {createMockNextRouter} from '../../../test-utils';
 import SignupForm from '../SignupForm';
 
 const user = userEvent.setup();
