@@ -9,26 +9,25 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import type {AppConfig} from '.';
 import AppBar from '../AppBar';
 import Drawer from '../Drawer';
-import {Nav, NavRoute, NavRoutes} from '../Nav';
+import {Nav, NavRoute, NavRouter, NavRoutes} from '../Nav';
 import SearchInput from '../SearchInput';
 import {useProfile} from '../../providers/Profile';
 
 import {ProfileButton} from '../ProfileButton';
 import NewItemsMenuButton from '../NewItemsMenuButton';
 
-interface AppShellProps {
-  toolbar: NavRoutes
-  routes: NavRoutes
-  defaultRoute: NavRoute
+export interface AppShellProps {
+  toolbar: NavRoutes;
+  routes: NavRoutes;
+  router: NavRouter;
   config: {
     app: AppConfig
-  }
+  };
+  children?: React.ReactNode;
 }
 
-export function AppShell(props: AppShellProps ) {
-  const {toolbar, routes, defaultRoute, config} = props;
+export const AppShell: React.FC<AppShellProps> = ({toolbar, router, routes, config, children}) => {
   const [open, setOpen] = React.useState<boolean>(true);
-  const [route, setRoute] = React.useState<NavRoute>(defaultRoute);
   const {profile} = useProfile();
 
   const toggleDrawer = () => {
@@ -58,16 +57,16 @@ export function AppShell(props: AppShellProps ) {
             <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" width={46} height={46} />
           </IconButton>
           {/* Search Input Form */}
-          {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={setRoute} />}
+          {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={router} />}
           <Box sx={{ flexGrow: 1 }} />
           {/* Toolbar Icons / Routes */}
           {toolbar.primary.map((route: NavRoute) =>
-            <IconButton key={route.slug} color="inherit" onClick={() => setRoute(route)}>
+            <IconButton key={route.slug} color="inherit" onClick={() => router(route)}>
               {route.icon}
             </IconButton>
           )}
-          <NewItemsMenuButton menu={toolbar.tertiary} router={setRoute} />
-          <ProfileButton menu={toolbar.secondary} router={setRoute} profile={profile} />
+          <NewItemsMenuButton routes={toolbar.tertiary ?? []} router={router} />
+          <ProfileButton routes={toolbar.secondary ?? []} router={router} profile={profile} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -95,9 +94,7 @@ export function AppShell(props: AppShellProps ) {
           </IconButton>
         </Toolbar>
         <Divider />
-        <Nav routes={routes} onNavigate={(route) => {
-          setRoute(route);
-        }} />
+        <Nav routes={routes} router={router} />
       </Drawer>
       <Box
         component="main"
@@ -111,10 +108,10 @@ export function AppShell(props: AppShellProps ) {
           overflow: 'auto',
         }}
       >
-        {route.page}
+        {children}
       </Box>
     </Box>
   );
-}
+};
 
 export default AppShell;

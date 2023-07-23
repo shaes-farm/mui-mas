@@ -6,7 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import type {Profile} from '../../../providers/Profile';
 import {ProfileProvider} from '../../../providers/Profile';
-import type {NavRoute, NavRoutes} from '../../Nav';
+import type {NavRouter, NavRoutes} from '../../Nav';
 
 import type {AppConfig} from '../_types';
 import AppShell from '../AppShell';
@@ -23,7 +23,7 @@ describe('AppShell component', () => {
       setProfile: (profile: Profile) => void,
       toolbar: NavRoutes,
       routes: NavRoutes,
-      defaultRoute: NavRoute,
+      router: NavRouter,
       config: Config;
 
   beforeAll(() => {
@@ -80,7 +80,7 @@ describe('AppShell component', () => {
       }]
     };
 
-    defaultRoute = routes.primary[0];
+    router = jest.fn();
 
     config = {
       app: {
@@ -114,7 +114,7 @@ describe('AppShell component', () => {
         <AppShell
           toolbar={toolbar}
           routes={routes}
-          defaultRoute={defaultRoute}
+          router={router}
           config={config}
         />
       </ProfileProvider>
@@ -129,7 +129,7 @@ describe('AppShell component', () => {
         <AppShell
           toolbar={toolbar}
           routes={routes}
-          defaultRoute={defaultRoute}
+          router={router}
           config={config}
         />
       </ProfileProvider>
@@ -148,13 +148,13 @@ describe('AppShell component', () => {
     await user.click(closeButton);
   });
 
-  it('should navigate to a route', async () => {
+  it('should navigate to a primary route when a sidebar link is clicked', async () => {
     const appShell = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
         <AppShell
           toolbar={toolbar}
           routes={routes}
-          defaultRoute={defaultRoute}
+          router={router}
           config={config}
         />
       </ProfileProvider>
@@ -166,6 +166,9 @@ describe('AppShell component', () => {
     expect(link).toBeTruthy();
 
     await user.click(link);
+
+    expect(router).toBeCalledTimes(1);
+    expect(router).toBeCalledWith(routes.primary[0]);
   });
 
   it('should render AppShell in dark mode', () => {
@@ -184,20 +187,20 @@ describe('AppShell component', () => {
       page: <React.Fragment />,
     }];
 
-    const app = render(
+    const appShell = render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <ProfileProvider profile={profile} setProfile={setProfile}>
           <AppShell
             toolbar={toolbar}
             routes={routes}
-            defaultRoute={defaultRoute}
+            router={router}
             config={config}
           />
         </ProfileProvider>
       </ThemeProvider>
     );
 
-    expect(app).not.toBeNull();
+    expect(appShell).not.toBeNull();
   });
 });
