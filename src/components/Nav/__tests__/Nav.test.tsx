@@ -8,11 +8,11 @@ import {Nav} from '../index';
 const user = userEvent.setup();
 
 describe('Nav component', () => {
-  let onNavigate: NavRouter,
+  let router: NavRouter,
       routes: NavRoutes;
 
   beforeEach(() => {
-    onNavigate = jest.fn();
+    router = jest.fn();
 
     routes = {
       primary: [{
@@ -49,13 +49,13 @@ describe('Nav component', () => {
   afterEach(cleanup);
   
   it('should render a Nav', () => {
-    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+    const component = render(<Nav routes={routes} router={router} />);
 
     expect(component).not.toBeNull();
   });
   
   it('should navigate to a primary NavRoute', async () => {
-    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+    const component = render(<Nav routes={routes} router={router} />);
 
     expect(component).not.toBeNull();
 
@@ -63,12 +63,12 @@ describe('Nav component', () => {
 
     await user.click(link);
 
-    expect(onNavigate).toHaveBeenCalledTimes(1);
-    expect(onNavigate).toHaveBeenCalledWith(routes.primary[0]);
+    expect(router).toHaveBeenCalledTimes(1);
+    expect(router).toHaveBeenCalledWith(routes.primary[0]);
   });
   
   it('should navigate to a secondary NavRoute', async () => {
-    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+    const component = render(<Nav routes={routes} router={router} />);
 
     expect(component).not.toBeNull();
 
@@ -77,13 +77,13 @@ describe('Nav component', () => {
 
     await user.click(link);
 
-    expect(onNavigate).toHaveBeenCalledTimes(1);
+    expect(router).toHaveBeenCalledTimes(1);
     // @ts-ignore
-    expect(onNavigate).toHaveBeenCalledWith(routes.secondary[0]);
+    expect(router).toHaveBeenCalledWith(routes.secondary[0]);
   });
   
   it('should navigate to a tertiary NavRoute', async () => {
-    const component = render(<Nav routes={routes} onNavigate={onNavigate} />);
+    const component = render(<Nav routes={routes} router={router} />);
 
     expect(component).not.toBeNull();
 
@@ -92,8 +92,8 @@ describe('Nav component', () => {
 
     await user.click(link);
 
-    expect(onNavigate).toHaveBeenCalledTimes(1);
+    expect(router).toHaveBeenCalledTimes(1);
     // @ts-ignore
-    expect(onNavigate).toHaveBeenCalledWith(routes.tertiary[0]);
+    expect(router).toHaveBeenCalledWith(routes.tertiary[0]);
   });
 });
