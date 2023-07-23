@@ -4,6 +4,7 @@ The SHAES Farm Material UI-based component library
 
 [![build status](https://github.com/shaes-farm/mui-mas/actions/workflows/build-n-test.yml/badge.svg)](https://github.com/shaes-farm/mui-mas/actions/workflows/build-n-test.yml)
 [![coverage status](https://coveralls.io/repos/github/shaes-farm/mui-mas/badge.svg?branch=main)](https://coveralls.io/github/shaes-farm/mui-mas?branch=main)
+[![vulnerabilities](https://snyk.io/test/github/shaes-farm/mui-mas/badge.svg)](https://snyk.io/test/github/shaes-farm/mui-mas)
 
 ## Motivation
 
