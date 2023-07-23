@@ -61,10 +61,10 @@ const config = {
       url: chance.url(),
     },
     pages: {
-      home: chance.url(),
-      signin: chance.url(),
-      signup: chance.url(),
-      recovery: chance.url(),
+      home: '/',
+      signin: '/signin',
+      signup: '/signup',
+      recovery: '/recovery',
     },
   },
 };
