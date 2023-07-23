@@ -12,12 +12,7 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 import MenuItem from '@mui/material/MenuItem';
 
 import type { NavRoute, NavRouter } from './Nav';
-
-export interface Profile {
-  firstName: string;
-  lastName: string;
-  avatarUrl?: string;
-}
+import type { Profile } from '../providers';
 
 export interface ProfileButtonProps extends Partial<MenuProps> {
   routes: NavRoute[];
