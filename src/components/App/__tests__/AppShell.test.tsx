@@ -18,8 +18,7 @@ type Config = {
 }
 
 describe('AppShell component', () => {
-  let theme: Theme,
-      profile: Profile,
+  let profile: Profile,
       setProfile: (profile: Profile) => void,
       toolbar: NavRoutes,
       routes: NavRoutes,
@@ -27,12 +26,6 @@ describe('AppShell component', () => {
       config: Config;
 
   beforeAll(() => {
-    theme = createTheme({
-      palette: {
-        mode: 'dark',
-      },
-    });
-
     profile = {
       id: chance.guid(),
       firstName: chance.first(),
