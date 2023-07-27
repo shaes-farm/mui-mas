@@ -1,22 +1,18 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-styling",
-  ],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", "@storybook/addon-styling", "@storybook/addon-mdx-gfm"],
   framework: {
     name: "@storybook/nextjs",
-    options: {},
+    options: {}
   },
   docs: {
-    autodocs: "tag",
+    autodocs: "tag"
   },
   core: {
-    disableTelemetry: true, // 👈 Disables telemetry
+    disableTelemetry: true // 👈 Disables telemetry
   },
+
   typescript: {
     check: false,
     checkOptions: {},
@@ -31,9 +27,8 @@ const config: StorybookConfig = {
       // makes string and boolean types that can be undefined appear as inputs and switches
       shouldRemoveUndefinedFromOptional: true,
       // Filter out third-party props from node_modules except @mui packages
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName) : true,
-    },
-  },
+      propFilter: prop => prop.parent ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName) : true
+    }
+  }
 };
 export default config;
