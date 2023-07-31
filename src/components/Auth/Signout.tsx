@@ -6,7 +6,7 @@ export interface SignOutProps {
   home: string
 }
 
-export const SignOut: React.FC<SignOutProps> = ({home}) {
+export const SignOut: React.FC<SignOutProps> = ({home}) => {
   const router = useRouter();
   const supabase = useSupabaseClient();
 
@@ -18,6 +18,6 @@ export const SignOut: React.FC<SignOutProps> = ({home}) {
   })
 
   return <></>;
-}
+};
 
 export default SignOut;
