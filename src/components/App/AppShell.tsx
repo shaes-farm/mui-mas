@@ -2,32 +2,59 @@ import React from 'react';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-import type {AppConfig} from '.';
-import AppBar from '../AppBar';
-import Drawer from '../Drawer';
+import type {AppConfig} from './_types';
+import {AppBar} from '../AppBar';
+import {Drawer} from '../Drawer';
 import {Nav, NavRoute, NavRouter, NavRoutes} from '../Nav';
-import SearchInput from '../SearchInput';
+import {SearchInput} from '../SearchInput';
 import {useProfile} from '../../providers/Profile';
 
 import {ProfileButton} from '../ProfileButton';
-import NewItemsMenuButton from '../NewItemsMenuButton';
+import {NewItemsMenuButton} from '../NewItemsMenuButton';
 
 export interface AppShellProps {
+  /**
+   * Toolbar routes. The primary routes render as horizontal menu items, secondary
+   * routes as user profile menu, and tertiary routes as an add items menu.
+   */
   toolbar: NavRoutes;
+  /**
+   * Main navigation routes render in the sidebar as primary, secondary, and tertiary
+   * menu items separated by dividers.
+   */
   routes: NavRoutes;
+  /**
+   * The router used to perform the navigation.
+   */
   router: NavRouter;
+  /**
+   * Application configuration.
+   */
   config: {
-    app: AppConfig
+    app: AppConfig;
   };
-  children?: React.ReactNode;
+  /**
+   * Determines if the drawer is open or closed by default.
+   */
+  drawerOpen?: boolean;
+  /**
+   * A React node (an element, a string, a number, a portal, an empty node like null, undefined and booleans, or an array of other React nodes). Specifies the content inside the component. When you use JSX, you will usually specify the children prop implicitly by nesting tags like <div><span /></div>.
+   * @see https://react.dev/reference/react-dom/components/common#common-props
+   */
+   children?: React.ReactNode
 }
 
-export const AppShell: React.FC<AppShellProps> = ({toolbar, router, routes, config, children}) => {
-  const [open, setOpen] = React.useState<boolean>(true);
+/**
+ * Application shell component provides an AppBar containing a toolbar across the
+ * top of the window with a collapsible drawer that holds the main navigation menu.
+ */
+export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, config, drawerOpen = true, children}) => {
+  const [open, setOpen] = React.useState<boolean>(drawerOpen);
   const {profile} = useProfile();
 
   const toggleDrawer = () => {
@@ -61,9 +88,11 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, router, routes, conf
           <Box sx={{ flexGrow: 1 }} />
           {/* Toolbar Icons / Routes */}
           {toolbar.primary.map((route: NavRoute) =>
-            <IconButton key={route.slug} color="inherit" onClick={() => router(route)}>
-              {route.icon}
-            </IconButton>
+            <Tooltip key={`${route.slug}-tooltip`} title={route.label}>
+              <IconButton key={route.slug} color="inherit" onClick={() => router(route)}>
+                {route.icon}
+              </IconButton>
+            </Tooltip>
           )}
           <NewItemsMenuButton routes={toolbar.tertiary ?? []} router={router} />
           <ProfileButton routes={toolbar.secondary ?? []} router={router} profile={profile} />

@@ -102,7 +102,7 @@ describe('AppShell component', () => {
     config = {
       app: {
         title: chance.string(),
-        description: chance.string(),
+        description: chance.paragraph(),
         icon: 'https://placehold.co/64',
         logo: {
           main: 'https://placehold.co/46',
@@ -137,7 +137,23 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).not.toBeNull();
+    expect(appShell).toBeDefined();
+  });
+
+  it('should render the AppShell with the drawer closed', async () => {
+    const appShell = render(
+      <ProfileProvider profile={profile} setProfile={setProfile}>
+        <AppShell
+          toolbar={toolbar}
+          routes={routes}
+          router={router}
+          config={config}
+          drawerOpen={false}
+        />
+      </ProfileProvider>
+    );
+
+    expect(appShell).toBeDefined();
   });
 
   it('should toggle the AppShell drawer open and closed', async () => {
@@ -152,7 +168,7 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).not.toBeNull();
+    expect(appShell).toBeDefined();
 
     const button = appShell.getByLabelText(/open drawer/u);
     expect(button).toBeTruthy();
@@ -177,7 +193,7 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).not.toBeNull();
+    expect(appShell).toBeDefined();
 
     const link = appShell.getByText(routes.primary[0].label as string);
     expect(link).toBeTruthy();
@@ -218,7 +234,7 @@ describe('AppShell component', () => {
       </ThemeProvider>
     );
 
-    expect(appShell).not.toBeNull();
+    expect(appShell).toBeDefined();
   });
 
   it('should render AppShell without a set of secondary and tertiary toolbar routes', () => {
@@ -236,6 +252,6 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).not.toBeNull();
+    expect(appShell).toBeDefined();
   });
 });
