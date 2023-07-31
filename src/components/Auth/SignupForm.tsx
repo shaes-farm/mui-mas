@@ -18,25 +18,23 @@ export interface SignUpInfo {
   password: string
 }
 
-interface SignUpFormProps {
+export interface SignUpFormProps {
   icon?: React.ReactNode;
   title?: React.ReactNode | string;
   subTitle?: React.ReactNode | string;
-  signUp: (info: SignUpInfo) => Promise<void>
+  signUp: (info: SignUpInfo) => Promise<void>;
   signInUrl: string;
-  formProps?: Array<any>
+  formProps?: Array<any>;
 }
 
-export function SignUpForm(props: SignUpFormProps) {
-  const {
-    icon,
-    title,
-    subTitle,
-    signUp,
-    signInUrl,
-    ...formProps
-  } = props;
-  
+export const SignUpForm: React.FC<SignUpFormProps> = ({
+  icon,
+  title,
+  subTitle,
+  signUp,
+  signInUrl,
+  ...formProps
+}) => {
   const handleSubmit = async function (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -135,6 +133,6 @@ export function SignUpForm(props: SignUpFormProps) {
       </Form>
     </Box>
   );
-}
+};
 
 export default SignUpForm;

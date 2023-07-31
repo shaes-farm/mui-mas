@@ -29,16 +29,14 @@ export interface PasswordFormProps {
   formProps?: Array<any>
 }
 
-export function PasswordForm(props: PasswordFormProps) {
-  const {
-    title,
-    subTitle,
-    signIn,
-    signUpUrl,
-    forgotPasswordUrl,
-    ...formProps
-  } = props;
-
+export const PasswordForm: React.FC<PasswordFormProps> = ({
+  title,
+  subTitle,
+  signIn,
+  signUpUrl,
+  forgotPasswordUrl,
+  ...formProps
+}) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -126,6 +124,6 @@ export function PasswordForm(props: PasswordFormProps) {
       </Form>
     </Box>
   );
-}
+};
 
 export default PasswordForm;

@@ -5,7 +5,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
-interface AvatarUploadProps {
+export interface AvatarUploadProps {
   id: string
   url: string
   size: number
@@ -13,8 +13,7 @@ interface AvatarUploadProps {
   onError: (msg: string) => void
 }
 
-export function AvatarUpload(props: AvatarUploadProps) {
-  const { id, url, size, onUpload, onError } = props;
+export const AvatarUpload: React.FC<AvatarUploadProps> = ({id, url, size, onUpload, onError}) => {
   const [avatarUrl, setAvatarUrl] = useState<string|null>(null)
   const [uploading, setUploading] = useState(false)
   const supabase = useSupabaseClient();
@@ -106,6 +105,6 @@ export function AvatarUpload(props: AvatarUploadProps) {
       </Grid>
     </Grid>
   )
-}
+};
 
 export default AvatarUpload;

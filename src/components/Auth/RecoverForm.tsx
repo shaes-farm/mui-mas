@@ -15,7 +15,7 @@ export interface RecoverPasswordInfo {
   email: string
 }
 
-interface RecoverPasswordFormProps {
+export interface RecoverPasswordFormProps {
   title?: React.ReactNode;
   subTitle?: React.ReactNode;
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
@@ -23,15 +23,13 @@ interface RecoverPasswordFormProps {
   formProps?: Array<any>
 }
 
-export function RecoverPasswordForm(props: RecoverPasswordFormProps) {
-  const {
-    title,
-    subTitle,
-    recoverPassword,
-    signInUrl,
-    ...formProps
-  } = props;
-
+export const RecoverPasswordForm: React.FC<RecoverPasswordFormProps> = ({
+  title,
+  subTitle,
+  recoverPassword,
+  signInUrl,
+  ...formProps
+}) => {
   const handleSubmit = async function (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
