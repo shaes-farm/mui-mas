@@ -9,6 +9,9 @@
   "directories": {
     "doc": "docs"
   },
+  "engines": {
+    "node": "v18"
+  },
   "scripts": {
     "start": "env NODE_ENV=production node ./build/dist/index.js",
     "build": "tsc",
@@ -19,7 +22,8 @@
     "lint:ts": "tsc --noEmit --strict",
     "verify": "npm run lint && npm run lint:ts && npm test",
     "storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
