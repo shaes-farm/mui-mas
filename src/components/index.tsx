@@ -1,3 +1,4 @@
+export * from './App';
 export * from './Auth';
 export * from './Nav';
 export * from './Alert';
