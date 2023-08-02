@@ -10,7 +10,7 @@
     "doc": "docs"
   },
   "engines": {
-    "node": "v18"
+    "node": "^16 || ^18"
   },
   "scripts": {
     "start": "env NODE_ENV=production node ./build/dist/index.js",
