@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import {
   Avatar,
@@ -15,21 +16,32 @@ import Link from '../Link';
 import { SubTitle, Heading } from '../Title';
 
 export interface Credentials {
+  /**
+   * User's email address.
+   */
   email: string;
+  /**
+   * User's password.
+   */
   password: string;
+  /**
+   * A boolean flag indicating whether a session cookie should be set.
+   */
   remember: boolean;
 }
 
 export interface PasswordFormProps {
+  icon?: React.ReactNode;
   title?: React.ReactNode;
   subTitle?: React.ReactNode;
   signIn: (credentials: Credentials) => Promise<void>;
   signUpUrl: string;
   forgotPasswordUrl: string;
-  formProps?: Array<any>
+  formProps?: Array<unknown>
 }
 
 export const PasswordForm: React.FC<PasswordFormProps> = ({
+  icon,
   title,
   subTitle,
   signIn,
@@ -41,8 +53,10 @@ export const PasswordForm: React.FC<PasswordFormProps> = ({
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const credentials: Credentials = {
-      email: data.get('email')?.toString() || '',
-      password: data.get('password')?.toString() || '',
+      // @ts-ignore
+      email: data.get('email')?.toString(),
+      // @ts-ignore
+      password: data.get('password')?.toString(),
       remember: data.get('remember') ? true : false,
     };
     signIn(credentials);
@@ -59,7 +73,7 @@ export const PasswordForm: React.FC<PasswordFormProps> = ({
       }}
     >
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-        <LockOutlinedIcon />
+        {icon ?? <LockOutlinedIcon />}
       </Avatar>
       {title && <SubTitle variant="h4">{title}</SubTitle>}
       {subTitle && <Heading variant="h5">{subTitle}</Heading>}

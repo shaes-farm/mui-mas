@@ -8,14 +8,11 @@ import Copyright from '../Copyright';
 import {SnackBarAlert} from '../SnackBarAlert';
 
 import {Auth} from '.';
-import type {Credentials} from './PasswordForm';
-import type {RecoverPasswordInfo} from './RecoverForm';
-import type {SignUpInfo} from './SignupForm';
-
-interface AuthShellPage {
-  view: 'signin' | 'password' | 'signup' | 'recover';
-  title: string;
-}
+import type {
+  Credentials,
+  RecoverPasswordInfo,
+  SignUpInfo
+} from '.';
 
 export interface AuthShellProps {
   config: {
@@ -24,23 +21,19 @@ export interface AuthShellProps {
   signIn: (credentials: Credentials) => Promise<void>;
   signUp: (info: SignUpInfo) => Promise<void>;
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>;
-  view?: string
+  view?: 'password' | 'signup' | 'recover';
 }
 
-export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, recoverPassword, view}) => {
+export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, recoverPassword, view = 'password'}) => {
   const [errorMsg, setErrorMsg] = React.useState('');
   const [statusMsg, setStatusMsg] = React.useState('');
 
-  let page: AuthShellPage = { // Set sign-in form as default
-    title: 'Sign In',
-    view: 'password',
-  };
+  let title;
 
   switch (view) {
-    case 'signin':  // Default view
-    case 'password': break;
-    case 'signup': page = {view: 'signup', title: 'Sign Up'}; break;
-    case 'recover': page = {view: 'recover', title: 'Password Recovery'}; break;
+    case 'password': title = 'Sign In'; break;
+    case 'signup': title = 'Sign Up'; break;
+    case 'recover': title = 'Password Recovery'; break;
   }
 
   return (
@@ -58,7 +51,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
       }}
     >
       <Head>
-        <title>{page.title}{' :: '}{config.app.title}</title>
+        <title>{title}{' :: '}{config.app.title}</title>
         <meta name="description" content={config.app.description} />
         <link rel="icon" href={config.app.icon} />
       </Head>
@@ -78,8 +71,8 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Auth
-          type={page.view}
-          title={page.title}
+          type={view}
+          title={title}
           subTitle={`Welcome to ${config.app.title}`}
           signInUrl={config.app.pages.signin}
           signUpUrl={config.app.pages.signup}

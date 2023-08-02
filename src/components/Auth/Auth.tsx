@@ -5,7 +5,7 @@ import SignUpForm, {SignUpInfo} from './SignupForm';
 import RecoverPasswordForm, {RecoverPasswordInfo} from './RecoverForm';
 
 export interface AuthProps extends FormProps {
-  type: string;
+  type: 'password' | 'signup' | 'recover';
   icon?: string;
   title?: React.ReactNode;
   subTitle?: React.ReactNode;

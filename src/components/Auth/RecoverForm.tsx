@@ -16,6 +16,7 @@ export interface RecoverPasswordInfo {
 }
 
 export interface RecoverPasswordFormProps {
+  icon?: React.ReactNode;
   title?: React.ReactNode;
   subTitle?: React.ReactNode;
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
@@ -24,6 +25,7 @@ export interface RecoverPasswordFormProps {
 }
 
 export const RecoverPasswordForm: React.FC<RecoverPasswordFormProps> = ({
+  icon,
   title,
   subTitle,
   recoverPassword,
@@ -49,7 +51,7 @@ export const RecoverPasswordForm: React.FC<RecoverPasswordFormProps> = ({
       }}
     >
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-        <VpnKeyOutlinedIcon />
+        {icon ?? <VpnKeyOutlinedIcon />}
       </Avatar>
       {title && <SubTitle variant="h4" align="center">{title}</SubTitle>}
       {subTitle && <Heading variant="h5" align="center">{subTitle}</Heading>}
@@ -85,7 +87,7 @@ export const RecoverPasswordForm: React.FC<RecoverPasswordFormProps> = ({
         <Grid container>
           <Grid item xs>
             <Link href={signInUrl} variant="body2">
-              Remembered your password?
+              Remember your password? Sign in
             </Link>
           </Grid>
         </Grid>
