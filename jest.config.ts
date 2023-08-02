@@ -175,6 +175,7 @@ export default {
   testPathIgnorePatterns: [
     "/node_modules/",
     "/examples/",
+    "/build/",
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
