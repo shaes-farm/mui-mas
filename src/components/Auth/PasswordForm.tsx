@@ -15,20 +15,7 @@ import Form from '../Form';
 import Link from '../Link';
 import { SubTitle, Heading } from '../Title';
 
-export interface Credentials {
-  /**
-   * User's email address.
-   */
-  email: string;
-  /**
-   * User's password.
-   */
-  password: string;
-  /**
-   * A boolean flag indicating whether a session cookie should be set.
-   */
-  remember: boolean;
-}
+import type {Credentials} from './_types';
 
 export interface PasswordFormProps {
   icon?: React.ReactNode;

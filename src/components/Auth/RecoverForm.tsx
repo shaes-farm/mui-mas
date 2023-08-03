@@ -11,9 +11,7 @@ import Form from '../Form';
 import Link from '../Link';
 import { SubTitle, Heading } from '../Title';
 
-export interface RecoverPasswordInfo {
-  email: string
-}
+import type {RecoverPasswordInfo} from './_types';
 
 export interface RecoverPasswordFormProps {
   icon?: React.ReactNode;

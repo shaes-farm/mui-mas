@@ -9,14 +9,9 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 
 import Form from '../Form';
 import Link from '../Link';
-import { SubTitle, Heading } from '../Title';
+import {SubTitle, Heading} from '../Title';
 
-export interface SignUpInfo {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-}
+import type {SignUpInfo} from './_types';
 
 export interface SignUpFormProps {
   icon?: React.ReactNode;

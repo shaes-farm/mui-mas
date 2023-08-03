@@ -7,12 +7,12 @@ import type {AppConfig} from '../App';
 import Copyright from '../Copyright';
 import {SnackBarAlert} from '../SnackBarAlert';
 
-import {Auth} from '.';
+import {Auth} from './Auth';
 import type {
   Credentials,
   RecoverPasswordInfo,
   SignUpInfo
-} from '.';
+} from './_types';
 
 export interface AuthShellProps {
   config: {
@@ -42,9 +42,9 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
       component="main"
       sx={{
         backgroundColor: (theme) =>
-          theme.palette.mode === 'light'
-            ? theme.palette.grey[100]
-            : theme.palette.grey[900],
+          theme.palette.mode === 'dark'
+            ? theme.palette.grey[900]
+            : theme.palette.grey[100],
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
@@ -64,7 +64,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
           backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: (t) =>
-            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            t.palette.mode === 'dark' ? t.palette.grey[900] : t.palette.grey[50],
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

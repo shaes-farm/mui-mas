@@ -1,8 +1,10 @@
 import React from 'react';
 import type {FormProps} from '../Form';
-import PasswordForm, {Credentials} from './PasswordForm';
-import SignUpForm, {SignUpInfo} from './SignupForm';
-import RecoverPasswordForm, {RecoverPasswordInfo} from './RecoverForm';
+
+import type {Credentials, SignUpInfo, RecoverPasswordInfo} from './_types';
+import PasswordForm from './PasswordForm';
+import RecoverPasswordForm from './RecoverForm';
+import SignUpForm from './SignupForm';
 
 export interface AuthProps extends FormProps {
   type: 'password' | 'signup' | 'recover';
@@ -12,9 +14,9 @@ export interface AuthProps extends FormProps {
   signInUrl: string;
   signIn: (credentials: Credentials) => Promise<void>;
   signUpUrl: string;
-  signUp: (info: SignUpInfo) => Promise<void>
+  signUp: (info: SignUpInfo) => Promise<void>;
   recoverPasswordUrl: string;
-  recoverPassword: (info: RecoverPasswordInfo) => Promise<string>
+  recoverPassword: (info: RecoverPasswordInfo) => Promise<string>;
 }
 
 export const Auth: React.FC<AuthProps> = ({type, ...props}) => {
@@ -65,8 +67,7 @@ export const Auth: React.FC<AuthProps> = ({type, ...props}) => {
         />
       );
   }
-
-  throw new Error(`Unexpected Auth UI requested: '${type}'`);
+  // throw new Error(`Unexpected Auth UI requested: '${type}'`);
 };
 
 export default Auth;
