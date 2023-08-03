@@ -1,7 +1,7 @@
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {Theme, ThemeProvider, createTheme} from '@mui/material/styles';
+import {ThemeProvider, createTheme} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import type {Profile} from '../../../providers/Profile';
