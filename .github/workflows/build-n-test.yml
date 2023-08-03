@@ -29,6 +29,6 @@ jobs:
         key: npm-${{ hashFiles('package-lock.json') }}
         restore-keys: npm-
     - name: Install dependencies
-      run: npm ci --no-optional --ignore-scripts
+      run: npm ci --omit=optional --ignore-scripts
     - name: Lint and test repository
       run: npm run verify
