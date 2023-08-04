@@ -1,6 +1,5 @@
 import React from 'react';
 import type {FormProps} from '../Form';
-
 import type {Credentials, SignUpInfo, RecoverPasswordInfo} from './_types';
 import PasswordForm from './PasswordForm';
 import RecoverPasswordForm from './RecoverForm';
@@ -8,7 +7,7 @@ import SignUpForm from './SignupForm';
 
 export interface AuthProps extends FormProps {
   type: 'password' | 'signup' | 'recover';
-  icon?: string;
+  icon?: React.ReactNode;
   title?: React.ReactNode;
   subTitle?: React.ReactNode;
   signInUrl: string;
@@ -19,24 +18,28 @@ export interface AuthProps extends FormProps {
   recoverPassword: (info: RecoverPasswordInfo) => Promise<string>;
 }
 
-export const Auth: React.FC<AuthProps> = ({type, ...props}) => {
-  const {
-    icon,
-    title,
-    subTitle, 
-    signInUrl,
-    signIn,
-    signUpUrl,
-    signUp,
-    recoverPasswordUrl,
-    recoverPassword,
-    ...formProps
-  } = props;
+/**
+ * Authentication component that renders a sign-in, sign-up, or password recovery form.
+ */
+export const Auth = ({
+  type,
+  icon,
+  title,
+  subTitle, 
+  signInUrl,
+  signIn,
+  signUpUrl,
+  signUp,
+  recoverPasswordUrl,
+  recoverPassword,
+  ...formProps
+}: AuthProps) => {
 
   switch (type) {
     case "password":
       return (
         <PasswordForm
+          icon={icon}
           title={title}
           subTitle={subTitle}
           signIn={signIn}
@@ -59,6 +62,7 @@ export const Auth: React.FC<AuthProps> = ({type, ...props}) => {
     case "recover":
       return (
         <RecoverPasswordForm
+          icon={icon}
           title={title}
           subTitle={subTitle}
           recoverPassword={recoverPassword}
