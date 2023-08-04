@@ -3,8 +3,8 @@ import {useParameter} from "@storybook/addons";
 import type {Meta, StoryObj} from '@storybook/react';
 import {Chance} from 'chance';
 
-import {AuthShell} from '../components/Auth';
-import type {Credentials, SignUpInfo, RecoverPasswordInfo} from '../components/Auth';
+import {AuthShell} from '../components';
+import type {Credentials, SignUpInfo, RecoverPasswordInfo} from '../components';
 import {Profile, ProfileProvider} from "../providers";
 
 const chance = new Chance(new Chance().natural());
@@ -49,7 +49,7 @@ type Story = StoryObj<typeof AuthShell>;
 const config = {
   app: {
     title: `${chance.capitalize(chance.word())} ${chance.capitalize(chance.word())}`,
-    description: chance.string(),
+    description: chance.paragraph(),
     icon: 'https://placehold.co/64',
     logo: {
       main: 'https://placehold.co/46',
