@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "env NODE_ENV=production node ./build/dist/index.js",
-    "build": "tsc",
+    "build": "npm run verify && tsc",
     "dev": "env DEBUG='shaes:*' nodemon ./build/dist/index.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
