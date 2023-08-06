@@ -89,7 +89,7 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
           {/* Toolbar Icons / Routes */}
           {toolbar.primary.map((route: NavRoute) =>
             <Tooltip key={`${route.slug}-tooltip`} title={route.label}>
-              <IconButton key={route.slug} color="inherit" onClick={() => router(route)}>
+              <IconButton data-testid={`${route.slug}-icon`} key={route.slug} color="inherit" onClick={() => router(route)}>
                 {route.icon}
               </IconButton>
             </Tooltip>
