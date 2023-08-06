@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 
 import type {AppConfig} from '../App';
 import Copyright from '../Copyright';
-import {SnackBarAlert} from '../SnackBarAlert';
+import ErrorBoundary from '../ErrorBoundary';
 
 import {Auth} from './Auth';
 import type {
@@ -25,10 +25,7 @@ export interface AuthShellProps {
 }
 
 export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, recoverPassword, view = 'password'}) => {
-  const [errorMsg, setErrorMsg] = React.useState('');
-  const [statusMsg, setStatusMsg] = React.useState('');
-
-  let title;
+  let title = '';
 
   switch (view) {
     case 'password': title = 'Sign In'; break;
@@ -37,55 +34,55 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
   }
 
   return (
-    <Grid
-      container
-      component="main"
-      sx={{
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'dark'
-            ? theme.palette.grey[900]
-            : theme.palette.grey[100],
-        flexGrow: 1,
-        height: '100vh',
-        overflow: 'auto',
-      }}
-    >
-      <Head>
-        <title>{title}{' :: '}{config.app.title}</title>
-        <meta name="description" content={config.app.description} />
-        <link rel="icon" href={config.app.icon} />
-      </Head>
+    <ErrorBoundary key='auth-shell-error-boundary'>
       <Grid
-        item
-        xs={false}
-        sm={4}
-        md={7}
+        container
+        component="main"
         sx={{
-          backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: (t) =>
-            t.palette.mode === 'dark' ? t.palette.grey[900] : t.palette.grey[50],
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[100],
+          flexGrow: 1,
+          height: '100vh',
+          overflow: 'auto',
         }}
-      />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Auth
-          type={view}
-          title={title}
-          subTitle={`Welcome to ${config.app.title}`}
-          signInUrl={config.app.pages.signin}
-          signUpUrl={config.app.pages.signup}
-          recoverPasswordUrl={config.app.pages.recovery}
-          signIn={signIn}
-          signUp={signUp}
-          recoverPassword={recoverPassword}
+      >
+        <Head>
+          <title>{title}{' :: '}{config.app.title}</title>
+          <meta name="description" content={config.app.description} />
+          <link rel="icon" href={config.app.icon} />
+        </Head>
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'dark' ? t.palette.grey[900] : t.palette.grey[50],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         />
-        <Copyright holder={config.app.copyright.holder} url={config.app.copyright.url} year={config.app.copyright.year}  sx={{ mt: 5 }} />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Auth
+            type={view}
+            title={title}
+            subTitle={`Welcome to ${config.app.title}`}
+            signInUrl={config.app.pages.signin}
+            signUpUrl={config.app.pages.signup}
+            recoverPasswordUrl={config.app.pages.recovery}
+            signIn={signIn}
+            signUp={signUp}
+            recoverPassword={recoverPassword}
+          />
+          <Copyright holder={config.app.copyright.holder} url={config.app.copyright.url} year={config.app.copyright.year}  sx={{ mt: 5 }} />
+        </Grid>
       </Grid>
-      <SnackBarAlert message={statusMsg} severity="info" clear={() => setStatusMsg('')} />
-      <SnackBarAlert message={errorMsg} severity="error" clear={() => setErrorMsg('')} />
-    </Grid>
+    </ErrorBoundary>
   );
 };
 
