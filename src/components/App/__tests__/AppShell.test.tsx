@@ -25,7 +25,7 @@ describe('AppShell component', () => {
       router: NavRouter,
       config: Config;
 
-  beforeAll(() => {
+  beforeEach(() => {
     profile = {
       id: chance.guid(),
       firstName: chance.first(),
@@ -202,6 +202,29 @@ describe('AppShell component', () => {
 
     expect(router).toBeCalledTimes(1);
     expect(router).toBeCalledWith(routes.primary[0]);
+  });
+
+  it('should navigate to a toolbar route when an icon is clicked', async () => {
+    const appShell = render(
+      <ProfileProvider profile={profile} setProfile={setProfile}>
+        <AppShell
+          toolbar={toolbar}
+          routes={routes}
+          router={router}
+          config={config}
+        />
+      </ProfileProvider>
+    );
+
+    expect(appShell).toBeDefined();
+
+    const icon = appShell.getByTestId(`${toolbar.primary[0].slug}-icon`);
+    expect(icon).toBeTruthy();
+
+    await user.click(icon);
+
+    expect(router).toBeCalledTimes(1);
+    expect(router).toBeCalledWith(toolbar.primary[0]);
   });
 
   it('should render AppShell in dark mode', () => {
