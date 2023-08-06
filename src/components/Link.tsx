@@ -5,7 +5,6 @@ import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
 
-// Add support for the sx prop for consistency with the other branches.
 const Anchor = styled('a')({});
 
 export interface NextLinkComposedProps
@@ -52,7 +51,7 @@ export type LinkProps = {
   as?: NextLinkProps['as'];
   href: NextLinkProps['href'];
   /**
-   * Useful when the as prop is shallow by styled().
+   * Useful when the 'as' prop is shallow by styled().
    */
   linkAs?: NextLinkProps['as'];
   noLinkStyle?: boolean;
