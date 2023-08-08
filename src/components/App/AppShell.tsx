@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -51,10 +50,10 @@ export interface AppShellProps {
 
 /**
  * Application shell component provides an AppBar containing a toolbar across the
- * top of the window with a collapsible drawer that holds the main navigation menu.
+ * top of the window with a collapsible drawer holding a navigation sidebar.
  */
 export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, config, drawerOpen = true, children}) => {
-  const [open, setOpen] = React.useState<boolean>(drawerOpen);
+  const [open, setOpen] = useState<boolean>(drawerOpen);
   const {profile} = useProfile();
 
   const toggleDrawer = () => {
@@ -88,11 +87,9 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
           <Box sx={{ flexGrow: 1 }} />
           {/* Toolbar Icons / Routes */}
           {toolbar.primary.map((route: NavRoute) =>
-            <Tooltip key={`${route.slug}-tooltip`} title={route.label}>
-              <IconButton data-testid={`${route.slug}-icon`} key={route.slug} color="inherit" onClick={() => router(route)}>
-                {route.icon}
-              </IconButton>
-            </Tooltip>
+            <IconButton data-testid={`${route.slug}-icon`} key={route.slug} color="inherit" onClick={() => router(route)}>
+              {route.icon}
+            </IconButton>
           )}
           <NewItemsMenuButton routes={toolbar.tertiary ?? []} router={router} />
           <ProfileButton routes={toolbar.secondary ?? []} router={router} profile={profile} />
