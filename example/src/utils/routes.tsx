@@ -23,176 +23,187 @@ import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';
 import {
   Messages,
   NavRoutes,
+  NavRoute,
   Notifications,
-} from '../../../../src/components';
+} from '@shaes/mui-mas';
 
 export const mainRoutes: NavRoutes = {
   primary: [{
     slug: 'today',
     icon: <WbTwilightIcon />,
     label: 'Today',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'weather',
     icon: <ThermostatIcon/>,
     label: 'Weather',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'calendar',
     icon: <CalendarMonthIcon/>,
     label: 'Calendar',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'tasks',
     icon: <PlaylistAddCheckIcon/>,
     label: 'Tasks',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'crops',
     icon: <GrassIcon/>,
     label: 'Crops',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'livestock',
     icon: <PetsIcon/>,
     label: 'Livestock',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'equipment',
     icon: <AgricultureIcon/>,
     label: 'Equipment',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'inventory',
     icon: <WarehouseIcon/>,
     label: 'Inventory',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'accounting',
     icon: <AccountBalanceIcon/>,
     label: 'Accounting',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'market',
     icon: <StorefrontIcon/>,
     label: 'Market',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'people',
     icon: <PeopleIcon/>,
     label: 'People',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'farms',
     icon: <HomeWorkOutlinedIcon fontSize='small' />,
     label: 'Farms',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'maps',
     icon: <MapIcon/>,
     label: 'Maps',
-    page: <React.Fragment />
+    page: '#',
   }],
   secondary: [{
     slug: 'reports',
     icon: <QueryStatsIcon/>,
     label: 'Reports',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'reports/month',
     icon: <BarChartIcon/>,
     label: 'Current Month',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'reports/quarter',
     icon: <SsidChartIcon/>,
     label: 'Last Quarter',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'reports/year-end',
     icon: <PieChartIcon/>,
     label: 'Year-end',
-    page: <React.Fragment />
+    page: '#',
   }],
 };
 
 export const toolBarRoutes: NavRoutes = {
   primary: [{
     slug: 'messages',
-    icon: <Messages />,
+    icon: <Messages count={2} router={(route: NavRoute) => console.log({route})} route={{
+      slug: 'messages',
+      icon: <React.Fragment />,
+      label: 'Messages',
+      page: '#',
+    }} />,
     label: 'Messages',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'notifications',
-    icon: <Notifications count={3} onNotify={() => console.log('Foo')} />,
+    icon: <Notifications count={3} router={(route: NavRoute) => console.log({route})} route={{
+      slug: 'notifications',
+      icon: <React.Fragment />,
+      label: 'Notifications',
+      page: '#',
+    }} />,
     label: 'Notifications',
-    page: <React.Fragment />
+    page: '#',
   }],
   secondary: [{
     slug: 'profile',
     icon: <AccountBoxOutlinedIcon fontSize='small' />,
     label: 'Profile',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'settings',
     icon: <SettingsIcon fontSize='small' />,
     label: 'Settings',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'help',
     icon: <HelpIcon fontSize='small' />,
     label: 'Help',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'div',
     icon: <React.Fragment />,
     label: '',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'signout',
     icon: <ExitToAppOutlinedIcon fontSize='small' />,
     label: 'Logout',
-    page: <React.Fragment />
+    page: '#',
   }],
   tertiary: [{
     slug: 'new-cal',
     icon: <CalendarMonthIcon fontSize='small' />,
     label: 'New Event',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-task',
     icon: <PlaylistAddCheckIcon fontSize='small' />,
     label: 'New Task',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-crop',
     icon: <GrassIcon fontSize='small' />,
     label: 'New Crop',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-livestock',
     icon: <PetsIcon fontSize='small' />,
     label: 'New Livestock',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-equipment',
     icon: <AgricultureIcon fontSize='small' />,
     label: 'New Equipment',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-inventory',
     icon: <WarehouseIcon fontSize='small' />,
     label: 'New Inventory',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-person',
     icon: <PeopleIcon fontSize='small' />,
     label: 'New Person',
-    page: <React.Fragment />
+    page: '#',
   },{
     slug: 'new-farm',
     icon: <HomeWorkOutlinedIcon fontSize='small' />,
     label: 'New Farm',
-    page: <React.Fragment />
+    page: '#',
   }],
 };

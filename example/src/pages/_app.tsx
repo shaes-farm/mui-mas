@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 import { ThemeOptions } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Roboto } from '@next/font/google';
+import { Roboto } from 'next/font/google';
 
 export const font = Roboto({
   weight: ['300', '400', '500', '700'],
