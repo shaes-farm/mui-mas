@@ -18,13 +18,13 @@ export function useProfile(): ProfileContextProps {
   return context;
 }
 
-interface ProfileProviderProps {
+export interface ProfileProviderProps {
   profile: Profile;
   setProfile: (profile: Profile) => void
   children?: React.ReactNode;
 }
 
-export function ProfileProvider(props: ProfileProviderProps) {
+export const ProfileProvider = (props: ProfileProviderProps) => {
   const { profile, setProfile, children } = props;
 
   return (
