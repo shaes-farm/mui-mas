@@ -28,7 +28,7 @@ export interface MessagesProps {
 /**
  * Messages component that combines a Mail icon with a tooltip and a badge showing a count of messages. Calls the router with the route when clicked.
  */
- export const Messages: React.FC<MessagesProps> = ({color, count, route, router}) => (
+export const Messages: React.FC<MessagesProps> = ({color, count, route, router}) => (
   <Box sx={{ flexGrow: 0, ml: 2 }}>
     <Tooltip title={route.label ?? "Messages"}>
       <Badge badgeContent={count ?? 0} color={color ?? "error"}>
