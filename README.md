@@ -13,5 +13,5 @@ In Spanish "mui mas" means "much more", and that is what we provide in this comp
 ## Getting Started
 
 <pre>
-$ npx create-mui-mas-app my-app --template next-js
+$ npm install @shaes-farm/mui-mas
 </pre>
