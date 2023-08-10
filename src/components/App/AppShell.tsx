@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -62,6 +63,11 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
 
   return (
     <Box sx={{ display: 'flex' }}>
+      <Head>
+        <title>{config.app.title}</title>
+        <meta name="description" content={config.app.description} />
+        <link rel="icon" href={config.app.icon} />
+      </Head>
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
@@ -113,7 +119,7 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
               ...(!open && { display: 'none' }),
             }}
           >
-            <Image src={config.app.logo.main} alt="Brand Logo" width={46} height={46} />
+            <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" width={46} height={46} />
           </IconButton>
           <IconButton aria-label="close drawer" onClick={toggleDrawer}>
             <ChevronLeftIcon />
