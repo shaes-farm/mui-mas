@@ -42,12 +42,11 @@ export const themeOptions: ThemeOptions = {
 
 export default function App(props: AppProps) {
   const {Component, pageProps} = props;
-  const InnerComponent = Component as any;
 
   return (
     <ThemeProvider theme={createTheme(themeOptions)}>
       <CssBaseline />
-      <InnerComponent {...pageProps} />
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 }
