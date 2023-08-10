@@ -19,15 +19,15 @@ type Config = {
 const defaultConfig: Config = {
   app: {
     title: 'Create Next App',
-    description: 'An example of the MUI Mas package in Next.js',
-    icon: 'foo.gif',
+    description: 'An example of the MUI Mas package used in Next.js',
+    icon: faker.image.url({height: 128, width: 128}),
     logo: {
       main: faker.image.url({height: 48, width: 48}),
       contrast: faker.image.url({height: 48, width: 48}),
     },
     copyright: {
-      holder: 'Example Company',
-      year: 2023,
+      holder: faker.company.name(),
+      year: faker.date.past({years: 10}).getFullYear(),
       url: faker.internet.url(),
     },
     pages: {
@@ -66,10 +66,10 @@ export default function Dashboard() {
   return (
     <ProfileProvider profile={profile} setProfile={setProfile} >
       <AppShell
-        toolbar={toolBarRoutes}
-        routes={mainRoutes}
-        router={router}
         config={defaultConfig}
+        router={router}
+        routes={mainRoutes}
+        toolbar={toolBarRoutes}
       />
     </ProfileProvider>
   );
