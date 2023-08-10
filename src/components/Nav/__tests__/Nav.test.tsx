@@ -100,4 +100,29 @@ describe('Nav component', () => {
     // @ts-ignore
     expect(router).toHaveBeenCalledWith(routes.tertiary[0]);
   });
+  
+  it('should render a Nav with sub-headers', () => {
+    routes.primary.push({
+      slug: 'header-' + chance.string(),
+      icon: <React.Fragment />,
+      label: chance.string(),
+      page: <React.Fragment />,
+    });
+    routes.secondary?.push({
+      slug: 'header-' + chance.string(),
+      icon: <React.Fragment />,
+      label: chance.string(),
+      page: <React.Fragment />,
+    });
+    routes.tertiary?.push({
+      slug: 'header-' + chance.string(),
+      icon: <React.Fragment />,
+      label: chance.string(),
+      page: <React.Fragment />,
+    });
+
+    const component = render(<Nav routes={routes} router={router} />);
+
+    expect(component).not.toBeNull();
+  });
 });
