@@ -1,25 +1,21 @@
 import React from 'react';
-import PeopleIcon from '@mui/icons-material/People';
+
+import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 import BarChartIcon from '@mui/icons-material/BarChart';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import GrassIcon from '@mui/icons-material/Grass';
-import PetsIcon from '@mui/icons-material/Pets';
-import AgricultureIcon from '@mui/icons-material/Agriculture';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import MapIcon from '@mui/icons-material/Map';
-import WarehouseIcon from '@mui/icons-material/Warehouse';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import HelpIcon from '@mui/icons-material/Help';
+import JoinFullIcon from '@mui/icons-material/JoinFull';
+import LayersIcon from '@mui/icons-material/Layers';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PeopleIcon from '@mui/icons-material/People';
+import PersonIcon from '@mui/icons-material/Person';
+import PieChartIcon from '@mui/icons-material/PieChart';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import SsidChartIcon from '@mui/icons-material/SsidChart';
-import PieChartIcon from '@mui/icons-material/PieChart';
-import ThermostatIcon from '@mui/icons-material/Thermostat';
-import HelpIcon from '@mui/icons-material/Help';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 import SettingsIcon from '@mui/icons-material/Settings';
-import WbTwilightIcon from '@mui/icons-material/WbTwilight';
-import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
-import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
-import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';
+
 import {
   Messages,
   NavRoutes,
@@ -29,75 +25,34 @@ import {
 
 export const mainRoutes: NavRoutes = {
   primary: [{
-    slug: 'today',
-    icon: <WbTwilightIcon />,
-    label: 'Today',
+    slug: 'dashboard',
+    icon: <DashboardIcon />,
+    label: 'Dashboard',
     page: '#',
   },{
-    slug: 'weather',
-    icon: <ThermostatIcon/>,
-    label: 'Weather',
+    slug: 'orders',
+    icon: <StorefrontIcon />,
+    label: 'Orders',
     page: '#',
   },{
-    slug: 'calendar',
-    icon: <CalendarMonthIcon/>,
-    label: 'Calendar',
+    slug: 'customers',
+    icon: <PeopleIcon />,
+    label: 'Customers',
     page: '#',
   },{
-    slug: 'tasks',
-    icon: <PlaylistAddCheckIcon/>,
-    label: 'Tasks',
+    slug: 'reports',
+    icon: <BarChartIcon />,
+    label: 'Reports',
     page: '#',
   },{
-    slug: 'crops',
-    icon: <GrassIcon/>,
-    label: 'Crops',
-    page: '#',
-  },{
-    slug: 'livestock',
-    icon: <PetsIcon/>,
-    label: 'Livestock',
-    page: '#',
-  },{
-    slug: 'equipment',
-    icon: <AgricultureIcon/>,
-    label: 'Equipment',
-    page: '#',
-  },{
-    slug: 'inventory',
-    icon: <WarehouseIcon/>,
-    label: 'Inventory',
-    page: '#',
-  },{
-    slug: 'accounting',
-    icon: <AccountBalanceIcon/>,
-    label: 'Accounting',
-    page: '#',
-  },{
-    slug: 'market',
-    icon: <StorefrontIcon/>,
-    label: 'Market',
-    page: '#',
-  },{
-    slug: 'people',
-    icon: <PeopleIcon/>,
-    label: 'People',
-    page: '#',
-  },{
-    slug: 'farms',
-    icon: <HomeWorkOutlinedIcon fontSize='small' />,
-    label: 'Farms',
-    page: '#',
-  },{
-    slug: 'maps',
-    icon: <MapIcon/>,
-    label: 'Maps',
+    slug: 'integrations',
+    icon: <LayersIcon />,
+    label: 'Integrations',
     page: '#',
   }],
   secondary: [{
-    slug: 'reports',
-    icon: <QueryStatsIcon/>,
-    label: 'Reports',
+    slug: 'header-reports',
+    label: 'Saved reports',
     page: '#',
   },{
     slug: 'reports/month',
@@ -112,7 +67,7 @@ export const mainRoutes: NavRoutes = {
   },{
     slug: 'reports/year-end',
     icon: <PieChartIcon/>,
-    label: 'Year-end',
+    label: 'Year-end sales',
     page: '#',
   }],
 };
@@ -166,44 +121,24 @@ export const toolBarRoutes: NavRoutes = {
     page: '#',
   }],
   tertiary: [{
-    slug: 'new-cal',
-    icon: <CalendarMonthIcon fontSize='small' />,
-    label: 'New Event',
+    slug: 'new-order',
+    icon: <ShoppingCartIcon fontSize='small' />,
+    label: 'New Order',
     page: '#',
   },{
-    slug: 'new-task',
-    icon: <PlaylistAddCheckIcon fontSize='small' />,
-    label: 'New Task',
+    slug: 'new-customer',
+    icon: <PersonIcon fontSize='small' />,
+    label: 'New Customer',
     page: '#',
   },{
-    slug: 'new-crop',
-    icon: <GrassIcon fontSize='small' />,
-    label: 'New Crop',
+    slug: 'new-report',
+    icon: <QueryStatsIcon fontSize='small' />,
+    label: 'New Report',
     page: '#',
   },{
-    slug: 'new-livestock',
-    icon: <PetsIcon fontSize='small' />,
-    label: 'New Livestock',
-    page: '#',
-  },{
-    slug: 'new-equipment',
-    icon: <AgricultureIcon fontSize='small' />,
-    label: 'New Equipment',
-    page: '#',
-  },{
-    slug: 'new-inventory',
-    icon: <WarehouseIcon fontSize='small' />,
-    label: 'New Inventory',
-    page: '#',
-  },{
-    slug: 'new-person',
-    icon: <PeopleIcon fontSize='small' />,
-    label: 'New Person',
-    page: '#',
-  },{
-    slug: 'new-farm',
-    icon: <HomeWorkOutlinedIcon fontSize='small' />,
-    label: 'New Farm',
+    slug: 'new-integration',
+    icon: <JoinFullIcon fontSize='small' />,
+    label: 'New Integration',
     page: '#',
   }],
 };
