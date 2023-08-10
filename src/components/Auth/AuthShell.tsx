@@ -25,13 +25,14 @@ export interface AuthShellProps {
 }
 
 export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, recoverPassword, view = 'password'}) => {
-  let title = '';
-
-  switch (view) {
-    case 'password': title = 'Sign In'; break;
-    case 'signup': title = 'Sign Up'; break;
-    case 'recover': title = 'Password Recovery'; break;
-  }
+  const title = React.useMemo(() => {
+    switch (view) {
+      case 'password': return 'Sign In';
+      case 'signup': return 'Sign Up';
+      case 'recover': return 'Password Recovery';
+      default: return '';
+    }
+  }, [view]);
 
   return (
     <ErrorBoundary key='auth-shell-error-boundary'>
