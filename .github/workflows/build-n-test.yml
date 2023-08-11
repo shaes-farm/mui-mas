@@ -32,3 +32,5 @@ jobs:
       run: npm ci --omit=optional --ignore-scripts
     - name: Lint and test repository
       run: npm run verify
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v2
