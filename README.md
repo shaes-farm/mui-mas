@@ -11,14 +11,14 @@ A Material UI-based component library for SHAES Farm's applications.
 
 ## Getting Started
 
-This package is intended for use by SHAES Farm's applications to ease the integration of our platform requirements. We currently use the following technology stack in our application suite:
+This package is intended for use by SHAES Farm's applications to ease the integration of our platform requirements. We currently use the following technology stack in our application suite (__we are not affiliated with any of these projects__):
 
 - [React](https://react.dev/)
 - [Material UI](https://mui.com/material-ui/)
 - [Next.js 13+](https://nextjs.org/)
 - [Supabase](https://supabase.com/)
 
-<pre>
+```sh
 $ pnpm create next-app myapp \
     --app \
     --eslint \
@@ -28,7 +28,7 @@ $ pnpm create next-app myapp \
   ...
 $ cd myapp
 $ pnpm add @shaes-farm/mui-mas
-</pre>
+```
 
 ## Motivation
 
@@ -42,4 +42,4 @@ We are releasing <code>mui mas</code> as an open-source component library becaus
 
 ## Help Us Improve
 
-You can help us make this library better by submitting pull requests with suggestions. Show us how you would make the library more modular and better able to support a wider choice of use cases. Ideas, suggestions, and critical reviews are all welcomed as we continue to improve this package for our own needs.
+You can help us make this library better by [creating a pull request](https://github.com/shaes-farm/mui-mas/pulls) with suggestions. We gladly accept bug fixes, improvements, or just show us how you would make the library better able to support a wider choice of use cases. Any ideas, suggestions, and critical reviews are all welcomed as we continue to improve this package for our own needs, [open an issue to send us your feedback](https://github.com/shaes-farm/mui-mas/issues).
