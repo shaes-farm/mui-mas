@@ -60,7 +60,7 @@ describe('Link component', () => {
   });
 
   it('should render a link with legacy behavior', () => {
-    const url = chance.url();
+    const url = faker.internet.url();
 
     const component = render(
       <RouterContext.Provider value={router}>
@@ -72,7 +72,7 @@ describe('Link component', () => {
   });
 
   it('should render a link without legacy behavior', () => {
-    const url = chance.url();
+    const url = faker.internet.url();
 
     const component = render(
       <RouterContext.Provider value={router}>
@@ -84,7 +84,7 @@ describe('Link component', () => {
   });
 
   it('should accept a UrlObject as an href', () => {
-    const url = new URL(chance.url());
+    const url = new URL(faker.internet.url());
 
     const component = render(
       <RouterContext.Provider value={router}>
