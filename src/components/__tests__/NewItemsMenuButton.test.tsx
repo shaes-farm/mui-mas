@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import type {NavRoute, NavRouter} from '../Nav';
 import NewItemsMenuButton from '../NewItemsMenuButton';
+import { faker } from '@faker-js/faker';
 
 const user = userEvent.setup();
 
@@ -14,20 +15,20 @@ describe('NewItemsMenuButton component', () => {
 
   beforeAll(() => {
     menu = [{
-      slug: chance.string(),
+      slug: faker.lorem.slug(),
       icon: <React.Fragment />,
-      label: chance.string(),
-      hotkey: chance.character(),
+      label: faker.lorem.words(),
+      hotkey: faker.lorem.word({length: 1}),
       page: <React.Fragment />,
     },{
       slug: 'div',
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     },{
-      slug: chance.string(),
+      slug: faker.lorem.slug(),
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     }];
 
