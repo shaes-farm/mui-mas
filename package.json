@@ -24,7 +24,7 @@
     "storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
     "docs": "npm run build-storybook && rm -fr ./docs/storybook/* && cp -r ./storybook-static/* ./docs/storybook/ && rm -fr ./storybook-static",
-    "release": "npm run verify && npm run docs",
+    "predeploy": "npm run docs",
     "prepublish": "npm run verify"
   },
   "repository": {
