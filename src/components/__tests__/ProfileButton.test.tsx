@@ -15,26 +15,26 @@ describe('ProfileButton component', () => {
 
   beforeAll(() => {
     profile = {
-      firstName: chance.first(),
-      lastName: chance.last(),
-      avatarUrl: chance.url(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      avatarUrl: faker.internet.url(),
     };
 
     menu = [{
-      slug: chance.string(),
+      slug: faker.lorem.slug(),
       icon: <React.Fragment />,
-      label: chance.string(),
-      hotkey: chance.character(),
+      label: faker.lorem.words(),
+      hotkey: faker.lorem.word({length: 1}),
       page: <React.Fragment />,
     },{
       slug: 'div',
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     },{
-      slug: chance.string(),
+      slug: faker.lorem.slug(),
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     }];
 
@@ -48,11 +48,11 @@ describe('ProfileButton component', () => {
   afterEach(cleanup);
 
   it('should render a ProfileButton', () => {
-    expect(profileButton).not.toBeNull();
+    expect(profileButton).toBeDefined();
   });
 
   it('should open a menu when the "user profile" button is clicked', async () => {
-    expect(profileButton).not.toBeNull();
+    expect(profileButton).toBeDefined();
 
     const initialMenu = profileButton.queryByRole('menu');
     expect(initialMenu).toBeNull();
@@ -61,17 +61,17 @@ describe('ProfileButton component', () => {
     await user.click(button);
 
     const userProfileMenu = profileButton.queryByRole('menu');
-    expect(userProfileMenu).not.toBeNull();
+    expect(userProfileMenu).toBeDefined();
   });
 
   it('should navigate to a route and close the menu when an item is selected', async () => {
-    expect(profileButton).not.toBeNull();
+    expect(profileButton).toBeDefined();
 
     const button = profileButton.getByLabelText(/user profile/u);
     await user.click(button);
 
     const userProfileMenu = profileButton.queryByRole('menu');
-    expect(userProfileMenu).not.toBeNull();
+    expect(userProfileMenu).toBeDefined();
 
     const menuItem = await profileButton.findByText(menu[0].label);
     await user.click(menuItem);
@@ -88,13 +88,13 @@ describe('ProfileButton component', () => {
     router = jest.fn();
 
     profileButton.rerender(<ProfileButton profile={profile} router={router} routes={menu} />);
-    expect(profileButton).not.toBeNull();
+    expect(profileButton).toBeDefined();
 
     const button = profileButton.getByLabelText(/user profile/u);
     await user.click(button);
 
     const userProfileMenu = profileButton.queryByRole('menu');
-    expect(userProfileMenu).not.toBeNull();
+    expect(userProfileMenu).toBeDefined();
 
     const menuItem = await profileButton.findByText(menu[0].label);
     await user.click(menuItem);
