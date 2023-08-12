@@ -30,12 +30,12 @@ describe('Auth component', () => {
 
   beforeAll(() => {
     profile = {
-      id: chance.guid(),
-      firstName: chance.first(),
-      lastName: chance.last(),
-      bio: chance.paragraph(),
-      avatarUrl: 'https://placehold.co/46',
-      website: chance.url(),
+      id: faker.string.uuid(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      bio: faker.person.bio(),
+      avatarUrl: faker.image.url({width: 48, height: 48}),
+      website: faker.internet.url(),
       loading: false,
     };
 

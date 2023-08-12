@@ -1,9 +1,9 @@
 import "jest-extended";
-import Chance from 'chance';
+import { faker } from '@faker-js/faker';
 
-const seed = process.env.CHANCE_SEED ? parseInt(process.env.CHANCE_SEED) : new Chance().natural();
-
-global.chance = new Chance(seed);
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+global.faker = faker;
 
 afterAll(() => {
   jest.restoreAllMocks();

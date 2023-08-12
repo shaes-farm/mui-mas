@@ -10,6 +10,7 @@ import type {NavRouter, NavRoutes} from '../../Nav';
 
 import type {AppConfig} from '../_types';
 import AppShell from '../AppShell';
+import { faker } from '@faker-js/faker';
 
 const user = userEvent.setup();
 
@@ -27,12 +28,12 @@ describe('AppShell component', () => {
 
   beforeEach(() => {
     profile = {
-      id: chance.guid(),
-      firstName: chance.first(),
-      lastName: chance.last(),
-      bio: chance.paragraph(),
-      avatarUrl: 'https://placehold.co/46',
-      website: chance.url(),
+      id: faker.string.uuid(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      bio: faker.person.bio(),
+      avatarUrl: faker.image.url({width: 48, height: 48}),
+      website: faker.internet.url(),
       loading: false,
     };
 
@@ -40,59 +41,59 @@ describe('AppShell component', () => {
 
     toolbar = {
       primary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
-        hotkey: chance.character(),
+        label: faker.lorem.words(),
+        hotkey: faker.string.alpha(1),
         page: <React.Fragment />,
       },{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }],
       secondary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
-        hotkey: chance.character(),
+        label: faker.lorem.words(),
+        hotkey: faker.string.alpha(1),
         page: <React.Fragment />,
       },{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }],
       tertiary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
-        hotkey: chance.character(),
+        label: faker.lorem.words(),
+        hotkey: faker.string.alpha(1),
         page: <React.Fragment />,
       },{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }],
     };
 
     routes = {
       primary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
-        hotkey: chance.character(),
+        label: faker.lorem.words(),
+        hotkey: faker.string.alpha(1),
         page: <React.Fragment />,
       },{
-        slug: 'div',
+        slug: ':divider:',
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       },{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }]
     };
@@ -101,23 +102,22 @@ describe('AppShell component', () => {
 
     config = {
       app: {
-        title: chance.string(),
-        description: chance.paragraph(),
-        icon: 'https://placehold.co/64',
+        title: faker.lorem.words(),
+        description: faker.lorem.sentence(),
+        icon: faker.image.url({width: 48, height:48}),
         logo: {
-          main: 'https://placehold.co/46',
-          contrast: 'https://placehold.co/46',
+          main: faker.image.url({width: 48, height:48}),
         },
         copyright: {
-          holder: chance.name(),
-          year: Number(chance.year()),
-          url: chance.url(),
+          holder: faker.person.fullName(),
+          year: Number(faker.date.past({years: 5})),
+          url: faker.internet.url(),
         },
         pages: {
-          home: chance.url(),
-          signin: chance.url(),
-          signup: chance.url(),
-          recovery: chance.url(),
+          home: '/',
+          signin: '/signin',
+          signup: '/signup',
+          recovery: '/recover',
         },
       },
     };
@@ -234,14 +234,7 @@ describe('AppShell component', () => {
       },
     });
 
-    delete config.app.logo.contrast;
-
-    toolbar.tertiary = [{
-      slug: 'search-input',
-      icon: <React.Fragment />,
-      label: chance.string(),
-      page: <React.Fragment />,
-    }];
+    config.app.logo.contrast = faker.image.url({width: 48, height:48});
 
     const appShell = render(
       <ThemeProvider theme={theme}>
@@ -255,6 +248,28 @@ describe('AppShell component', () => {
           />
         </ProfileProvider>
       </ThemeProvider>
+    );
+
+    expect(appShell).toBeDefined();
+  });
+
+  it('should render AppShell with a search input on the AppBar', () => {
+    toolbar.tertiary = [{
+      slug: 'search-input',
+      icon: <React.Fragment />,
+      label: 'Search',
+      page: <React.Fragment />,
+    }];
+
+    const appShell = render(
+      <ProfileProvider profile={profile} setProfile={setProfile}>
+        <AppShell
+          toolbar={toolbar}
+          routes={routes}
+          router={router}
+          config={config}
+        />
+      </ProfileProvider>
     );
 
     expect(appShell).toBeDefined();
