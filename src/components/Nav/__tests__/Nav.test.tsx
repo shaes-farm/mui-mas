@@ -16,31 +16,31 @@ describe('Nav component', () => {
 
     routes = {
       primary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       },{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }],
       secondary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       },{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }],
       tertiary: [{
-        slug: chance.string(),
+        slug: faker.lorem.slug(),
         icon: <React.Fragment />,
-        label: chance.string(),
+        label: faker.lorem.words(),
         page: <React.Fragment />,
       }]
     };
@@ -103,21 +103,21 @@ describe('Nav component', () => {
   
   it('should render a Nav with sub-headers', () => {
     routes.primary.push({
-      slug: 'header-' + chance.string(),
+      slug: `header-${faker.lorem.slug()}`,
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     });
     routes.secondary?.push({
-      slug: 'header-' + chance.string(),
+      slug: `header-${faker.lorem.slug()}`,
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     });
     routes.tertiary?.push({
-      slug: 'header-' + chance.string(),
+      slug: `header-${faker.lorem.slug()}`,
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     });
 
