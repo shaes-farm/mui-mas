@@ -23,7 +23,7 @@
     "verify": "npm run lint && npm run lint:ts && npm test",
     "storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublish": "tsc"
+    "prepublish": "npm run verify"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/shaes-farm/mui-mas#readme",
   "peerDependencies": {
-    "@mui/material": "^5.0.0",
+    "@mui/material": "^5.14.1",
     "next": "^13.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
@@ -90,7 +90,7 @@
     "@fontsource/roboto": "5.0.5",
     "@mui/icons-material": "5.10.9",
     "@mui/lab": "5.0.0-alpha.135",
-    "@mui/material": "^5.0.0",
+    "@mui/material": "5.14.1",
     "@supabase/auth-helpers-react": "0.4.0",
     "@supabase/supabase-js": "2.26.0",
     "clsx": "1.2.1",
