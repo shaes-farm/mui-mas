@@ -12,6 +12,7 @@ import type {AppConfig} from '../../App';
 
 import AuthShell from '../AuthShell';
 import type {Credentials, SignUpInfo, RecoverPasswordInfo} from '../_types';
+import { faker } from '@faker-js/faker/locale/zu_ZA';
 
 const user = userEvent.setup();
 
@@ -31,12 +32,12 @@ describe('AuthShell component', () => {
 
   beforeAll(() => {
     profile = {
-      id: chance.guid(),
-      firstName: chance.first(),
-      lastName: chance.last(),
-      bio: chance.paragraph(),
-      avatarUrl: 'https://placehold.co/46',
-      website: chance.url(),
+      id: faker.string.uuid(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      bio: faker.person.bio(),
+      avatarUrl: faker.image.url({width: 48, height: 48}),
+      website: faker.internet.url(),
       loading: false,
     };
 
@@ -49,23 +50,22 @@ describe('AuthShell component', () => {
 
     config = {
       app: {
-        title: `${chance.capitalize(chance.word())} ${chance.capitalize(chance.word())}`,
-        description: chance.paragraph(),
-        icon: 'https://placehold.co/64',
+        title: faker.lorem.words(),
+        description: faker.lorem.sentence(),
+        icon: faker.image.url({width: 48, height:48}),
         logo: {
-          main: 'https://placehold.co/46',
-          contrast: 'https://placehold.co/46',
+          main: faker.image.url({width: 48, height:48}),
         },
         copyright: {
-          holder: chance.name(),
-          year: Number(chance.year({min: 1995, max: new Date().getFullYear()})),
-          url: chance.url(),
+          holder: faker.person.fullName(),
+          year: Number(faker.date.past({years: 5})),
+          url: faker.internet.url(),
         },
         pages: {
           home: '/',
           signin: '/signin',
           signup: '/signup',
-          recovery: '/recovery',
+          recovery: '/recover',
         },
       },
     };
