@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import Messages from '../Messages';
 import {NavRoute, NavRouter} from '../Nav';
+import { faker } from '@faker-js/faker';
 
 const user = userEvent.setup();
 
@@ -13,9 +14,9 @@ describe('Messages component', () => {
 
   beforeAll(() => {
     route = {
-      slug: chance.string(),
+      slug: faker.lorem.slug(),
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     };
 

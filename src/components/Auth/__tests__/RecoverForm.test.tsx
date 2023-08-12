@@ -48,8 +48,8 @@ describe('RecoverPasswordForm', () => {
         recoverPassword={recoverPassword}
         signInUrl={signInUrl}
         icon={<React.Fragment />}
-        title={chance.string()}
-        subTitle={chance.string()}
+        title={faker.lorem.words()}
+        subTitle={faker.lorem.words()}
       />
     );
     expect(component).toBeDefined();
@@ -62,7 +62,7 @@ describe('RecoverPasswordForm', () => {
     const emailInput = component.getByLabelText(/Email Address/u);
     expect(emailInput).toBeDefined();
 
-    const email = chance.email();
+    const email = faker.internet.email();
 
     await user.click(emailInput);
     await user.keyboard(email);
