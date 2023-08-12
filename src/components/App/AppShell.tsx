@@ -46,7 +46,7 @@ export interface AppShellProps {
    * A React node (an element, a string, a number, a portal, an empty node like null, undefined and booleans, or an array of other React nodes). Specifies the content inside the component. When you use JSX, you will usually specify the children prop implicitly by nesting tags like <div><span /></div>.
    * @see https://react.dev/reference/react-dom/components/common#common-props
    */
-   children?: React.ReactNode
+  children?: React.ReactNode
 }
 
 /**
