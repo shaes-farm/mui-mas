@@ -4,6 +4,7 @@ import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {createMockNextRouter} from '../../../test-utils';
 import SignupForm from '../SignupForm';
+import { faker } from '@faker-js/faker';
 
 const user = userEvent.setup();
 
@@ -48,8 +49,8 @@ describe('SignupForm', () => {
         signUp={signUp}
         signInUrl={signInUrl}
         icon={<React.Fragment />}
-        title={chance.string()}
-        subTitle={chance.string()}
+        title={faker.lorem.words()}
+        subTitle={faker.lorem.words()}
       />
     );
     expect(component).toBeDefined();
@@ -71,10 +72,10 @@ describe('SignupForm', () => {
     const passwordInput = component.getByLabelText(/Password/u);
     expect(passwordInput).toBeDefined();
 
-    const firstName = chance.first();
-    const lastName = chance.last();
-    const email = chance.email();
-    const password = chance.word();
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+    const email = faker.internet.email();
+    const password = faker.internet.password();
 
     await user.click(firstNameInput);
     await user.keyboard(firstName);

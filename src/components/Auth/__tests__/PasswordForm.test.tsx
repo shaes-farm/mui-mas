@@ -50,8 +50,8 @@ describe('PasswordForm', () => {
         signUpUrl={signUpUrl}
         forgotPasswordUrl={recoverUrl}
         icon={<React.Fragment />}
-        title={chance.string()}
-        subTitle={chance.string()}
+        title={faker.lorem.words()}
+        subTitle={faker.lorem.words()}
       />
     );
     expect(component).toBeDefined();
@@ -67,8 +67,8 @@ describe('PasswordForm', () => {
     const passwordInput = component.getByLabelText(/Password/u);
     expect(passwordInput).toBeDefined();
 
-    const email = chance.email();
-    const password = chance.word();
+    const email = faker.internet.email();
+    const password = faker.lorem.word();
 
     await user.click(emailInput);
     await user.keyboard(email);
