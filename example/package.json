@@ -17,7 +17,7 @@
     "@mui/material": "^5.13.7",
     "@shaes-farm/mui-mas": "file:..",
     "@types/node": "20.2.5",
-    "@types/react": "18.2.7",
+    "@types/react": "18.2.15",
     "@types/react-dom": "18.2.4",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.4",
