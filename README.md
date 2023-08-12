@@ -14,9 +14,9 @@ A Material UI-based component library for SHAES Farm's applications.
 This package is intended for use by SHAES Farm's applications to ease the integration of our platform requirements. We currently use the following technology stack in our application suite:
 
 - [React](https://react.dev/)
+- [Material UI](https://mui.com/material-ui/)
 - [Next.js 13+](https://nextjs.org/)
 - [Supabase](https://supabase.com/)
-- [Material UI](https://mui.com/material-ui/)
 
 <pre>
 $ pnpm create next-app myapp \
