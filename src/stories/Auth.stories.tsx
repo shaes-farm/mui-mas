@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useParameter} from "@storybook/addons";
 import type {Meta, StoryObj} from '@storybook/react';
-import {Chance} from 'chance';
+import {faker} from '@faker-js/faker';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import BlindIcon from '@mui/icons-material/Blind';
@@ -9,8 +9,6 @@ import BlindIcon from '@mui/icons-material/Blind';
 import {Auth} from '../components';
 import type {Credentials, SignUpInfo, RecoverPasswordInfo} from '../components';
 import {Profile, ProfileProvider} from "../providers";
-
-const chance = new Chance(new Chance().natural());
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Auth> = {
@@ -25,12 +23,12 @@ const meta: Meta<typeof Auth> = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (Story, context) => {
       const initialState: Profile | undefined = useParameter('profile', {
-        id: chance.guid(),
-        firstName: chance.first(),
-        lastName: chance.last(),
-        bio: chance.paragraph(),
-        avatarUrl: chance.url(),
-        website: chance.url(),
+        id: faker.string.uuid(),
+        firstName: faker.person.firstName(),
+        lastName: faker.person.lastName(),
+        bio: faker.person.bio(),
+        avatarUrl: faker.image.url(),
+        website: faker.internet.url(),
         loading: false,
       });
   
@@ -58,8 +56,8 @@ export const SignIn: Story = {
   args: {
     type: 'password',
     icon: <AccountBalanceIcon />,
-    title: chance.string(),
-    subTitle: `${chance.capitalize(chance.word())} ${chance.capitalize(chance.word())}`,
+    title: faker.lorem.words(),
+    subTitle: faker.lorem.words(),
     signInUrl: '/signin',
     signIn,
     signUpUrl: '/signup',
@@ -73,8 +71,8 @@ export const SignUp: Story = {
   args: {
     type: 'signup',
     icon: <AllInclusiveIcon />,
-    title: chance.string(),
-    subTitle: `${chance.capitalize(chance.word())} ${chance.capitalize(chance.word())}`,
+    title: faker.lorem.words(),
+    subTitle: faker.lorem.words(),
     signInUrl: '/signin',
     signIn,
     signUpUrl: '/signup',
@@ -88,8 +86,8 @@ export const RecoverPassword: Story = {
   args: {
     type: 'recover',
     icon: <BlindIcon />,
-    title: chance.string(),
-    subTitle: `${chance.capitalize(chance.word())} ${chance.capitalize(chance.word())}`,
+    title: faker.lorem.words(),
+    subTitle: faker.lorem.words(),
     signInUrl: '/signin',
     signIn,
     signUpUrl: '/signup',

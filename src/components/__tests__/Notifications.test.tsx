@@ -13,9 +13,9 @@ describe('Notifications component', () => {
 
   beforeAll(() => {
     route = {
-      slug: chance.string(),
+      slug: faker.lorem.slug(),
       icon: <React.Fragment />,
-      label: chance.string(),
+      label: faker.lorem.words(),
       page: <React.Fragment />,
     };
 
