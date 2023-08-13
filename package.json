@@ -94,7 +94,7 @@
     "@mui/lab": "5.0.0-alpha.135",
     "@mui/material": "5.14.1",
     "@supabase/auth-helpers-react": "0.4.0",
-    "@supabase/supabase-js": "2.26.0",
+    "@supabase/supabase-js": "2.27.0",
     "clsx": "1.2.1",
     "next": "13.2.4",
     "react": "18.2.0",
