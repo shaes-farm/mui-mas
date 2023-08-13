@@ -5,7 +5,6 @@ A Material UI-based component library for SHAES Farm's applications.
 [![build status](https://github.com/shaes-farm/mui-mas/actions/workflows/build-n-test.yml/badge.svg)](https://github.com/shaes-farm/mui-mas/actions/workflows/build-n-test.yml)
 [![coverage status](https://coveralls.io/repos/github/shaes-farm/mui-mas/badge.svg?branch=main)](https://coveralls.io/github/shaes-farm/mui-mas?branch=main)
 [![vulnerabilities](https://snyk.io/test/github/shaes-farm/mui-mas/badge.svg)](https://snyk.io/test/github/shaes-farm/mui-mas)
-[![npm version](https://badge.fury.io/js/@shaes-farm%2Fmui-mas.svg)](https://badge.fury.io/js/@shaes-farm%2Fmui-mas)
 
 [![https://nodei.co/npm/@shaes-farm/mui-mas.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/@shaes-farm/mui-mas.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/@shaes-farm/mui-mas)
 
