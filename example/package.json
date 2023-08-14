@@ -12,7 +12,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@faker-js/faker": "^8.0.2",
-    "@fontsource/roboto": "^5.0.4",
+    "@fontsource/roboto": "^5.0.5",
     "@mui/icons-material": "^5.13.7",
     "@mui/material": "^5.13.7",
     "@shaes-farm/mui-mas": "file:..",
