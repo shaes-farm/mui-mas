@@ -16,7 +16,7 @@
     "@mui/icons-material": "^5.13.7",
     "@mui/material": "^5.13.7",
     "@shaes-farm/mui-mas": "file:..",
-    "@types/node": "20.4.3",
+    "@types/node": "20.4.4",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.4",
     "eslint": "8.45.0",
