@@ -140,6 +140,7 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
           overflow: 'auto',
         }}
       >
+        <Toolbar />
         {children}
       </Box>
     </Box>
