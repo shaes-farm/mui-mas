@@ -15,7 +15,7 @@
   "scripts": {
     "start": "env NODE_ENV=production node ./build/dist/index.js",
     "build": "npm run verify && tsc",
-    "dev": "env DEBUG='shaes:*' nodemon ./build/dist/index.js",
+    "dev": "tsc && env DEBUG='shaes:*' nodemon ./build/dist/index.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint src/**/*.ts[x]",
@@ -23,8 +23,6 @@
     "verify": "npm run lint && npm run lint:ts && npm test",
     "storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
-    "docs": "npm run build-storybook && rm -fr ./docs/storybook/* && cp -r ./storybook-static/* ./docs/storybook/ && rm -fr ./storybook-static",
-    "release": "npm run verify && npm run docs",
     "prepublish": "npm run verify"
   },
   "repository": {
@@ -44,7 +42,7 @@
   "peerDependencies": {
     "@mui/material": "^5.14.1",
     "next": "13.2.4",
-    "react": "^18.2.4",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
@@ -61,6 +59,7 @@
     "@storybook/nextjs": "7.2.3",
     "@storybook/react": "7.2.3",
     "@storybook/testing-library": "0.2.0",
+    "@swc/helpers": "^0.5.1",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
     "@types/jest": "29.5.1",
@@ -92,12 +91,12 @@
     "@fontsource/roboto": "5.0.5",
     "@mui/icons-material": "5.14.1",
     "@mui/lab": "5.0.0-alpha.135",
-    "@mui/material": "5.14.1",
+    "@mui/material": "^5.14.1",
     "@supabase/auth-helpers-react": "0.4.1",
     "@supabase/supabase-js": "2.29.0",
     "clsx": "1.2.1",
     "next": "13.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
