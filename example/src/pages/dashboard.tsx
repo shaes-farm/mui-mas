@@ -1,11 +1,9 @@
 import React from 'react';
 import {useRouter} from 'next/router';
-import {faker} from '@faker-js/faker';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import {
-  AppConfig,
   AppShell,
   Copyright,
   NavRoute,
@@ -17,50 +15,13 @@ import {
 import Chart from '@/components/Chart';
 import Deposits from '@/components/Deposits';
 import Orders from '@/components/Orders';
-import {mainRoutes, toolBarRoutes} from '@/utils/routes';
-
-type Config = {
-  app: AppConfig;
-}
-
-const defaultConfig: Config = {
-  app: {
-    title: 'Create Next App',
-    description: 'An example of the MUI Mas package used in Next.js',
-    icon: faker.image.url({height: 128, width: 128}),
-    logo: {
-      main: faker.image.url({height: 48, width: 48}),
-      contrast: faker.image.url({height: 48, width: 48}),
-    },
-    copyright: {
-      holder: faker.company.name(),
-      year: faker.date.past({years: 10}).getFullYear(),
-      url: faker.internet.url(),
-    },
-    pages: {
-      home: '/dashboard',
-      signin: '/signin',
-      signup: '/signup',
-      recovery: '/recover',
-    },
-  }
-};
-
-const defaultProfile: Profile = {
-  id: faker.string.uuid(),
-  firstName: faker.person.firstName(),
-  lastName: faker.person.lastName(),
-  bio: faker.person.bio(),
-  avatarUrl: faker.image.url({height: 48, width: 48}),
-  website: faker.internet.url(),
-  loading: false,
-};
+import {mainRoutes, toolBarRoutes} from '@/config/routes';
+import {defaultConfig} from '@/config/app-config';
+import {userProfile} from '@/config/user-profile';
 
 export default function Dashboard() {
-  const [profile, setProfile] = React.useState<Profile>(defaultProfile);
-
+  const [profile, setProfile] = React.useState<Profile>(userProfile);
   const nextRouter = useRouter();
-
   const router: NavRouter = (route: NavRoute) => {
     if (typeof route.page === 'string') {
       nextRouter.push(route.page);
