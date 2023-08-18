@@ -39,8 +39,12 @@ export const PasswordForm: React.FC<PasswordFormProps> = ({
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const credentials: Credentials = {
-      email: data.get('email')?.toString() ?? '',
-      password: data.get('password')?.toString() ?? '',
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      email: data.get('email').toString(),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      password: data.get('password').toString(),
       remember: data.get('remember') ? true : false,
     };
     signIn(credentials);

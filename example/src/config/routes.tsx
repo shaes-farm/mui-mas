@@ -21,7 +21,7 @@ import {
   NavRoutes,
   NavRoute,
   Notifications,
-} from '@shaes/mui-mas';
+} from '@shaes-farm/mui-mas';
 
 export const mainRoutes: NavRoutes = {
   primary: [{
