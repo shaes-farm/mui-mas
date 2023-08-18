@@ -20,7 +20,7 @@ const ErrorComponent = () => {
 describe('ErrorBoundary component', () => {
   afterEach(cleanup);
   
-  it('should render an ErrorBoundary', () => {
+  it('should render a component inside of an ErrorBoundary', () => {
     const component = render(
       <ErrorBoundary key='error-boundary-unit-test'>
         <ErrorComponent />
