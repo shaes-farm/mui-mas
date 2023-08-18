@@ -30,7 +30,6 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
       case 'password': return 'Sign In';
       case 'signup': return 'Sign Up';
       case 'recover': return 'Password Recovery';
-      default: return '';
     }
   }, [view]);
 
