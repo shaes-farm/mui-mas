@@ -7,7 +7,7 @@ export interface Config {
 
 export const defaultConfig: Config = {
   app: {
-    title: 'Create Next App',
+    title: 'Mui Mas!',
     description: 'An example of the MUI Mas package used in Next.js',
     icon: faker.image.url({height: 128, width: 128}),
     logo: {
