@@ -53,7 +53,6 @@ After installing `nvm`, and cloning the `mui-mas` repository, the component libr
 cd mui-mas
 nvm use
 npm i
-npm run verify
 npm link
 cd example
 npm i
