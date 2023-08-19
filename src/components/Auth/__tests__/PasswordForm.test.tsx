@@ -41,7 +41,10 @@ describe('PasswordForm', () => {
         signUpUrl = '/sign-in',
         recoverUrl = '/recover';
 
-  afterEach(cleanup);
+  afterEach(() => {
+    jest.clearAllMocks();
+    cleanup();
+  });
 
   it('should render a PasswordForm', () => {
     const component = render(
@@ -58,7 +61,13 @@ describe('PasswordForm', () => {
   });
 
   it('should accept user email and password to sign in', async () => {
-    const component = render(<PasswordForm signIn={signIn} signUpUrl={signUpUrl} forgotPasswordUrl={recoverUrl} />);
+    const component = render(
+      <PasswordForm
+        signIn={signIn}
+        signUpUrl={signUpUrl}
+        forgotPasswordUrl={recoverUrl}
+      />
+    );
     expect(component).toBeDefined();
 
     const emailInput = component.getByLabelText(/Email Address/u);
@@ -86,6 +95,43 @@ describe('PasswordForm', () => {
       email,
       password,
       remember: false
+    });
+  });
+
+  it('should remember the user when the checkbox is clicked', async () => {
+    const component = render(<PasswordForm signIn={signIn} signUpUrl={signUpUrl} forgotPasswordUrl={recoverUrl} />);
+    expect(component).toBeDefined();
+
+    const emailInput = component.getByLabelText(/Email Address/u);
+    expect(emailInput).toBeDefined();
+
+    const passwordInput = component.getByLabelText(/Password/u);
+    expect(passwordInput).toBeDefined();
+
+    const email = faker.internet.email();
+    const password = faker.lorem.word();
+
+    await user.click(emailInput);
+    await user.keyboard(email);
+
+    await user.click(passwordInput);
+    await user.keyboard(password);
+
+    const rememberMeCheck = component.getByLabelText(/Remember me/u);
+    expect(rememberMeCheck).toBeDefined();
+
+    await user.click(rememberMeCheck);
+
+    const button = component.getByText(/Sign In/u);
+    expect(button).toBeDefined();
+
+    await user.click(button);
+
+    expect(signIn).toHaveBeenCalledTimes(1);
+    expect(signIn).toHaveBeenCalledWith({
+      email,
+      password,
+      remember: true
     })
   });
 

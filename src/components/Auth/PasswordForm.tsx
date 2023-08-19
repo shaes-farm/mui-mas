@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import {
   Avatar,
@@ -40,10 +39,12 @@ export const PasswordForm: React.FC<PasswordFormProps> = ({
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const credentials: Credentials = {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      email: data.get('email')?.toString(),
+      email: data.get('email').toString(),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      password: data.get('password')?.toString(),
+      password: data.get('password').toString(),
       remember: data.get('remember') ? true : false,
     };
     signIn(credentials);

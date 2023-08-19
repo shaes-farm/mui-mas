@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import type {AppConfig} from './_types';
 import {AppBar} from '../AppBar';
@@ -80,13 +81,11 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
             aria-label="open drawer"
             onClick={toggleDrawer}
             sx={{
-              padding: 0,
-              marginLeft: -3,
-              marginRight: '2px',
+              marginRight: '36px',
               ...(open && { display: 'none' }),
             }}
           >
-            <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" width={46} height={46} />
+            <MenuIcon />
           </IconButton>
           {/* Search Input Form */}
           {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={router} />}
@@ -110,17 +109,6 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
             px: [1],
           }}
         >
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={toggleDrawer}
-            sx={{
-              marginRight: '5px',
-              ...(!open && { display: 'none' }),
-            }}
-          >
-            <Image src={config.app.logo.contrast ?? config.app.logo.main} alt="Brand Logo" width={46} height={46} />
-          </IconButton>
           <IconButton aria-label="close drawer" onClick={toggleDrawer}>
             <ChevronLeftIcon />
           </IconButton>
@@ -140,6 +128,7 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
           overflow: 'auto',
         }}
       >
+        <Toolbar />
         {children}
       </Box>
     </Box>

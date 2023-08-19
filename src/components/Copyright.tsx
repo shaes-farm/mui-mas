@@ -17,6 +17,7 @@ export interface CopyrightProps {
    */
   year: number
 }
+
 const CopyrightBase: React.FC<CopyrightProps> = ({holder, year, url, ...typoProps}) => {
   const currentYear = new Date().getFullYear();
 
