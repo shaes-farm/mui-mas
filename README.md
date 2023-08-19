@@ -10,30 +10,30 @@ A Material UI-based component library for SHAES Farm's applications.
 
 ## Getting Started
 
-This package is intended for use by SHAES Farm's applications to ease the integration of our platform requirements. We currently use the following technology stack in our application suite (__we are not affiliated with any of these projects__):
+This package is intended for use by SHAES Farm's applications to ease the integration of our platform requirements. We currently use the following technology stack in our application suite (*we are not affiliated with any of these projects*):
 
 - [React](https://react.dev/)
 - [Material UI](https://mui.com/material-ui/)
-- [Next.js 13+](https://nextjs.org/)
+- [Next.js](https://nextjs.org/)
 - [Supabase](https://supabase.com/)
 
 ```sh
-$ pnpm create next-app myapp \
-    --app \
-    --eslint \
-    --src-dir \
-    --typescript \
-    --use-pnpm
+pnpm create next-app myapp \
+  --app \
+  --eslint \
+  --src-dir \
+  --typescript \
+  --use-pnpm
   ...
-$ cd myapp
-$ pnpm add @shaes-farm/mui-mas
+cd myapp
+pnpm add @shaes-farm/mui-mas
 ```
 
 ## Motivation
 
-In Spanish "mui mas" means "much more", and that's what we've built with this component library; much more than the basic set of Material UI components.
+In Spanish "mui mas" means "much more", and that's what we provide with this component library; much more than the basic set of Material UI components.
 
-We've developed an opinionated set of React components based on MUI that allow us to construct functionality needed by our applications, integrated with MUI, Supabase, and Next. With <code>mui-mas</code> we can scaffold an app in minutes, instead of hours, and get functional applications more quickly, customized to our workflows.
+We've developed an opinionated set of React components based on [MUI templates](https://mui.com/material-ui/getting-started/templates/) that allow us to quickly construct functionality needed by our applications, with built-in support for MUI, Supabase, and Next.js. With <code>mui-mas</code> we can scaffold an app in minutes, instead of hours, and get functional applications more quickly, customized to our workflows.
 
 ## Early Release
 
