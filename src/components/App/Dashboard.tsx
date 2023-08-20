@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
@@ -18,7 +17,7 @@ import {useProfile} from '../../providers/Profile';
 import {ProfileButton} from '../ProfileButton';
 import {NewItemsMenuButton} from '../NewItemsMenuButton';
 
-export interface AppShellProps {
+export interface DashboardProps {
   /**
    * Toolbar routes. The primary routes render as horizontal menu items, secondary
    * routes as user profile menu, and tertiary routes as an add items menu.
@@ -47,14 +46,14 @@ export interface AppShellProps {
    * A React node (an element, a string, a number, a portal, an empty node like null, undefined and booleans, or an array of other React nodes). Specifies the content inside the component. When you use JSX, you will usually specify the children prop implicitly by nesting tags like <div><span /></div>.
    * @see https://react.dev/reference/react-dom/components/common#common-props
    */
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 /**
- * Application shell component provides an AppBar containing a toolbar across the
- * top of the window with a collapsible drawer holding a navigation sidebar.
+ * The Dashboard component provides an AppBar containing a Toolbar across the
+ * top of the window, and a collapsible drawer containing a navigation sidebar.
  */
-export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, config, drawerOpen = true, children}) => {
+export const Dashboard: React.FC<DashboardProps> = ({toolbar, routes, router, config, drawerOpen = true, children}) => {
   const [open, setOpen] = useState<boolean>(drawerOpen);
   const {profile} = useProfile();
 
@@ -135,4 +134,4 @@ export const AppShell: React.FC<AppShellProps> = ({toolbar, routes, router, conf
   );
 };
 
-export default AppShell;
+export default Dashboard;

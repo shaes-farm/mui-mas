@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import {
-  AppShell,
+  Dashboard,
   Copyright,
   NavRoute,
   NavRouter,
@@ -19,7 +19,7 @@ import {mainRoutes, toolBarRoutes} from '@/config/routes';
 import {defaultConfig} from '@/config/app-config';
 import {userProfile} from '@/config/user-profile';
 
-export default function Dashboard() {
+export default function Page() {
   const [profile, setProfile] = React.useState<Profile>(userProfile);
   const nextRouter = useRouter();
   const router: NavRouter = (route: NavRoute) => {
@@ -33,7 +33,7 @@ export default function Dashboard() {
 
   return (
     <ProfileProvider profile={profile} setProfile={setProfile} >
-      <AppShell
+      <Dashboard
         config={defaultConfig}
         router={router}
         routes={mainRoutes}
@@ -81,7 +81,7 @@ export default function Dashboard() {
             sx={{ pt: 4 }}
           />
         </Container>
-      </AppShell>
+      </Dashboard>
     </ProfileProvider>
   );
 }
