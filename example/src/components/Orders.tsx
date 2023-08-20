@@ -37,12 +37,13 @@ const createOrder = (overrides: Partial<Order> = {}): Order => {
 }
 
 const rows: Order[] = [];
+const orders = faker.number.int({min: 5, max: 10});
 
-for (let id = 0; id < faker.number.int({max:10}); id++) {
+for (let id = 0; id < orders; id++) {
   rows.push(createOrder({id}));
 }
 
-export default function Orders() {
+export const Orders = () => {
   return (
     <>
       <Title>Recent Orders</Title>
@@ -78,4 +79,6 @@ export default function Orders() {
       </Link>
     </>
   );
-}
+};
+
+export default Orders;

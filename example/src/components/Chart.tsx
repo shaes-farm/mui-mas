@@ -8,6 +8,7 @@ import {Title} from '@shaes-farm/mui-mas';
 function createData(time: string, amount?: number) {
   return { time, amount };
 }
+
 let amount = 0;
 
 const data = [
@@ -19,14 +20,14 @@ const data = [
   createData('15:00', amount += faker.number.int(1000)),
   createData('18:00', amount += faker.number.int(1000)),
   createData('21:00', amount += faker.number.int(1000)),
-  createData('24:00', undefined),
+  createData('24:00', amount += faker.number.int(1000)),
 ];
 
-export default function Chart() {
+export const Chart = () => {
   const theme = useTheme();
 
   return (
-    <React.Fragment>
+    <>
       <Title>Today</Title>
       <ResponsiveContainer>
         <LineChart
@@ -68,6 +69,8 @@ export default function Chart() {
           />
         </LineChart>
       </ResponsiveContainer>
-    </React.Fragment>
+    </>
   );
-}
+};
+
+export default Chart;

@@ -3,10 +3,6 @@ import Typography from '@mui/material/Typography';
 import {faker} from '@faker-js/faker';
 import {Link, Title} from '@shaes-farm/mui-mas';
 
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
-
 const amount = faker.finance.amount(1000, 10000, 2, '$');
 const date = faker.date.recent({days: 30});
 
@@ -20,7 +16,11 @@ export const Deposits = () => (
       on {date.toLocaleDateString()}
     </Typography>
     <div>
-      <Link color="primary" href="#" onClick={preventDefault}>
+      <Link
+        color="primary"
+        href="#"
+        onClick={(event: React.MouseEvent) => event.preventDefault()}
+      >
         View balance
       </Link>
     </div>
