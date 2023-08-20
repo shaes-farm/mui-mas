@@ -44,6 +44,8 @@ for (let id = 0; id < orders; id++) {
 }
 
 export const Orders = () => {
+  const [orders] = React.useState<Order[]>(rows);
+
   return (
     <>
       <Title>Recent Orders</Title>
@@ -58,13 +60,13 @@ export const Orders = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell align="right">{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+          {orders.map((order) => (
+            <TableRow key={order.id}>
+              <TableCell>{order.date}</TableCell>
+              <TableCell>{order.name}</TableCell>
+              <TableCell>{order.shipTo}</TableCell>
+              <TableCell align="right">{order.paymentMethod}</TableCell>
+              <TableCell align="right">{`$${order.amount}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
