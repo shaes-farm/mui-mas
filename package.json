@@ -10,12 +10,12 @@
     "doc": "docs"
   },
   "engines": {
-    "node": "^16 || ^18"
+    "node": "^16 || ^18 || ^20"
   },
   "scripts": {
     "start": "env NODE_ENV=production node ./build/dist/index.js",
-    "build": "npm run verify && tsc --verbose",
-    "clean": "tsc --clean",
+    "build": "tsc",
+    "clean": "tsc --build --clean",
     "dev": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -92,7 +92,7 @@
     "@fontsource/roboto": "5.0.5",
     "@mui/icons-material": "5.14.1",
     "@mui/lab": "5.0.0-alpha.135",
-    "@mui/material": "^5.14.2",
+    "@mui/material": "^5.14.1",
     "@supabase/auth-helpers-react": "0.4.1",
     "@supabase/supabase-js": "2.31.0",
     "clsx": "1.2.1",
