@@ -33,7 +33,7 @@ pnpm add @shaes-farm/mui-mas
 
 In Spanish "mui mas" means "much more", and that's what we provide with this component library; much more than the basic set of Material UI components.
 
-We've developed an opinionated set of React components based on [MUI templates](https://mui.com/material-ui/getting-started/templates/) that allow us to quickly construct functionality needed by our React applications, with built-in support for MUI, Next, and Supabase. With <code>mui-mas</code> we can scaffold an app in minutes, instead of hours, quickly getting functional applications up and customized to our workflows.
+We've developed a library of React components based on [MUI templates](https://mui.com/material-ui/getting-started/templates/) that allow us to construct applications with built-in support for MUI, Next, and Supabase. With <code>mui-mas</code> we can spike an app in minutes, instead of hours, quickly getting functional concepts up and customized to our design workflows.
 
 ## Early Release
 
@@ -46,6 +46,8 @@ You can help us make this library better by [creating a pull request](https://gi
 ## Development Environment Setup
 
 We use the [Node Version Manager](https://github.com/nvm-sh/nvm) to manage our Javascript development environments. See the [documentation](https://github.com/nvm-sh/nvm#installing-and-updating) for more information on installing `nvm` and getting set up.
+
+### Main Component Library 
 
 After installing `nvm`, and cloning the `mui-mas` repository, the component library and the example application are built. To run the example in a development environment, perform the following commands:
 
@@ -70,3 +72,16 @@ npm run dev
 ```
 
 This will start the Typescript compiler in watch mode, automatically building changes as they occur.
+
+### Storybook
+
+To start [Storybook](https://storybook.js.org/) run the following commands:
+
+```sh
+cd mui-mas
+nvm use
+npm i
+npm run storybook
+```
+
+Once running, visit [http://localhost:6006/](http://localhost:6006/) in your browser to open the storybook.
