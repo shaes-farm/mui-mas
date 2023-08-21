@@ -16,6 +16,8 @@ export default function App(props: AppProps<{
 
   return (
     <SessionContextProvider
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       supabaseClient={supabase}
       initialSession={initialSession}
     >
