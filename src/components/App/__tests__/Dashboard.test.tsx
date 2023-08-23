@@ -225,7 +225,7 @@ describe('Dashboard component', () => {
     await user.click(closeButton);
   });
 
-  it('should navigate to a primary route when a sidebar link is clicked', async () => {
+  it('should navigate to a route when a sidebar link is clicked', async () => {
     const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
         <Dashboard
@@ -239,13 +239,13 @@ describe('Dashboard component', () => {
 
     expect(dashboard).toBeDefined();
 
-    const link = dashboard.getByText(routes.primary[0].label as string);
+    const link = dashboard.getByText(routes[0].label as string);
     expect(link).toBeTruthy();
 
     await user.click(link);
 
     expect(router).toBeCalledTimes(1);
-    expect(router).toBeCalledWith(routes.primary[0]);
+    expect(router).toBeCalledWith(routes[0]);
   });
 
   it('should navigate to a toolbar route when an icon is clicked', async () => {
@@ -262,13 +262,13 @@ describe('Dashboard component', () => {
 
     expect(dashboard).toBeDefined();
 
-    const icon = dashboard.getByTestId(`${toolbar.primary[0].slug}-icon`);
+    const icon = dashboard.getByTestId(`${toolbar[0].slug}-icon`);
     expect(icon).toBeTruthy();
 
     await user.click(icon);
 
     expect(router).toBeCalledTimes(1);
-    expect(router).toBeCalledWith(toolbar.primary[0]);
+    expect(router).toBeCalledWith(toolbar[0]);
   });
 
   it('should render Dashboard in dark mode', () => {
@@ -292,46 +292,6 @@ describe('Dashboard component', () => {
           />
         </ProfileProvider>
       </ThemeProvider>
-    );
-
-    expect(dashboard).toBeDefined();
-  });
-
-  it('should render Dashboard with a search input on the AppBar', () => {
-    toolbar.tertiary = [{
-      slug: 'search-input',
-      icon: <React.Fragment />,
-      label: 'Search',
-      page: <React.Fragment />,
-    }];
-
-    const dashboard = render(
-      <ProfileProvider profile={profile} setProfile={setProfile}>
-        <Dashboard
-          toolbar={toolbar}
-          routes={routes}
-          router={router}
-          config={config}
-        />
-      </ProfileProvider>
-    );
-
-    expect(dashboard).toBeDefined();
-  });
-
-  it('should render Dashboard without a set of secondary and tertiary toolbar routes', () => {
-    delete toolbar.secondary;
-    delete toolbar.tertiary;
-
-    const dashboard = render(
-      <ProfileProvider profile={profile} setProfile={setProfile}>
-        <Dashboard
-          toolbar={toolbar}
-          routes={routes}
-          router={router}
-          config={config}
-        />
-      </ProfileProvider>
     );
 
     expect(dashboard).toBeDefined();

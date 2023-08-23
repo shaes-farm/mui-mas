@@ -14,26 +14,22 @@ export default meta;
 
 type Story = StoryObj<typeof Nav>;
 
-const routes: NavRoutes = {
-  primary: [{
-    slug: 'primary-item-1',
-    icon: 'icon',
-    label: 'Primary Item 1',
-    page: '/page-1',
-  }],
-  secondary: [{
-    slug: 'secondary-item-1',
-    icon: 'icon',
-    label: 'Secondary Item 1',
-    page: '/page-2',
-  }],
-  tertiary: [{
-    slug: 'tertiary-item-1',
-    icon: 'icon',
-    label: 'Tertiary Item 1',
-    page: '/page-3',
-  }],
-};
+const routes: NavRoutes = [{
+  slug: 'primary-item-1',
+  icon: 'icon',
+  label: 'Primary Item 1',
+  page: '/page-1',
+},{
+  slug: 'secondary-item-1',
+  icon: 'icon',
+  label: 'Secondary Item 1',
+  page: '/page-2',
+},{
+  slug: 'tertiary-item-1',
+  icon: 'icon',
+  label: 'Tertiary Item 1',
+  page: '/page-3',
+}];
 
 const router: NavRouter = (route: NavRoute) => console.log({route});
 

@@ -50,47 +50,39 @@ export default meta;
 
 type Story = StoryObj<typeof Dashboard>;
 
-const toolbar: NavRoutes = {
-  primary: [{
-    slug: 'primary-toolbar-item-1',
-    icon: <AdjustIcon />,
-    label: 'Primary Toolbar Item 1',
-    page: '/page-1',
-  }],
-  secondary: [{
-    slug: 'secondary-toolbar-item-1',
-    icon: <AccessibleForwardIcon />,
-    label: 'Secondary Toolbar Item 1',
-    page: '/page-2',
-  }],
-  tertiary: [{
-    slug: 'tertiary-toolbar-item-1',
-    icon: <BlindIcon />,
-    label: 'Tertiary Toolbar Item 1',
-    page: '/page-3',
-  }],
-};
+const toolbar: NavRoutes = [{
+  slug: 'primary-toolbar-item-1',
+  icon: <AdjustIcon />,
+  label: 'Primary Toolbar Item 1',
+  page: '/page-1',
+},{
+  slug: 'secondary-toolbar-item-1',
+  icon: <AccessibleForwardIcon />,
+  label: 'Secondary Toolbar Item 1',
+  page: '/page-2',
+},{
+  slug: 'tertiary-toolbar-item-1',
+  icon: <BlindIcon />,
+  label: 'Tertiary Toolbar Item 1',
+  page: '/page-3',
+}];
 
-const routes: NavRoutes = {
-  primary: [{
-    slug: 'primary-item-1',
-    icon: <AccessibilityNewIcon />,
-    label: 'Primary Item 1',
-    page: '/page-1',
-  }],
-  secondary: [{
-    slug: 'secondary-item-1',
-    icon: <AccountBalanceIcon />,
-    label: 'Secondary Item 1',
-    page: '/page-2',
-  }],
-  tertiary: [{
-    slug: 'tertiary-item-1',
-    icon: <AllInclusiveIcon />,
-    label: 'Tertiary Item 1',
-    page: '/page-3',
-  }],
-};
+const routes: NavRoutes = [{
+  slug: 'primary-item-1',
+  icon: <AccessibilityNewIcon />,
+  label: 'Primary Item 1',
+  page: '/page-1',
+},{
+  slug: 'secondary-item-1',
+  icon: <AccountBalanceIcon />,
+  label: 'Secondary Item 1',
+  page: '/page-2',
+},{
+  slug: 'tertiary-item-1',
+  icon: <AllInclusiveIcon />,
+  label: 'Tertiary Item 1',
+  page: '/page-3',
+}];
 
 const router = (route: NavRoute) => console.log({route});
 
@@ -105,7 +97,7 @@ const config = {
     },
     copyright: {
       holder: 'Holder of the IP',
-      year: 1995,
+      year: 2012,
       url: 'https://example.com',
     },
     pages: {
