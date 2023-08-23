@@ -1,16 +1,15 @@
 import React from 'react';
 import {cleanup, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import {faker} from '@faker-js/faker';
 
-import type {NavRoute, NavRouter} from '../Nav';
+import type {NavRoutes, NavRouter} from '../Nav';
 import NewItemsMenuButton from '../NewItemsMenuButton';
-import { faker } from '@faker-js/faker';
 
 const user = userEvent.setup();
 
 describe('NewItemsMenuButton component', () => {
-  let newItemsMenuButton: any,
-      menu: Array<NavRoute>,
+  let menu: NavRoutes,
       router: NavRouter;
 
   beforeAll(() => {
@@ -35,17 +34,15 @@ describe('NewItemsMenuButton component', () => {
     router = jest.fn();
   });
 
-  beforeEach(() => {
-    newItemsMenuButton = render(<NewItemsMenuButton router={router} routes={menu} />);
-  });
-
   afterEach(cleanup);
 
   it('should render a NewItemsMenuButton', () => {
+    const newItemsMenuButton = render(<NewItemsMenuButton router={router} routes={menu} />);
     expect(newItemsMenuButton).toBeDefined();
   });
 
   it('should open a menu when the "new items" button is clicked', async () => {
+    const newItemsMenuButton = render(<NewItemsMenuButton router={router} routes={menu} />);
     expect(newItemsMenuButton).toBeDefined();
 
     const initialMenu = newItemsMenuButton.queryByRole('menu');
@@ -59,6 +56,7 @@ describe('NewItemsMenuButton component', () => {
   });
 
   it('should navigate to a route and close the menu when an item is selected', async () => {
+    const newItemsMenuButton = render(<NewItemsMenuButton router={router} routes={menu} />);
     expect(newItemsMenuButton).toBeDefined();
 
     const button = newItemsMenuButton.getByLabelText(/new items/u);
@@ -67,7 +65,7 @@ describe('NewItemsMenuButton component', () => {
     const newItemsMenu = newItemsMenuButton.queryByRole('menu');
     expect(newItemsMenu).not.toBeNull();
 
-    const menuItem = await newItemsMenuButton.getByText(menu[0].label);
+    const menuItem = await newItemsMenuButton.getByText(menu[0].label as string);
     await user.click(menuItem);
 
     expect(router).toHaveBeenCalledTimes(1);
