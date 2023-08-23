@@ -21,7 +21,7 @@ describe('NewItemsMenuButton component', () => {
       hotkey: faker.lorem.word({length: 1}),
       page: <React.Fragment />,
     },{
-      slug: 'div',
+      slug: 'divider-mid-menu',
       icon: <React.Fragment />,
       label: faker.lorem.words(),
       page: <React.Fragment />,
