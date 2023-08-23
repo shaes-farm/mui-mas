@@ -27,23 +27,9 @@ export interface NavRoute {
 }
 
 /**
- * Three arrays of navigation routes (primary, secondary, and tertiary), that are interpreted according
- * to the layout of the component to which they are provided.
+ * An array of navigation routes that can be passed to the Nav and other components.
  */
-export interface NavRoutes {
-  /**
-   * The array of primary routes.
-   */
-  primary: Array<NavRoute>
-  /**
-   * The array of secondary routes.
-   */
-  secondary?: Array<NavRoute>
-  /**
-   * The array of tertiary routes.
-   */
-  tertiary?: Array<NavRoute>
-}
+export type NavRoutes = NavRoute[];
 
 /**
  * A model router used to perform the navigation among routes, this can be implemented using any standard or customized routers.

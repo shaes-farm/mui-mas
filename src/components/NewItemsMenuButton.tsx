@@ -11,14 +11,14 @@ import ListItemText from '@mui/material/ListItemIcon';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
-import type { NavRoute, NavRouter } from './Nav';
+import type { NavRoutes, NavRouter } from './Nav';
 
 export interface NewItemsMenuButtonProps extends Partial<MenuProps> {
   /**
    * An array of routes rendered as a Menu component.
    * @see https://mui.com/material-ui/react-menu/
    */
-  routes: NavRoute[];
+  routes: NavRoutes;
   /**
    * The router used to perform the navigation.
    */
@@ -70,7 +70,7 @@ export const NewItemsMenuButton: React.FC<NewItemsMenuButtonProps> = ({routes, r
         open={Boolean(anchorEl)}
         onClose={closeNewMenu}
       >
-        {routes && routes.map((route) => (route.slug === 'div' ?
+        {routes && routes.map((route) => (route.slug.match(/^divider-/u) ?
           <Divider key={Symbol(route.slug).toString()} />
         :
           <MenuItem key={route.slug} onClick={() => {

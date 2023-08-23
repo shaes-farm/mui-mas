@@ -4,9 +4,11 @@ import userEvent from '@testing-library/user-event';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
+import type {NavRouter, NavRoutes} from '../../Nav';
+import {NewItemsMenuButton} from '../../NewItemsMenuButton';
 import type {Profile} from '../../../providers/Profile';
 import {ProfileProvider} from '../../../providers/Profile';
-import type {NavRouter, NavRoutes} from '../../Nav';
+import {ProfileButton} from '../../ProfileButton';
 
 import type {AppConfig} from '../_types';
 import Dashboard from '../Dashboard';
@@ -22,6 +24,8 @@ describe('Dashboard component', () => {
   let profile: Profile,
       setProfile: (profile: Profile) => void,
       toolbar: NavRoutes,
+      newItemsMenu: NavRoutes,
+      profileMenu: NavRoutes,
       routes: NavRoutes,
       router: NavRouter,
       config: Config;
@@ -39,64 +43,104 @@ describe('Dashboard component', () => {
 
     setProfile = jest.fn();
 
-    toolbar = {
-      primary: [{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        hotkey: faker.string.alpha(1),
-        page: <React.Fragment />,
-      },{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        page: <React.Fragment />,
-      }],
-      secondary: [{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        hotkey: faker.string.alpha(1),
-        page: <React.Fragment />,
-      },{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        page: <React.Fragment />,
-      }],
-      tertiary: [{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        hotkey: faker.string.alpha(1),
-        page: <React.Fragment />,
-      },{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        page: <React.Fragment />,
-      }],
-    };
+    newItemsMenu = [{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    }];
 
-    routes = {
-      primary: [{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        hotkey: faker.string.alpha(1),
-        page: <React.Fragment />,
-      },{
-        slug: ':divider:',
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        page: <React.Fragment />,
-      },{
-        slug: faker.lorem.slug(),
-        icon: <React.Fragment />,
-        label: faker.lorem.words(),
-        page: <React.Fragment />,
-      }]
-    };
+    profileMenu = [{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    }];
+
+    toolbar = [{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    },{
+      slug: 'new-items-menu',
+      icon: <NewItemsMenuButton routes={newItemsMenu} router={router} />,
+      page: null,
+    },{
+      slug: 'profile-menu',
+      icon: <ProfileButton routes={profileMenu} router={router} profile={profile} />,
+      page: null,
+    }];
+
+    routes = [{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      hotkey: faker.string.alpha(1),
+      page: <React.Fragment />,
+    },{
+      slug: 'divider-primary',
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    },{
+      slug: faker.lorem.slug(),
+      icon: <React.Fragment />,
+      label: faker.lorem.words(),
+      page: <React.Fragment />,
+    }];
 
     router = jest.fn();
 

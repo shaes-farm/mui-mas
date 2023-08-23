@@ -27,42 +27,18 @@ export interface NavProps extends ListProps {
 export const Nav: React.FC<NavProps> = ({routes, router, ...listProps}) => {
   return (
     <List component="nav" {...listProps}>
-      {routes.primary.map((route: NavRoute) => (
-        route.slug.match(/^header-/u) ?
-          <ListSubheader key={route.slug} component="div" inset>
-            {route.label}
-          </ListSubheader>:
-          <ListItemButton key={route.slug} onClick={() => router(route)}>
-            <ListItemIcon>
-              {route.icon}
-            </ListItemIcon>
-            <ListItemText primary={route.label} />
-          </ListItemButton>
-      ))}
-      {routes.secondary && <Divider sx={{ my: 1 }} />}
-      {routes.secondary && routes.secondary.map((route) => (
-        route.slug.match(/^header-/u) ?
-          <ListSubheader key={route.slug} component="div" inset>
-            {route.label}
-          </ListSubheader>:
-          <ListItemButton key={route.slug} onClick={() => router(route)}>
-            <ListItemIcon>
-              {route.icon}
-            </ListItemIcon>
-            <ListItemText primary={route.label} />
-          </ListItemButton>
-      ))}
-      {routes.tertiary && <Divider sx={{ my: 1 }} />}
-      {routes.tertiary && routes.tertiary.map((route) => (
-        route.slug.match(/^header-/u) ?
-          <ListSubheader key={route.slug} component="div" inset>
-            {route.label}
-          </ListSubheader>:
-          <ListItemButton key={route.slug} onClick={() => router(route)}>
-            <ListItemIcon>
-              {route.icon}
-            </ListItemIcon>
-            <ListItemText primary={route.label} />
+      {routes.map((route: NavRoute) => (
+        route.slug.match(/^divider-/u) ?
+          <Divider key={route.slug} sx={{my: 1}} /> :
+          route.slug.match(/^header-/u) ?
+            <ListSubheader key={route.slug} component="div" inset>
+              {route.label}
+            </ListSubheader> :
+            <ListItemButton key={route.slug} onClick={() => router(route)}>
+              <ListItemIcon>
+                {route.icon}
+              </ListItemIcon>
+              <ListItemText primary={route.label} />
           </ListItemButton>
       ))}
     </List>

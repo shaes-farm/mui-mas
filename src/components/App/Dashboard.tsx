@@ -14,9 +14,6 @@ import {Nav, NavRoute, NavRouter, NavRoutes} from '../Nav';
 import {SearchInput} from '../SearchInput';
 import {useProfile} from '../../providers/Profile';
 
-import {ProfileButton} from '../ProfileButton';
-import {NewItemsMenuButton} from '../NewItemsMenuButton';
-
 export interface DashboardProps {
   /**
    * Toolbar routes. The primary routes render as horizontal menu items, secondary
@@ -87,16 +84,14 @@ export const Dashboard: React.FC<DashboardProps> = ({toolbar, routes, router, co
             <MenuIcon />
           </IconButton>
           {/* Search Input Form */}
-          {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={router} />}
-          <Box sx={{ flexGrow: 1 }} />
+          {/* {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={router} />} */}
+          {/* <Box sx={{ flexGrow: 1 }} /> */}
           {/* Toolbar Icons / Routes */}
-          {toolbar.primary.map((route: NavRoute) =>
+          {toolbar.map((route: NavRoute) =>
             <IconButton data-testid={`${route.slug}-icon`} key={route.slug} color="inherit" onClick={() => router(route)}>
               {route.icon}
             </IconButton>
           )}
-          <NewItemsMenuButton routes={toolbar.tertiary ?? []} router={router} />
-          <ProfileButton routes={toolbar.secondary ?? []} router={router} profile={profile} />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
