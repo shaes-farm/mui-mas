@@ -2,10 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import {ErrorBoundary} from 'react-error-boundary';
 
 import type {AppConfig} from '../App';
 import Copyright from '../Copyright';
-import ErrorBoundary from '../ErrorBoundary';
+import SnackBarAlert from '../SnackBarAlert';
 
 import {Auth} from './Auth';
 import type {
@@ -13,6 +14,13 @@ import type {
   RecoverPasswordInfo,
   SignUpInfo
 } from './_types';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const fallbackRender = ({error, resetErrorBoundary}) => {
+  return <SnackBarAlert message={error.message} clear={() => ''} />;
+};
 
 export interface AuthShellProps {
   config: {
@@ -34,7 +42,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
   }, [view]);
 
   return (
-    <ErrorBoundary key='auth-shell-error-boundary'>
+    <ErrorBoundary fallbackRender={fallbackRender} key='auth-shell-error-boundary'>
       <Grid
         container
         component="main"
@@ -49,7 +57,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
         }}
       >
         <Head>
-          <title>{title}{' :: '}{config.app.title}</title>
+          <title>{title}{' - '}{config.app.title}</title>
           <meta name="description" content={config.app.description} />
           <link rel="icon" href={config.app.icon} />
         </Head>
@@ -72,14 +80,19 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
             type={view}
             title={title}
             subTitle={`Welcome to ${config.app.title}`}
-            signInUrl={config.app.pages.signin}
-            signUpUrl={config.app.pages.signup}
-            recoverPasswordUrl={config.app.pages.recovery}
             signIn={signIn}
+            signInUrl={config.app.pages.signin}
             signUp={signUp}
+            signUpUrl={config.app.pages.signup}
             recoverPassword={recoverPassword}
+            recoverPasswordUrl={config.app.pages.recovery}
           />
-          <Copyright holder={config.app.copyright.holder} url={config.app.copyright.url} year={config.app.copyright.year}  sx={{ mt: 5 }} />
+          <Copyright
+            holder={config.app.copyright.holder}
+            url={config.app.copyright.url}
+            year={config.app.copyright.year}
+            sx={{ mt: 5 }}
+          />
         </Grid>
       </Grid>
     </ErrorBoundary>
