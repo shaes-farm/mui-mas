@@ -12,7 +12,7 @@ export interface SnackBarAlertProps {
 }
 
 export const SnackBarAlert: React.FC<SnackBarAlertProps> = ({ message, severity = 'error', clear, autoHide = 6000 }) => {
-  const handleClose = (/* event?: React.SyntheticEvent | Event, reason?: string */) => {
+  const handleClose = () => {
     clear();
   }
 
