@@ -90,7 +90,7 @@
     "@emotion/styled": "11.11.0",
     "@fontsource/material-icons": "5.0.5",
     "@fontsource/roboto": "5.0.5",
-    "@mui/icons-material": "5.14.1",
+    "@mui/icons-material": "5.14.3",
     "@mui/lab": "5.0.0-alpha.135",
     "@mui/material": "^5.14.3",
     "@supabase/auth-helpers-react": "0.4.1",
