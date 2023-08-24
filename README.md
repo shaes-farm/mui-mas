@@ -18,7 +18,7 @@ This package is intended for use by SHAES Farm's applications to ease the integr
 - [Supabase](https://supabase.com/)
 
 ```sh
-pnpm create next-app myapp \
+npx create-next-app@latest myapp \
   --app \
   --eslint \
   --src-dir \
@@ -26,7 +26,7 @@ pnpm create next-app myapp \
   --use-pnpm
   ...
 cd myapp
-pnpm add @shaes-farm/mui-mas
+npm install @shaes-farm/mui-mas
 ```
 
 ## Motivation
