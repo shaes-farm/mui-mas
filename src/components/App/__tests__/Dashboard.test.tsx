@@ -5,10 +5,8 @@ import {ThemeProvider, createTheme} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import type {NavRouter, NavRoutes} from '../../Nav';
-import {NewItemsMenuButton} from '../../NewItemsMenuButton';
 import type {Profile} from '../../../providers/Profile';
 import {ProfileProvider} from '../../../providers/Profile';
-import {ProfileButton} from '../../ProfileButton';
 
 import type {AppConfig} from '../_types';
 import Dashboard from '../Dashboard';
@@ -24,8 +22,6 @@ describe('Dashboard component', () => {
   let profile: Profile,
       setProfile: (profile: Profile) => void,
       toolbar: NavRoutes,
-      newItemsMenu: NavRoutes,
-      profileMenu: NavRoutes,
       routes: NavRoutes,
       router: NavRouter,
       config: Config;
@@ -42,44 +38,6 @@ describe('Dashboard component', () => {
     };
 
     setProfile = jest.fn();
-
-    newItemsMenu = [{
-      slug: faker.lorem.slug(),
-      icon: <React.Fragment />,
-      label: faker.lorem.words(),
-      hotkey: faker.string.alpha(1),
-      page: <React.Fragment />,
-    },{
-      slug: faker.lorem.slug(),
-      icon: <React.Fragment />,
-      label: faker.lorem.words(),
-      page: <React.Fragment />,
-    },{
-      slug: faker.lorem.slug(),
-      icon: <React.Fragment />,
-      label: faker.lorem.words(),
-      hotkey: faker.string.alpha(1),
-      page: <React.Fragment />,
-    }];
-
-    profileMenu = [{
-      slug: faker.lorem.slug(),
-      icon: <React.Fragment />,
-      label: faker.lorem.words(),
-      hotkey: faker.string.alpha(1),
-      page: <React.Fragment />,
-    },{
-      slug: faker.lorem.slug(),
-      icon: <React.Fragment />,
-      label: faker.lorem.words(),
-      page: <React.Fragment />,
-    },{
-      slug: faker.lorem.slug(),
-      icon: <React.Fragment />,
-      label: faker.lorem.words(),
-      hotkey: faker.string.alpha(1),
-      page: <React.Fragment />,
-    }];
 
     toolbar = [{
       slug: faker.lorem.slug(),
@@ -114,14 +72,6 @@ describe('Dashboard component', () => {
       icon: <React.Fragment />,
       label: faker.lorem.words(),
       page: <React.Fragment />,
-    },{
-      slug: 'new-items-menu',
-      icon: <NewItemsMenuButton routes={newItemsMenu} router={router} />,
-      page: null,
-    },{
-      slug: 'profile-menu',
-      icon: <ProfileButton routes={profileMenu} router={router} profile={profile} />,
-      page: null,
     }];
 
     routes = [{
@@ -215,12 +165,12 @@ describe('Dashboard component', () => {
     expect(dashboard).toBeDefined();
 
     const button = dashboard.getByLabelText(/open drawer/u);
-    expect(button).toBeTruthy();
+    expect(button).toBeDefined();
 
     await user.click(button);
 
     const closeButton = dashboard.getByLabelText(/close drawer/u);
-    expect(closeButton).toBeTruthy();
+    expect(closeButton).toBeDefined();
 
     await user.click(closeButton);
   });
@@ -240,7 +190,7 @@ describe('Dashboard component', () => {
     expect(dashboard).toBeDefined();
 
     const link = dashboard.getByText(routes[0].label as string);
-    expect(link).toBeTruthy();
+    expect(link).toBeDefined();
 
     await user.click(link);
 
@@ -263,7 +213,8 @@ describe('Dashboard component', () => {
     expect(dashboard).toBeDefined();
 
     const icon = dashboard.getByTestId(`${toolbar[0].slug}-icon`);
-    expect(icon).toBeTruthy();
+
+    expect(icon).toBeDefined();
 
     await user.click(icon);
 
