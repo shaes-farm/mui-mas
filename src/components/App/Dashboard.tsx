@@ -11,8 +11,6 @@ import type {AppConfig} from './_types';
 import {AppBar} from '../AppBar';
 import {Drawer} from '../Drawer';
 import {Nav, NavRoute, NavRouter, NavRoutes} from '../Nav';
-import {SearchInput} from '../SearchInput';
-import {useProfile} from '../../providers/Profile';
 
 export interface DashboardProps {
   /**
@@ -52,7 +50,6 @@ export interface DashboardProps {
  */
 export const Dashboard: React.FC<DashboardProps> = ({toolbar, routes, router, config, drawerOpen = true, children}) => {
   const [open, setOpen] = useState<boolean>(drawerOpen);
-  const {profile} = useProfile();
 
   const toggleDrawer = () => {
     setOpen(!open);
@@ -83,15 +80,13 @@ export const Dashboard: React.FC<DashboardProps> = ({toolbar, routes, router, co
           >
             <MenuIcon />
           </IconButton>
-          {/* Search Input Form */}
-          {/* {toolbar.tertiary && toolbar.tertiary[0].slug === 'search-input' && <SearchInput route={toolbar.tertiary[0]} router={router} />} */}
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
-          {/* Toolbar Icons / Routes */}
-          {toolbar.map((route: NavRoute) =>
-            <IconButton data-testid={`${route.slug}-icon`} key={route.slug} color="inherit" onClick={() => router(route)}>
-              {route.icon}
-            </IconButton>
-          )}
+          { /* Toolbar Icons / Routes */
+            toolbar.map((route: NavRoute) =>
+              <IconButton data-testid={`${route.slug}-icon`} key={route.slug} color="inherit" onClick={() => router(route)}>
+                {route.icon}
+              </IconButton>
+            )
+          }
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
