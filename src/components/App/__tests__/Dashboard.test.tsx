@@ -9,7 +9,7 @@ import {ProfileProvider} from '../../../providers/Profile';
 import type {NavRouter, NavRoutes} from '../../Nav';
 
 import type {AppConfig} from '../_types';
-import AppShell from '../AppShell';
+import Dashboard from '../Dashboard';
 import { faker } from '@faker-js/faker';
 
 const user = userEvent.setup();
@@ -18,7 +18,7 @@ type Config = {
   app: AppConfig;
 }
 
-describe('AppShell component', () => {
+describe('Dashboard component', () => {
   let profile: Profile,
       setProfile: (profile: Profile) => void,
       toolbar: NavRoutes,
@@ -125,10 +125,10 @@ describe('AppShell component', () => {
 
   afterEach(cleanup);
 
-  it('should render AppShell', () => {
-    const appShell = render(
+  it('should render Dashboard', () => {
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -137,13 +137,13 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
   });
 
-  it('should render the AppShell with the drawer closed', async () => {
-    const appShell = render(
+  it('should render the Dashboard with the drawer closed', async () => {
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -153,13 +153,13 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
   });
 
-  it('should toggle the AppShell drawer open and closed', async () => {
-    const appShell = render(
+  it('should toggle the Dashboard drawer open and closed', async () => {
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -168,23 +168,23 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
 
-    const button = appShell.getByLabelText(/open drawer/u);
+    const button = dashboard.getByLabelText(/open drawer/u);
     expect(button).toBeTruthy();
 
     await user.click(button);
 
-    const closeButton = appShell.getByLabelText(/close drawer/u);
+    const closeButton = dashboard.getByLabelText(/close drawer/u);
     expect(closeButton).toBeTruthy();
 
     await user.click(closeButton);
   });
 
   it('should navigate to a primary route when a sidebar link is clicked', async () => {
-    const appShell = render(
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -193,9 +193,9 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
 
-    const link = appShell.getByText(routes.primary[0].label as string);
+    const link = dashboard.getByText(routes.primary[0].label as string);
     expect(link).toBeTruthy();
 
     await user.click(link);
@@ -205,9 +205,9 @@ describe('AppShell component', () => {
   });
 
   it('should navigate to a toolbar route when an icon is clicked', async () => {
-    const appShell = render(
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -216,9 +216,9 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
 
-    const icon = appShell.getByTestId(`${toolbar.primary[0].slug}-icon`);
+    const icon = dashboard.getByTestId(`${toolbar.primary[0].slug}-icon`);
     expect(icon).toBeTruthy();
 
     await user.click(icon);
@@ -227,7 +227,7 @@ describe('AppShell component', () => {
     expect(router).toBeCalledWith(toolbar.primary[0]);
   });
 
-  it('should render AppShell in dark mode', () => {
+  it('should render Dashboard in dark mode', () => {
     const theme = createTheme({
       palette: {
         mode: 'dark',
@@ -236,11 +236,11 @@ describe('AppShell component', () => {
 
     config.app.logo.contrast = faker.image.url({width: 48, height:48});
 
-    const appShell = render(
+    const dashboard = render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <ProfileProvider profile={profile} setProfile={setProfile}>
-          <AppShell
+          <Dashboard
             toolbar={toolbar}
             routes={routes}
             router={router}
@@ -250,10 +250,10 @@ describe('AppShell component', () => {
       </ThemeProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
   });
 
-  it('should render AppShell with a search input on the AppBar', () => {
+  it('should render Dashboard with a search input on the AppBar', () => {
     toolbar.tertiary = [{
       slug: 'search-input',
       icon: <React.Fragment />,
@@ -261,9 +261,9 @@ describe('AppShell component', () => {
       page: <React.Fragment />,
     }];
 
-    const appShell = render(
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -272,16 +272,16 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
   });
 
-  it('should render AppShell without a set of secondary and tertiary toolbar routes', () => {
+  it('should render Dashboard without a set of secondary and tertiary toolbar routes', () => {
     delete toolbar.secondary;
     delete toolbar.tertiary;
 
-    const appShell = render(
+    const dashboard = render(
       <ProfileProvider profile={profile} setProfile={setProfile}>
-        <AppShell
+        <Dashboard
           toolbar={toolbar}
           routes={routes}
           router={router}
@@ -290,6 +290,6 @@ describe('AppShell component', () => {
       </ProfileProvider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(dashboard).toBeDefined();
   });
 });

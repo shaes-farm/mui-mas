@@ -9,14 +9,14 @@ import AdjustIcon from '@mui/icons-material/Adjust';
 import AccessibleForwardIcon from '@mui/icons-material/AccessibleForward';
 import BlindIcon from '@mui/icons-material/Blind';
 
-import {AppShell} from '../components/App';
+import {Dashboard} from '../components/App';
 import type {NavRoute, NavRoutes} from '../components/Nav';
 import {Profile, ProfileProvider} from "../providers";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof AppShell> = {
-  title: 'Mui-Mas/AppShell',
-  component: AppShell,
+const meta: Meta<typeof Dashboard> = {
+  title: 'Mui-Mas/Dashboard',
+  component: Dashboard,
   tags: ['autodocs'],
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
@@ -48,7 +48,7 @@ const meta: Meta<typeof AppShell> = {
 
 export default meta;
 
-type Story = StoryObj<typeof AppShell>;
+type Story = StoryObj<typeof Dashboard>;
 
 const toolbar: NavRoutes = {
   primary: [{

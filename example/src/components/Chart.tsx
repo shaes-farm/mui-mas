@@ -1,36 +1,48 @@
-import * as React from 'react';
+import React from 'react';
 import {useTheme} from '@mui/material/styles';
 import {faker} from '@faker-js/faker';
 import {LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer} from 'recharts';
 import {Title} from '@shaes-farm/mui-mas';
 
-// Generate Sales Data
-function createData(time: string, amount?: number) {
-  return { time, amount };
+interface Sale {
+  time: string;
+  amount?: number;
 }
-let amount = 0;
 
-const data = [
-  createData('00:00', amount),
-  createData('03:00', amount += faker.number.int(1000)),
-  createData('06:00', amount += faker.number.int(1000)),
-  createData('09:00', amount += faker.number.int(1000)),
-  createData('12:00', amount += faker.number.int(1000)),
-  createData('15:00', amount += faker.number.int(1000)),
-  createData('18:00', amount += faker.number.int(1000)),
-  createData('21:00', amount += faker.number.int(1000)),
-  createData('24:00', undefined),
+// Sale Factory
+const createSale = (time: string, amount?: number): Sale => {
+  return { time, amount };
+};
+
+const hours = [
+  '00:00',
+  '03:00',
+  '06:00',
+  '09:00',
+  '12:00',
+  '15:00',
+  '18:00',
+  '21:00',
+  '24:00',
 ];
 
-export default function Chart() {
-  const theme = useTheme();
+let amount = 0;
+const rows = hours.map((hour) => {
+  const sale = createSale(hour, amount);
+  amount += faker.number.int(1000);
+  return sale;
+});
 
+export const Chart = () => {
+  const theme = useTheme();
+  const [sales] = React.useState<Sale[]>(rows);
+  
   return (
-    <React.Fragment>
+    <>
       <Title>Today</Title>
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={sales}
           margin={{
             top: 16,
             right: 16,
@@ -68,6 +80,8 @@ export default function Chart() {
           />
         </LineChart>
       </ResponsiveContainer>
-    </React.Fragment>
+    </>
   );
-}
+};
+
+export default Chart;
