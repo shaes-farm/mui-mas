@@ -101,7 +101,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "test-setup.d.ts",
+    "src/test-utils/test-setup.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
@@ -112,5 +112,8 @@
     "jest",
     "coverage",
     "example"
+  ],
+  "files": [
+    "src/test-utils/test-setup.d.ts",
   ]
 }

@@ -1,4 +1,3 @@
-import "jest-extended";
 import { faker } from '@faker-js/faker';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

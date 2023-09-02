@@ -154,7 +154,7 @@ describe('PasswordForm', () => {
       signUpUrl,
       {
         locale: undefined,
-        scroll: undefined,
+        scroll: true,
         shallow: undefined,
       }
     );

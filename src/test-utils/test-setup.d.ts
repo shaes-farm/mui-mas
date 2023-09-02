@@ -1,3 +1,4 @@
+import 'jest-extended';
 import type {Faker} from '@faker-js/faker';
 
 declare global {
