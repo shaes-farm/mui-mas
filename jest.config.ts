@@ -144,6 +144,7 @@ export default {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
+    'jest-extended/all',
     './src/test-utils/test-setup.ts',
   ],
 

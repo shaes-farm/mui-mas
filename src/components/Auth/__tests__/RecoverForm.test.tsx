@@ -97,7 +97,7 @@ describe('RecoverPasswordForm', () => {
       signInUrl,
       {
         locale: undefined,
-        scroll: undefined,
+        scroll: true,
         shallow: undefined,
       }
     );
