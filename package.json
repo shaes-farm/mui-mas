@@ -20,11 +20,11 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "eslint src/**/*.ts[x]",
-    "lint:ts": "tsc --noEmit --strict",
-    "verify": "npm run lint && npm run lint:ts && npm test",
+    "postlint": "tsc --noEmit --strict",
+    "verify": "npm run lint && npm test",
     "storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook dev -p 6006",
     "build-storybook": "env STORYBOOK_DISABLE_TELEMETRY=1 storybook build",
-    "prepublish": "npm run verify"
+    "prepublishOnly": "npm run verify"
   },
   "repository": {
     "type": "git",
