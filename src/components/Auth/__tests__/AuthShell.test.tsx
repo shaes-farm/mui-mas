@@ -74,7 +74,7 @@ describe('AuthShell component', () => {
   afterEach(cleanup);
 
   it('should render a default AuthShell', () => {
-    const appShell = render(
+    const authShell = render(
       <RouterContext.Provider value={router}>
         <ProfileProvider profile={profile} setProfile={setProfile}>
           <AuthShell
@@ -87,11 +87,11 @@ describe('AuthShell component', () => {
       </RouterContext.Provider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(authShell).toBeDefined();
   });
 
   it('should render AuthShell sign-up page', () => {
-    const appShell = render(
+    const authShell = render(
       <RouterContext.Provider value={router}>
         <ProfileProvider profile={profile} setProfile={setProfile}>
           <AuthShell
@@ -105,11 +105,11 @@ describe('AuthShell component', () => {
       </RouterContext.Provider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(authShell).toBeDefined();
   });
 
   it('should render AuthShell password recovery page', () => {
-    const appShell = render(
+    const authShell = render(
       <RouterContext.Provider value={router}>
         <ProfileProvider profile={profile} setProfile={setProfile}>
           <AuthShell
@@ -123,7 +123,7 @@ describe('AuthShell component', () => {
       </RouterContext.Provider>
     );
 
-    expect(appShell).toBeDefined();
+    expect(authShell).toBeDefined();
   });
 
   it('should render AuthShell in dark mode', () => {
@@ -133,7 +133,7 @@ describe('AuthShell component', () => {
       },
     });
 
-    const appShell = render(
+    const authShell = render(
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <RouterContext.Provider value={router}>
@@ -150,6 +150,6 @@ describe('AuthShell component', () => {
       </ThemeProvider>        
     );
 
-    expect(appShell).toBeDefined();
+    expect(authShell).toBeDefined();
   });
 });

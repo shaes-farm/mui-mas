@@ -7,75 +7,47 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import {Link, Title} from '@shaes-farm/mui-mas';
 
-const getCardIssuer = () => faker.helpers.arrayElement([
+interface Order {
+  id: number;
+  date: string;
+  name: string;
+  shipTo: string;
+  paymentMethod: string;
+  amount: number;
+}
+
+const fakeCardIssuer = () => faker.helpers.arrayElement([
   'AMEX',
   'VISA',
   'MC',
   'DISC',
 ]);
 
-// Generate Order Data
-function createData(
-  id: number,
-  date: string,
-  name: string,
-  shipTo: string,
-  paymentMethod: string,
-  amount: number,
-) {
-  return { id, date, name, shipTo, paymentMethod, amount };
+// Order Factory
+const createOrder = (overrides: Partial<Order> = {}): Order => {
+  return {
+    id: faker.number.int({max: 100}),
+    date: faker.date.recent().toLocaleDateString(),
+    name: faker.person.fullName(),
+    shipTo: `${faker.location.city()}, ${faker.location.state({abbreviated: true})}`,
+    paymentMethod: `${fakeCardIssuer()} •••• ${faker.finance.accountNumber(4)}`,
+    amount: faker.number.float({min: 100, max: 1000, precision: 0.01}),
+    ...overrides,
+  };
 }
 
-const rows = [
-  createData(
-    0,
-    faker.date.recent().toLocaleDateString(),
-    faker.person.fullName(),
-    `${faker.location.city()}, ${faker.location.state({abbreviated: true})}`,
-    `${getCardIssuer()} •••• ${faker.finance.accountNumber(4)}`,
-    faker.number.float({min: 100, max: 1000, precision: 0.01}),
-  ),
-  createData(
-    1,
-    faker.date.recent().toLocaleDateString(),
-    faker.person.fullName(),
-    `${faker.location.city()}, ${faker.location.state({abbreviated: true})}`,
-    `${getCardIssuer()} •••• ${faker.finance.accountNumber(4)}`,
-    faker.number.float({min: 100, max: 1000, precision: 0.01}),
-  ),
-  createData(
-    2,
-    faker.date.recent().toLocaleDateString(),
-    faker.person.fullName(),
-    `${faker.location.city()}, ${faker.location.state({abbreviated: true})}`,
-    `${getCardIssuer()} •••• ${faker.finance.accountNumber(4)}`,
-    faker.number.float({min: 100, max: 1000, precision: 0.01}),
-  ),
-  createData(
-    3,
-    faker.date.recent().toLocaleDateString(),
-    faker.person.fullName(),
-    `${faker.location.city()}, ${faker.location.state({abbreviated: true})}`,
-    `${getCardIssuer()} •••• ${faker.finance.accountNumber(4)}`,
-    faker.number.float({min: 100, max: 1000, precision: 0.01}),
-  ),
-  createData(
-    4,
-    faker.date.recent().toLocaleDateString(),
-    faker.person.fullName(),
-    `${faker.location.city()}, ${faker.location.state({abbreviated: true})}`,
-    `${getCardIssuer()} •••• ${faker.finance.accountNumber(4)}`,
-    faker.number.float({min: 100, max: 1000, precision: 0.01}),
-  ),
-];
+const rows: Order[] = [];
+const orders = faker.number.int({min: 5, max: 10});
 
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
+for (let id = 0; id < orders; id++) {
+  rows.push(createOrder({id}));
 }
 
-export default function Orders() {
+export const Orders = () => {
+  const [orders] = React.useState<Order[]>(rows);
+
   return (
-    <React.Fragment>
+    <>
       <Title>Recent Orders</Title>
       <Table size="small">
         <TableHead>
@@ -83,25 +55,32 @@ export default function Orders() {
             <TableCell>Date</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
+            <TableCell align="right">Payment Method</TableCell>
             <TableCell align="right">Sale Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+          {orders.map((order) => (
+            <TableRow key={order.id}>
+              <TableCell>{order.date}</TableCell>
+              <TableCell>{order.name}</TableCell>
+              <TableCell>{order.shipTo}</TableCell>
+              <TableCell align="right">{order.paymentMethod}</TableCell>
+              <TableCell align="right">{`$${order.amount}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
+      <Link
+        href="#"
+        color="primary"
+        sx={{ mt: 3 }}
+        onClick={(event: React.MouseEvent) => {event.preventDefault()}}
+      >
         See more orders
       </Link>
-    </React.Fragment>
+    </>
   );
-}
+};
+
+export default Orders;

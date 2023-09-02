@@ -5,7 +5,6 @@ import Paper from '@mui/material/Paper';
 
 import type {AppConfig} from '../App';
 import Copyright from '../Copyright';
-import ErrorBoundary from '../ErrorBoundary';
 
 import {Auth} from './Auth';
 import type {
@@ -34,7 +33,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
   }, [view]);
 
   return (
-    <ErrorBoundary key='auth-shell-error-boundary'>
+    <>
       <Grid
         container
         component="main"
@@ -82,7 +81,7 @@ export const AuthShell: React.FC<AuthShellProps> = ({config, signIn, signUp, rec
           <Copyright holder={config.app.copyright.holder} url={config.app.copyright.url} year={config.app.copyright.year}  sx={{ mt: 5 }} />
         </Grid>
       </Grid>
-    </ErrorBoundary>
+    </>
   );
 };
 
