@@ -41,7 +41,7 @@ create table profiles (
   bio               text,
   avatar_url        text,
   website           text,
-  social_media      jsonb,
+  social_media      text,
   measurement_unit  text,
   currency          text,
 
